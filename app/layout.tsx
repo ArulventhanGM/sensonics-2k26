@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Inter, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
+import { SoundProvider } from '@/components/SoundProvider';
 
 const inter = Inter({
   variable: "--font-inter",
@@ -47,7 +48,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
         />
       </head>
-      <body className="noise-bg background-cinematic min-h-screen">{children}</body>
+      <body className="noise-bg background-cinematic min-h-screen">
+        <SoundProvider>{children}</SoundProvider>
+      </body>
     </html>
   );
 }
