@@ -35,51 +35,64 @@ export default async function handler(req, res) {
             });
         }
 
-        // Support structured multi-event format
-        if (data.participant && data.events) {
-            const p = data.participant;
-            if (!p.name || !p.email || !p.phone || !p.college) {
-                return res.status(400).json({
-                    success: false,
-                    code: "MISSING_PARTICIPANT",
-                    message: "Participant name, email, phone, and college are required."
-                });
-            }
+        // Normalize incoming payload structure
+        let payload = data;
+        if (!data.participant && data.name && data.email) {
+            payload = {
+                participant: {
+                    name: data.name,
+                    email: data.email,
+                    phone: data.phone || "",
+                    college: data.college || "",
+                    department: data.department || "",
+                    year: data.year || "3rd Year"
+                },
+                events: Array.isArray(data.events) ? data.events : [
+                    {
+                        eventId: data.eventId || data.event || "tech-project",
+                        teamName: data.teamName || (data.name + "'s Team"),
+                        teamMembers: data.teamMembers || []
+                    }
+                ]
+            };
+        }
 
-            if (!Array.isArray(data.events) || data.events.length < 2 || data.events.length > 3) {
-                return res.status(400).json({
-                    success: false,
-                    code: "INVALID_EVENT_COUNT",
-                    message: "Registration requires a minimum of 2 and a maximum of 3 events."
-                });
-            }
-        } else if (!data.name || !data.email) {
+        // -----------------------------------------
+        // 2. Validation
+        // -----------------------------------------
+
+        if (!payload || !payload.participant) {
             return res.status(400).json({
                 success: false,
-                code: "MISSING_FIELDS",
-                message: "Name and email are required fields."
+                code: "MISSING_PARTICIPANT",
+                message: "Participant information (name, email, phone, college) is required."
             });
         }
 
-
-        // -----------------------------------------
-        // 3. Get environment variables
-        // -----------------------------------------
-
-        const appsScriptUrl = process.env.APPS_SCRIPT_URL;
-        const registrationSecret = process.env.REGISTRATION_SECRET || "sensonics_2026_secure_secret_key";
-
-        if (!appsScriptUrl) {
-            console.error(
-                "Missing Vercel environment variables: Ensure APPS_SCRIPT_URL is configured in Vercel settings."
-            );
-
-            return res.status(500).json({
+        const p = payload.participant;
+        if (!p.name || !p.email || !p.phone || !p.college) {
+            return res.status(400).json({
                 success: false,
-                code: "SERVER_CONFIG_ERROR",
-                message: "Server configuration error: Missing APPS_SCRIPT_URL on Vercel."
+                code: "MISSING_PARTICIPANT_FIELDS",
+                message: "Participant name, email, phone, and college are required."
             });
         }
+
+        if (!Array.isArray(payload.events) || payload.events.length === 0) {
+            return res.status(400).json({
+                success: false,
+                code: "MISSING_EVENTS",
+                message: "At least one event is required for registration."
+            });
+        }
+
+
+        // -----------------------------------------
+        // 3. Get environment variables with Fallback
+        // -----------------------------------------
+
+        const appsScriptUrl = process.env.APPS_SCRIPT_URL || "https://script.google.com/macros/s/AKfycbxONOtq49ZRx09W0gV23Jw3_nkUKRVtfPKugL-LQ0vzkyIXVZKhjz5NqmEf0ElJiXix/exec";
+        const registrationSecret = process.env.REGISTRATION_SECRET || "sensonics_2026_secure_secret_key";
 
 
         // -----------------------------------------
@@ -92,7 +105,7 @@ export default async function handler(req, res) {
                 "Content-Type": "application/json"
             },
             body: JSON.stringify({
-                ...data,
+                ...payload,
                 secret: registrationSecret
             }),
             redirect: "follow"
