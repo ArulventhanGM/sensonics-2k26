@@ -210,11 +210,11 @@
         <div class="inline-flex liquid-glass-surface rounded-full p-1 border-white/50 mt-4 shadow-sm">
           <button id="filter-all" onclick="filterEvents('all')"
             class="px-5 py-2 rounded-full text-xs font-semibold tracking-wider transition-all duration-300 bg-white/60 text-slate-950 shadow-sm">
-            All Events (8)
+            All Events (7)
           </button>
           <button id="filter-technical" onclick="filterEvents('technical')"
             class="px-5 py-2 rounded-full text-xs font-medium tracking-wider text-slate-700 hover:text-slate-950 transition-all duration-300">
-            Technical (4)
+            Technical (3)
           </button>
           <button id="filter-non-technical" onclick="filterEvents('non-technical')"
             class="px-5 py-2 rounded-full text-xs font-medium tracking-wider text-slate-700 hover:text-slate-950 transition-all duration-300">
@@ -389,10 +389,9 @@
                 class="px-2.5 py-0.5 rounded-full bg-blue-500/15 text-[10px] font-bold uppercase tracking-wider text-blue-900 border border-blue-400/40">Technical
                 Stage</span>
             </div>
-            <h3 class="text-xl font-medium text-slate-950">Technical Arenas Commence</h3>
-            <p class="text-xs text-slate-600 font-light">Simultaneous execution of Circuit Chronicles, Sensory Matrix,
-              and Bio-Signal Hackathon.</p>
-            <p class="text-[11px] font-semibold text-slate-500">📍 Instrumentation Labs B-302 & C-104</p>
+            <h3 class="text-xl font-medium text-slate-950">Technical Arenas: Project &amp; Coding</h3>
+            <p class="text-xs text-slate-600 font-light">Simultaneous execution of Project Expo demonstrations and the competitive Coding Challenge.</p>
+            <p class="text-[11px] font-semibold text-slate-500">📍 Project Display Hall B-302 &amp; Central Computing Facility C-104</p>
           </div>
         </div>
 
@@ -407,10 +406,9 @@
                 class="px-2.5 py-0.5 rounded-full bg-purple-500/15 text-[10px] font-bold uppercase tracking-wider text-purple-900 border border-purple-400/40">Non-Tech
                 Stage</span>
             </div>
-            <h3 class="text-xl font-medium text-slate-950">Quantum Pitch & Crypto Quest</h3>
-            <p class="text-xs text-slate-600 font-light">Tech venture pitch presentations and campus cryptographic clue
-              hunting.</p>
-            <p class="text-[11px] font-semibold text-slate-500">📍 Executive Seminar Hall & Quadrangle</p>
+            <h3 class="text-xl font-medium text-slate-950">Word &amp; Pick&amp;Pitch</h3>
+            <p class="text-xs text-slate-600 font-light">Vocabulary matrix challenges and impromptu product ideation pitch presentations.</p>
+            <p class="text-[11px] font-semibold text-slate-500">📍 Seminar Hall 1 &amp; Executive Conference Hall</p>
           </div>
         </div>
 
@@ -424,10 +422,9 @@
               <span
                 class="px-2.5 py-0.5 rounded-full bg-emerald-500/15 text-[10px] font-bold uppercase tracking-wider text-emerald-900 border border-emerald-400/40">Finals</span>
             </div>
-            <h3 class="text-xl font-medium text-slate-950">Aero-Bot Telemetry & Mind Over Matrix</h3>
-            <p class="text-xs text-slate-600 font-light">Autonomous rover obstacle trials and live rapid-fire buzzer
-              trivia arena.</p>
-            <p class="text-[11px] font-semibold text-slate-500">📍 Robotics Arena & Mini Auditorium</p>
+            <h3 class="text-xl font-medium text-slate-950">Drone, Memory Morph &amp; Recall Rush</h3>
+            <p class="text-xs text-slate-600 font-light">Autonomous drone flight obstacle trials, cognitive memory gauntlet, and quickfire buzzer trivia finale.</p>
+            <p class="text-[11px] font-semibold text-slate-500">📍 Robotics Arena, Mini Auditorium &amp; Main Auditorium Stage</p>
           </div>
         </div>
 
@@ -441,7 +438,7 @@
               <span
                 class="px-2.5 py-0.5 rounded-full bg-white/40 text-[10px] font-bold uppercase tracking-wider text-slate-700 border border-white/50">Valedictory</span>
             </div>
-            <h3 class="text-xl font-medium text-slate-950">Grand Valedictory & Trophy Distribution</h3>
+            <h3 class="text-xl font-medium text-slate-950">Grand Valedictory &amp; Trophy Distribution</h3>
             <p class="text-xs text-slate-600 font-light">Award ceremony, cash prize distribution, and closing remarks.
             </p>
             <p class="text-[11px] font-semibold text-slate-500">📍 University Grand Auditorium</p>
@@ -869,28 +866,28 @@
   </div>
 
   <script>
-    // CENTRALIZED EVENT DATA ARCHITECTURE WITH STRUCTURED TEAM SIZES
+    // CENTRALIZED EVENT DATA ARCHITECTURE WITH STRUCTURED TEAM SIZES (7 OFFICIAL EVENTS)
     const EVENTS = [
       {
-        id: 'tech-01',
-        slug: 'circuit-chronicles',
-        name: 'Circuit Chronicles',
+        id: 'tech-project',
+        slug: 'project-presentation',
+        name: 'Project',
         category: 'Technical',
-        tagline: 'Precision Debugging & Real-Time Hardware Synthesis',
-        description: 'Diagnose complex analog-digital anomalies, re-synthesize high-frequency logic, and master signal path integrity.',
-        longDescription: 'Circuit Chronicles tests foundational electronics design and instrumentation intuition. Participants must troubleshoot multi-layered breadboard and simulation circuits, rectify impedance mismatch errors, and synthesize an operational amplifier feedback system under strict time constraints.',
-        teamSize: '2 - 3 Members',
+        tagline: 'Hardware, Embedded Systems & Instrumentation Showcase',
+        description: 'Demonstrate breakthrough working hardware models, IoT prototypes, and industrial process automation systems.',
+        longDescription: 'Project Expo provides a national platform to demonstrate cutting-edge engineering prototypes. Participants showcase working hardware models, embedded firmware, IoT sensor networks, or industrial process automation systems before an esteemed industry jury.',
+        teamSize: '2 - 4 Members',
         minTeamSize: 2,
-        maxTeamSize: 3,
-        duration: '2.5 Hours',
-        venue: 'Instrumentation Laboratory (Block B - 302)',
+        maxTeamSize: 4,
+        duration: '3.0 Hours',
+        venue: 'Project Display Hall (Block B - 302)',
         prize: '₹10,000 + Trophy',
         prizes: { first: '₹ 10,000 + Trophy', second: '₹ 6,000 + Certificate', third: '₹ 3,000 + Certificate' },
         rules: [
-          'Round 1: Rapid fault diagnosis using multi-meters & DSO probes (30 mins).',
-          'Round 2: Dynamic closed-loop sensor signal conditioning design.',
-          'Only standardized lab kits provided on-site are permissible.',
-          'Decision of the technical jury panel remains final and absolute.'
+          'Round 1: Initial demonstration and prototype functionality assessment (10 mins).',
+          'Round 2: Jury Q&A on architecture, component selection, and industrial scalability.',
+          'Teams must bring all required circuit components and power supplies (standard 230V mains provided).',
+          'Decision of the technical jury panel remains final and binding.'
         ],
         coordinators: [
           { name: 'Dr. Anand Kumar', phone: '+91 98765 43210' },
@@ -898,24 +895,25 @@
         ]
       },
       {
-        id: 'tech-02',
-        slug: 'sensory-matrix',
-        name: 'Sensory Matrix',
+        id: 'tech-coding',
+        slug: 'coding',
+        name: 'Coding',
         category: 'Technical',
-        tagline: 'Transducer Calibration & Autonomous Edge Sensor Fusion',
-        description: 'Deploy raw telemetry pipelines, filter environmental drift, and calibrate high-precision transducer arrays.',
-        longDescription: 'A premier instrumentation challenge where participants are provided with unpredictable sensor signals (vibration, thermal gradient, optical flux). You must design real-time digital filtering, eliminate noise harmonics, and transmit telemetry to an edge controller with sub-millisecond jitter.',
+        tagline: 'Algorithmic Problem Solving & Rapid Debugging',
+        description: 'Test your logic, data structures, and algorithmic mastery across intense time-constrained competitive coding rounds.',
+        longDescription: 'The premier competitive programming and debugging gauntlet. Teams solve real-time algorithmic challenges, optimize time-space complexity, eliminate memory leaks, and debug mission-critical embedded control code.',
         teamSize: '1 - 2 Members',
         minTeamSize: 1,
         maxTeamSize: 2,
-        duration: '3.0 Hours',
-        venue: 'Process Control Lab (Block C - 104)',
+        duration: '2.5 Hours',
+        venue: 'Central Computing Facility (Block C - 104)',
         prize: '₹10,000 + Trophy',
         prizes: { first: '₹ 10,000 + Trophy', second: '₹ 6,000 + Certificate' },
         rules: [
-          'Laptops with MATLAB, Python, or LabVIEW pre-installed are allowed.',
-          'Sensors will be interfaced using standard microcontrollers (STM32/ESP32 provided).',
-          'Signal SNR improvement benchmarks will dictate the scoring matrix.'
+          'Round 1: Rapid-fire algorithmic logic and blind debugging.',
+          'Round 2: Complex problem solving and time-space optimization challenge.',
+          'Permissible programming languages: C, C++, Java, Python.',
+          'External internet browsing and AI assistance tools are strictly barred during active stages.'
         ],
         coordinators: [
           { name: 'Prof. S. Venkatesh', phone: '+91 98450 11223' },
@@ -923,123 +921,80 @@
         ]
       },
       {
-        id: 'tech-03',
-        slug: 'aero-bot-telemetry',
-        name: 'Aero-Bot Telemetry',
+        id: 'tech-drone',
+        slug: 'drone',
+        name: 'Drone',
         category: 'Technical',
-        tagline: 'Autonomous Navigational Control & PID Tuning',
-        description: 'Optimize dynamic closed-loop PID control loops for autonomous micro-rovers navigating an obstacle field.',
-        longDescription: 'Focuses on control systems engineering. Teams will tune dynamic PID coefficients, calibrate optical odometry, and execute obstacle evasion routes with zero manual intervention over a precision testbed.',
+        tagline: 'Autonomous Flight Dynamics & Precision Drone Navigation',
+        description: 'Navigate complex obstacle courses, test real-time telemetry control, and showcase aerodynamic flight stability.',
+        longDescription: 'Experience the future of aerial robotics. Pilots and telemetry engineers calibrate quadcopter PID control loops, maintain line-of-sight precision, execute obstacle evasion maneuvers, and complete autonomous waypoint tracking.',
         teamSize: '2 - 4 Members',
         minTeamSize: 2,
         maxTeamSize: 4,
         duration: '2.0 Hours',
-        venue: 'Robotics Center (Auditorium Annex)',
+        venue: 'Robotics Arena (Auditorium Quadrangle)',
         prize: '₹12,000 + Trophy',
         prizes: { first: '₹ 12,000 + Trophy', second: '₹ 8,000 + Certificate' },
         rules: [
-          'Standardized micro-rover chassis kits will be allocated on draw-of-lots.',
-          'Teams are given 45 minutes for parameter profiling and PID calibration.',
-          'Penalties apply for lane excursions and perimeter contact.'
+          'Drones must comply with size/weight specifications outlined in the rulebook.',
+          'Time trials will include precision hoops, altitude holds, and landing zone accuracy.',
+          'Points deducted for perimeter boundary touches or loss of telemetry link.',
+          'Pilots must wear mandatory safety eyewear in the flight arena.'
         ],
         coordinators: [{ name: 'Karthik Raja', phone: '+91 90031 77665' }]
       },
       {
-        id: 'tech-04',
-        slug: 'bio-signal-hack',
-        name: 'Bio-Signal Hackathon',
-        category: 'Technical',
-        tagline: 'Biomedical Signal Processing & Neural Wavelet Analysis',
-        description: 'Transform volatile ECG, EMG, and EEG biosignals into predictive neural diagnostic metrics using DSP algorithms.',
-        longDescription: 'Step into the intersection of medical instrumentation and machine intelligence. Teams process raw biological telemetry datasets, filter motion artifacts, apply wavelet decomposition, and identify cardiovascular anomalies.',
-        teamSize: '1 - 3 Members',
+        id: 'nontech-word',
+        slug: 'word',
+        name: 'Word',
+        category: 'Non-Technical',
+        tagline: 'Linguistic Puzzles, Anagrams & Rapid Word Gauntlet',
+        description: 'Unravel anagrams, word matrix puzzles, cryptographic crosswords, and lightning vocabulary challenges.',
+        longDescription: 'A fast-paced arena for vocabulary tacticians and lateral thinkers. Participants decipher contextual riddles, solve word grids against countdown clocks, and compete in lightning anagram relays.',
+        teamSize: '1 - 2 Members',
         minTeamSize: 1,
-        maxTeamSize: 3,
-        duration: '4.0 Hours',
-        venue: 'Bio-Instrumentation Studio (Block A - 401)',
-        prize: '₹12,000 + Trophy',
-        prizes: { first: '₹ 12,000 + Trophy', second: '₹ 7,000 + Certificate' },
-        rules: [
-          'Datasets and evaluation benchmarks provided at the start of the session.',
-          'Use of standard open-source libraries (SciPy, PyTorch, Biosppy) is allowed.',
-          'Code must be reproducible and submitted via GitHub classroom.'
-        ],
-        coordinators: [{ name: 'Dr. Meenakshi S.', phone: '+91 94880 33445' }]
-      },
-      {
-        id: 'non-tech-01',
-        slug: 'quantum-pitch',
-        name: 'Quantum Pitch',
-        category: 'Non-Technical',
-        tagline: 'Futuristic Product Strategy & Tech Venture Incubation',
-        description: 'Structure, defend, and launch breakthrough technology propositions before venture capitalists.',
-        longDescription: 'Pitch groundbreaking innovations with commercial viability. Teams craft product roadmaps, target addressable markets, unit economics, and deliver a 5-minute high-impact presentation.',
-        teamSize: '2 - 3 Members',
-        minTeamSize: 2,
-        maxTeamSize: 3,
+        maxTeamSize: 2,
         duration: '2.0 Hours',
-        venue: 'Executive Seminar Hall 1',
-        prize: '₹8,000 + Trophy',
-        prizes: { first: '₹ 8,000 + Trophy', second: '₹ 5,000 + Certificate' },
+        venue: 'Seminar Hall 1',
+        prize: '₹7,000 + Trophy',
+        prizes: { first: '₹ 7,000 + Trophy', second: '₹ 4,000 + Certificate' },
         rules: [
-          'Maximum 7 slides per pitch deck.',
-          '5 minutes presentation + 3 minutes jury Q&A.',
-          'Focus strictly on market viability, innovation index, and clarity.'
-        ],
-        coordinators: [{ name: 'Rohan Mehta', phone: '+91 97722 11440' }]
-      },
-      {
-        id: 'non-tech-02',
-        slug: 'crypto-quest',
-        name: 'Crypto Quest',
-        category: 'Non-Technical',
-        tagline: 'Cryptographic Logic, Cipher Decoding & Campus Mystery',
-        description: 'Decipher multi-stage ciphers, steganography riddles, and unlock physical nodes across the campus.',
-        longDescription: 'An immersive intellectual treasure hunt. Participants decode historic substitution ciphers, QR anomalies, acoustic frequencies, and coordinate geofences to reach the final terminal.',
-        teamSize: '3 - 4 Members',
-        minTeamSize: 3,
-        maxTeamSize: 4,
-        duration: '2.5 Hours',
-        venue: 'Central Campus Quadrangle',
-        prize: '₹8,000 + Trophy',
-        prizes: { first: '₹ 8,000 + Trophy', second: '₹ 5,000 + Certificate' },
-        rules: [
-          'Smartphones are permitted for QR scanning and cryptographic tools.',
-          'Physical markers must not be altered or concealed.',
-          'Time penalties apply for consecutive hint requests.'
+          'Round 1: Cross-matrix vocabulary elimination written test (20 mins).',
+          'Round 2: Buzzer-based rapid anagram deciphering and word ladder sprints.',
+          'Decision of the jury panel is final on all linguistic definitions.'
         ],
         coordinators: [{ name: 'Divya Natesan', phone: '+91 98841 55667' }]
       },
       {
-        id: 'non-tech-03',
-        slug: 'cinematic-lens',
-        name: 'Cinematic Lens',
+        id: 'nontech-pick-pitch',
+        slug: 'pick-and-pitch',
+        name: 'Pick&Pitch',
         category: 'Non-Technical',
-        tagline: 'Short-Form Visual Storytelling & Atmospheric Editing',
-        description: 'Capture the essence of SENSONICS in a 60-second high-energy cinematic visual montage.',
-        longDescription: 'Create a visually compelling video reel showcasing light, glass, technology, and engineering momentum during the festival. Graded on color grading, pacing, sound design, and concept.',
-        teamSize: '1 - 2 Members',
-        minTeamSize: 1,
-        maxTeamSize: 2,
-        duration: 'Full Day',
-        venue: 'Media Center / Campus Wide',
-        prize: '₹7,000 + Trophy',
-        prizes: { first: '₹ 7,000 + Trophy', second: '₹ 4,000 + Certificate' },
+        tagline: 'Impromptu Product Ideation & Strategic Pitching',
+        description: 'Pick a spontaneous technological or product challenge on the spot and deliver a compelling 5-minute investor pitch.',
+        longDescription: 'The ultimate spontaneous pitch arena. Draw an unpredictable problem statement or emerging technology topic on the spot, spend 15 minutes structuring your venture roadmap, and defend your value proposition before the jury.',
+        teamSize: '2 - 3 Members',
+        minTeamSize: 2,
+        maxTeamSize: 3,
+        duration: '2.0 Hours',
+        venue: 'Executive Conference Hall',
+        prize: '₹8,000 + Trophy',
+        prizes: { first: '₹ 8,000 + Trophy', second: '₹ 5,000 + Certificate' },
         rules: [
-          'Footage must be captured on the day of the event on campus.',
-          'Duration: 45 to 60 seconds (9:16 or 16:9 format).',
-          'Audio tracks must be royalty-free or properly licensed.'
+          'Topics drawn on-the-spot with 15 minutes preparation time.',
+          '5 minutes presentation followed by 3 minutes jury defense.',
+          'Judged on innovation, clarity, commercial viability, and impromptu response quality.'
         ],
-        coordinators: [{ name: 'Siddharth R.', phone: '+91 93610 88221' }]
+        coordinators: [{ name: 'Rohan Mehta', phone: '+91 97722 11440' }]
       },
       {
-        id: 'non-tech-04',
-        slug: 'mind-over-matrix',
-        name: 'Mind Over Matrix',
+        id: 'nontech-memory-morph',
+        slug: 'memory-morph',
+        name: 'Memory Morph',
         category: 'Non-Technical',
-        tagline: 'Trivia, Sensory Puzzles & Rapid Cognitive Gauntlet',
-        description: 'Battle across 4 rounds of high-speed logic puzzles, audio-visual recognition, and pattern synthesis.',
-        longDescription: 'The ultimate general & scientific trivia arena. Questions encompass technological milestones, quantum phenomena, pop-culture easter eggs, and lateral thinking challenges.',
+        tagline: 'Visual Recall, Audio-Visual Pattern Recognition & Cognitive Mastery',
+        description: 'Battle across dynamic sensory memory rounds: photographic recollection, sequential pattern morphing, and observation gauntlets.',
+        longDescription: 'Test your focus and short-term cognitive capacity. Teams observe rapidly shifting visual matrices, abstract sound frequencies, and sequential memory morphs before reconstructing exact details under pressure.',
         teamSize: '2 Members',
         minTeamSize: 2,
         maxTeamSize: 2,
@@ -1048,11 +1003,33 @@
         prize: '₹7,000 + Trophy',
         prizes: { first: '₹ 7,000 + Trophy', second: '₹ 4,000 + Certificate' },
         rules: [
-          'Round 1: Rapid-fire elimination written prelims.',
-          'Round 2: Buzzer stage with dynamic multiplier scoring.',
-          'Electronic devices are barred during active stages.'
+          'Round 1: Rapid visual grid observation (30 seconds per matrix).',
+          'Round 2: Sequential audio-visual audio morph tracking.',
+          'Smart devices and note-taking are prohibited during observation phases.'
         ],
         coordinators: [{ name: 'Ananya Iyer', phone: '+91 98402 77112' }]
+      },
+      {
+        id: 'nontech-recall-rush',
+        slug: 'recall-rush',
+        name: 'Recall Rush',
+        category: 'Non-Technical',
+        tagline: 'Fast-Paced Trivia, Sensory Clues & Quickfire Reflexes',
+        description: 'A high-adrenaline rapid trivia race combining pop-culture, general science, tactile puzzles, and buzzer speed.',
+        longDescription: 'The marquee trivia and reflex gauntlet. Four electrifying rounds encompassing scientific breakthroughs, pop culture easter eggs, audio clues, and buzzer stage face-offs.',
+        teamSize: '1 - 2 Members',
+        minTeamSize: 1,
+        maxTeamSize: 2,
+        duration: '2.0 Hours',
+        venue: 'Main Auditorium Stage',
+        prize: '₹7,000 + Trophy',
+        prizes: { first: '₹ 7,000 + Trophy', second: '₹ 4,000 + Certificate' },
+        rules: [
+          'Round 1: Quickfire 20-question written preliminary round.',
+          'Round 2: Multiplier buzzer round with negative scoring.',
+          'Top 6 teams advance to the Grand Finale on the main stage.'
+        ],
+        coordinators: [{ name: 'Siddharth R.', phone: '+91 93610 88221' }]
       }
     ];
 
