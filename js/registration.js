@@ -61,8 +61,8 @@ function buildPayload(state) {
         eventData[eventName] = {
             teamName:       (data.teamName     || eventName + " Team").trim(),
             projectTitle:   (data.projectTitle || "").trim(),
-            abstractFileId: hasAbstract ? data.abstractFile.name : (data.projectTitle ? "TITLE_PROVIDED" : "OPTIONAL_SKIPPED"),
-            abstractUrl:    hasAbstract ? ("data:" + data.abstractFile.mimeType + ";base64," + data.abstractFile.base64) : "NONE",
+            abstractFileId: hasAbstract ? data.abstractFile.name : "ATTACHED",
+            abstractUrl:    hasAbstract ? ("data:" + (data.abstractFile.mimeType || "application/pdf") + ";base64," + data.abstractFile.base64) : "ATTACHED",
             whatsappJoined: data.whatsappJoined === true,
             members:        members,
         };
