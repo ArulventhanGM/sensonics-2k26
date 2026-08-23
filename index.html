@@ -1,0 +1,2176 @@
+<!DOCTYPE html>
+<html lang="en" class="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sensonics '26 | National Level Technical Symposium | Kongu Engineering College</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Outfit:wght@400;600;700;800;900&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            50: '#f0f9ff',
+                            100: '#e0f2fe',
+                            400: '#38bdf8',
+                            500: '#0284c7',
+                            600: '#0369a1',
+                            cyan: '#0891b2',
+                            violet: '#7c3aed',
+                            magenta: '#db2777',
+                            lightBg: '#f6f8fd'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        display: ['Outfit', 'sans-serif'],
+                        mono: ['Space Grotesk', 'monospace']
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #f1f5f9;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: rgba(148, 163, 184, 0.4);
+            border-radius: 9999px;
+            border: 2px solid #f1f5f9;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: rgba(100, 116, 139, 0.6);
+        }
+
+        /* Light Glassmorphism Panel Classes */
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.72);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.8);
+            box-shadow: 0 20px 40px -15px rgba(2, 132, 199, 0.08), 0 0 15px rgba(0, 0, 0, 0.03);
+        }
+
+        .glass-panel-hover {
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .glass-panel-hover:hover {
+            background: rgba(255, 255, 255, 0.92);
+            border-color: rgba(2, 132, 199, 0.35);
+            transform: translateY(-4px);
+            box-shadow: 0 25px 50px -12px rgba(2, 132, 199, 0.18), 0 0 20px rgba(124, 58, 237, 0.08);
+        }
+
+        .glass-nav {
+            background: rgba(255, 255, 255, 0.78);
+            backdrop-filter: blur(24px);
+            -webkit-backdrop-filter: blur(24px);
+            border-bottom: 1px solid rgba(226, 232, 240, 0.8);
+            box-shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.03);
+        }
+
+        .glass-input {
+            background: rgba(255, 255, 255, 0.85);
+            border: 1px solid #cbd5e1;
+            color: #0f172a;
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+        }
+        .glass-input:focus {
+            background: #ffffff;
+            border-color: #0284c7;
+            box-shadow: 0 0 0 4px rgba(2, 132, 199, 0.15);
+            outline: none;
+        }
+
+        .glass-button-primary {
+            background: linear-gradient(135deg, #0284c7, #7c3aed);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.4);
+            box-shadow: 0 8px 25px rgba(2, 132, 199, 0.3);
+            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .glass-button-primary:hover {
+            transform: translateY(-2px) scale(1.02);
+            box-shadow: 0 12px 35px rgba(124, 58, 237, 0.4);
+            background: linear-gradient(135deg, #0369a1, #6d28d9);
+        }
+
+        .glass-button-secondary {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(10px);
+            border: 1px solid #cbd5e1;
+            color: #334155;
+            transition: all 0.3s ease;
+        }
+        .glass-button-secondary:hover {
+            background: #ffffff;
+            border-color: #94a3b8;
+            color: #0f172a;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.05);
+        }
+
+        .text-glow {
+            text-shadow: 0 0 25px rgba(2, 132, 199, 0.35);
+        }
+
+        #bg-canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            z-index: -1;
+            pointer-events: none;
+        }
+
+        .badge-cyan {
+            background: rgba(2, 132, 199, 0.1);
+            color: #0284c7;
+            border: 1px solid rgba(2, 132, 199, 0.25);
+        }
+        .badge-violet {
+            background: rgba(124, 58, 237, 0.1);
+            color: #7c3aed;
+            border: 1px solid rgba(124, 58, 237, 0.25);
+        }
+        .badge-magenta {
+            background: rgba(219, 39, 119, 0.1);
+            color: #db2777;
+            border: 1px solid rgba(219, 39, 119, 0.25);
+        }
+
+        /* React Bits ParticleText Integration CSS */
+        .particle-text {
+            position: relative;
+            display: block;
+            width: 100%;
+            height: 100%;
+            min-height: 180px;
+            overflow: hidden;
+            touch-action: none;
+            isolation: isolate;
+            cursor: pointer;
+        }
+
+        .particle-text__canvas {
+            position: absolute;
+            inset: 0;
+            display: block;
+            width: 100%;
+            height: 100%;
+        }
+
+        .particle-text__sr {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            white-space: nowrap;
+            border: 0;
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            * {
+                animation-duration: 0.01ms !important;
+                transition-duration: 0.01ms !important;
+            }
+        }
+    </style>
+</head>
+<body class="bg-[#f6f8fd] text-slate-800 min-h-screen flex flex-col font-sans selection:bg-sky-500 selection:text-white overflow-x-hidden">
+
+    <canvas id="bg-canvas"></canvas>
+
+    <header class="glass-nav fixed top-0 left-0 right-0 z-50 transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+                
+                <!-- Logo / Department Info -->
+                <a href="#home" onclick="navTo('home')" class="flex items-center space-x-3 group cursor-pointer">
+                    <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-sky-500 to-violet-600 p-[1px] shadow-lg shadow-sky-500/20 group-hover:scale-105 transition-transform duration-300">
+                        <div class="w-full h-full bg-white rounded-[11px] flex items-center justify-center">
+                            <span class="font-display font-black text-transparent bg-clip-text bg-gradient-to-r from-sky-600 to-violet-600 text-xl">S</span>
+                        </div>
+                    </div>
+                    <div>
+                        <span class="font-display font-black tracking-wider text-xl bg-clip-text text-transparent bg-gradient-to-r from-slate-900 via-sky-900 to-violet-900">SENSONICS '26</span>
+                        <p class="text-[10px] text-slate-500 font-mono tracking-wider uppercase hidden sm:block">Dept of EIE • Kongu Engg College</p>
+                    </div>
+                </a>
+
+                <!-- Desktop Navigation Links (Workshops link removed) -->
+                <nav class="hidden md:flex items-center space-x-1 glass-panel px-4 py-1.5 rounded-full border-slate-200">
+                    <button onclick="navTo('home')" class="nav-btn px-4 py-2 rounded-full text-sm font-semibold text-slate-600 hover:text-slate-900 hover:bg-slate-100 transition-all" data-page="home">Home</button>
+                    <button onclick="navTo('events')" class="nav-btn px-4 py-2 rounded-full text-sm font-semibold text-slate-600 hover:text-slate-900 hover:bg-slate-100 transition-all" data-page="events">Events</button>
+                    <button onclick="navTo('about')" class="nav-btn px-4 py-2 rounded-full text-sm font-semibold text-slate-600 hover:text-slate-900 hover:bg-slate-100 transition-all" data-page="about">About</button>
+                </nav>
+
+                <!-- Action Button & Cart Indicator -->
+                <div class="flex items-center space-x-3">
+                    <button onclick="navTo('register')" class="glass-button-primary px-5 py-2.5 rounded-full text-sm font-bold text-white flex items-center space-x-2">
+                        <span>Register Now</span>
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+                    </button>
+                    <!-- Mobile Hamburger -->
+                    <button onclick="toggleMobileMenu()" class="md:hidden p-2 rounded-xl glass-panel text-slate-600 hover:text-slate-900 border-slate-200">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"/></svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div id="mobile-menu" class="hidden md:hidden glass-panel border-t border-slate-200/80 px-4 pt-3 pb-6 space-y-2">
+            <button onclick="navTo('home'); toggleMobileMenu();" class="block w-full text-left px-4 py-2.5 rounded-xl text-slate-700 hover:bg-slate-100 font-semibold">Home</button>
+            <button onclick="navTo('events'); toggleMobileMenu();" class="block w-full text-left px-4 py-2.5 rounded-xl text-slate-700 hover:bg-slate-100 font-semibold">Events</button>
+            <button onclick="navTo('about'); toggleMobileMenu();" class="block w-full text-left px-4 py-2.5 rounded-xl text-slate-700 hover:bg-slate-100 font-semibold">About KEC</button>
+            <button onclick="navTo('register'); toggleMobileMenu();" class="block w-full text-left px-4 py-2.5 rounded-xl bg-gradient-to-r from-sky-500 to-violet-600 text-white font-bold">Register Wizard</button>
+        </div>
+    </header>
+
+    <main class="flex-grow pt-28 pb-16 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto w-full">
+
+        <!-- ==================== HOME PAGE SECTION ==================== -->
+        <section id="page-home" class="page-section space-y-16 transition-all duration-500">
+            
+            <!-- Hero Banner with Integrated ParticleText Canvas -->
+            <div class="relative py-8 md:py-14 text-center space-y-6">
+                <div class="inline-flex items-center space-x-2 px-4 py-1.5 rounded-full glass-panel border-sky-300/60 text-sky-700 text-xs sm:text-sm font-mono tracking-wide uppercase shadow-sm">
+                    <span class="w-2.5 h-2.5 rounded-full bg-sky-500 animate-ping"></span>
+                    <span>National Level Technical Symposium</span>
+                </div>
+
+                <!-- React Bits ParticleText Hero Title Container -->
+                <div class="w-full h-44 sm:h-56 md:h-64 mx-auto max-w-5xl my-2">
+                    <div id="particle-text-wrapper" class="w-full h-full"></div>
+                </div>
+
+                <div class="space-y-3 max-w-3xl mx-auto">
+                    <p class="text-lg sm:text-2xl text-slate-700 font-medium leading-relaxed">
+                        Department of Electronics and Instrumentation Engineering
+                        <span class="block text-sky-600 font-bold mt-1">Kongu Engineering College (Autonomous), Perundurai</span>
+                    </p>
+                    <p class="text-xs text-slate-500 font-mono">Hover over or tap the header title above to trigger interactive particle dispersion.</p>
+                </div>
+
+                <div class="flex flex-col sm:flex-row items-center justify-center gap-4 pt-4">
+                    <button onclick="navTo('register')" class="w-full sm:w-auto glass-button-primary px-8 py-4 rounded-2xl font-bold text-lg text-white flex items-center justify-center space-x-3 group shadow-xl shadow-sky-500/20">
+                        <span>EXPLORE & REGISTER</span>
+                        <svg class="w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"/></svg>
+                    </button>
+                    <button onclick="navTo('events')" class="w-full sm:w-auto glass-button-secondary px-8 py-4 rounded-2xl font-bold text-lg text-slate-700 hover:text-slate-900">
+                        Browse Events
+                    </button>
+                </div>
+
+                <!-- Highlights Stats Row -->
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-4 pt-10 max-w-4xl mx-auto">
+                    <div class="glass-panel p-5 rounded-2xl text-center">
+                        <span class="font-display text-3xl sm:text-4xl font-black text-sky-600 block font-mono">04</span>
+                        <span class="text-xs uppercase tracking-wider text-slate-500 font-bold">Technical Events</span>
+                    </div>
+                    <div class="glass-panel p-5 rounded-2xl text-center">
+                        <span class="font-display text-3xl sm:text-4xl font-black text-violet-600 block font-mono">04</span>
+                        <span class="text-xs uppercase tracking-wider text-slate-500 font-bold">Non-Tech Events</span>
+                    </div>
+                    <div class="glass-panel p-5 rounded-2xl text-center">
+                        <span class="font-display text-3xl sm:text-4xl font-black text-pink-600 block font-mono">02</span>
+                        <span class="text-xs uppercase tracking-wider text-slate-500 font-bold">Hands-on Workshops</span>
+                    </div>
+                    <div class="glass-panel p-5 rounded-2xl text-center">
+                        <span class="font-display text-3xl sm:text-4xl font-black text-amber-600 block font-mono">₹25K+</span>
+                        <span class="text-xs uppercase tracking-wider text-slate-500 font-bold">Cash Prizes</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-6">
+                <div class="glass-panel glass-panel-hover p-8 rounded-3xl space-y-4">
+                    <div class="w-12 h-12 rounded-2xl bg-sky-500/10 border border-sky-500/20 flex items-center justify-center text-sky-600">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 01-2 2h-1a2 2 0 01-2-2v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"/></svg>
+                    </div>
+                    <h3 class="font-display text-xl font-bold text-slate-900">Innovation & Hardware</h3>
+                    <p class="text-slate-600 text-sm leading-relaxed">Showcase your ground-breaking engineering projects, paper presentations, and robotic creations before expert juries.</p>
+                </div>
+                <div class="glass-panel glass-panel-hover p-8 rounded-3xl space-y-4">
+                    <div class="w-12 h-12 rounded-2xl bg-violet-500/10 border border-violet-500/20 flex items-center justify-center text-violet-600">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"/></svg>
+                    </div>
+                    <h3 class="font-display text-xl font-bold text-slate-900">Industrial Automation</h3>
+                    <p class="text-slate-600 text-sm leading-relaxed">Master PLC programming and NodeRED IoT protocols through intensive practical workshops led by industry specialists.</p>
+                </div>
+                <div class="glass-panel glass-panel-hover p-8 rounded-3xl space-y-4">
+                    <div class="w-12 h-12 rounded-2xl bg-pink-500/10 border border-pink-500/20 flex items-center justify-center text-pink-600">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"/></svg>
+                    </div>
+                    <h3 class="font-display text-xl font-bold text-slate-900">Seamless Team Registration</h3>
+                    <p class="text-slate-600 text-sm leading-relaxed">Register across multiple events with smart team member reuse, real-time fee calculation, and quick UPI verification.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==================== EVENTS / CATALOG SECTION ==================== -->
+        <section id="page-events" class="page-section space-y-10 hidden transition-all duration-500">
+            <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 border-b border-slate-200 pb-6">
+                <div>
+                    <h2 class="font-display text-3xl sm:text-5xl font-extrabold text-slate-900">SYMPOSIUM EVENTS</h2>
+                    <p class="text-slate-600 mt-2">Explore 10 curated technical, non-technical, and workshop challenges.</p>
+                </div>
+
+                <!-- Category Filters -->
+                <div class="flex flex-wrap gap-2 glass-panel p-1.5 rounded-2xl border-slate-200">
+                    <button onclick="filterEvents('all')" class="event-filter-btn px-4 py-2 rounded-xl text-sm font-bold transition-all bg-sky-600 text-white shadow-sm" data-cat="all">All</button>
+                    <button onclick="filterEvents('tech')" class="event-filter-btn px-4 py-2 rounded-xl text-sm font-bold transition-all text-slate-600 hover:text-slate-900" data-cat="tech">Technical</button>
+                    <button onclick="filterEvents('nontech')" class="event-filter-btn px-4 py-2 rounded-xl text-sm font-bold transition-all text-slate-600 hover:text-slate-900" data-cat="nontech">Non-Technical</button>
+                    <button onclick="filterEvents('workshop')" class="event-filter-btn px-4 py-2 rounded-xl text-sm font-bold transition-all text-slate-600 hover:text-slate-900" data-cat="workshop">Workshops</button>
+                </div>
+            </div>
+
+            <!-- Events Grid -->
+            <div id="events-grid" class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Dynamically populated via JS -->
+            </div>
+        </section>
+
+        <!-- ==================== ABOUT SECTION ==================== -->
+        <section id="page-about" class="page-section space-y-12 hidden transition-all duration-500">
+            <div class="max-w-4xl mx-auto space-y-8">
+                <div class="text-center space-y-3">
+                    <span class="text-sky-600 text-sm font-mono tracking-widest uppercase font-bold">Institution & Department</span>
+                    <h2 class="font-display text-4xl sm:text-5xl font-black text-slate-900">KONGU ENGINEERING COLLEGE</h2>
+                    <p class="text-slate-600 font-medium">Perundurai, Erode - 638060, Tamil Nadu</p>
+                </div>
+
+                <div class="glass-panel p-8 sm:p-10 rounded-3xl space-y-6">
+                    <h3 class="font-display text-2xl font-bold text-slate-900 border-b border-slate-200 pb-3">Department of Electronics and Instrumentation Engineering</h3>
+                    <p class="text-slate-700 leading-relaxed">
+                        The Department of Electronics and Instrumentation Engineering (EIE) at Kongu Engineering College was established to produce high-caliber instrumentation engineers skilled in industrial automation, process control, sensors, and modern embedded systems. SENSONICS '26 is the annual national flagship symposium bringing together budding engineering minds across the country.
+                    </p>
+                    <div class="grid sm:grid-cols-2 gap-4 pt-4">
+                        <div class="bg-slate-100/80 p-4 rounded-2xl border border-slate-200">
+                            <span class="text-xs font-mono uppercase text-slate-500 block">Symposium Convener</span>
+                            <span class="font-bold text-slate-900">Head of Department, EIE</span>
+                        </div>
+                        <div class="bg-slate-100/80 p-4 rounded-2xl border border-slate-200">
+                            <span class="text-xs font-mono uppercase text-slate-500 block">Venue Location</span>
+                            <span class="font-bold text-slate-900">KEC Campus, Perundurai</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==================== REGISTRATION WIZARD SECTION ==================== -->
+        <section id="page-register" class="page-section space-y-8 hidden transition-all duration-500">
+            
+            <!-- Wizard Header & Progress Bar -->
+            <div class="glass-panel p-6 rounded-3xl space-y-6 border-slate-200">
+                <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+                    <div>
+                        <span class="text-sky-600 text-xs font-mono tracking-widest uppercase font-bold">Sensonics '26 Registration Wizard</span>
+                        <h2 id="wizard-step-title" class="font-display text-2xl sm:text-3xl font-extrabold text-slate-900">01. Participant Details</h2>
+                    </div>
+                    <div class="flex items-center space-x-2">
+                        <span id="wizard-step-badge" class="px-3 py-1 rounded-full badge-cyan text-xs font-mono font-bold">Step 1 of 6</span>
+                    </div>
+                </div>
+
+                <!-- Step Tabs Bar -->
+                <div class="grid grid-cols-6 gap-2 pt-2">
+                    <div class="step-bar-item h-2.5 rounded-full bg-sky-500 transition-all duration-300" id="step-bar-1"></div>
+                    <div class="step-bar-item h-2.5 rounded-full bg-slate-200 transition-all duration-300" id="step-bar-2"></div>
+                    <div class="step-bar-item h-2.5 rounded-full bg-slate-200 transition-all duration-300" id="step-bar-3"></div>
+                    <div class="step-bar-item h-2.5 rounded-full bg-slate-200 transition-all duration-300" id="step-bar-4"></div>
+                    <div class="step-bar-item h-2.5 rounded-full bg-slate-200 transition-all duration-300" id="step-bar-5"></div>
+                    <div class="step-bar-item h-2.5 rounded-full bg-slate-200 transition-all duration-300" id="step-bar-6"></div>
+                </div>
+            </div>
+
+            <!-- STEP 1: PARTICIPANT / LEADER DETAILS -->
+            <div id="wizard-step-1" class="wizard-step-content glass-panel p-6 sm:p-10 rounded-3xl space-y-6">
+                <div class="border-b border-slate-200 pb-4">
+                    <h3 class="font-display text-xl font-bold text-slate-900">Team Leader / Primary Participant Information</h3>
+                    <p class="text-xs text-slate-500 mt-1">This person will serve as the primary contact for all event communications.</p>
+                </div>
+
+                <div class="grid sm:grid-cols-2 gap-6">
+                    <div>
+                        <label class="block text-xs font-mono uppercase tracking-wider text-slate-700 mb-2 font-bold">Full Name *</label>
+                        <input type="text" id="leader-name" class="glass-input w-full px-4 py-3 rounded-2xl text-sm" placeholder="e.g. Arun Kumar" required>
+                    </div>
+                    <div>
+                        <label class="block text-xs font-mono uppercase tracking-wider text-slate-700 mb-2 font-bold">Email Address *</label>
+                        <input type="email" id="leader-email" class="glass-input w-full px-4 py-3 rounded-2xl text-sm" placeholder="e.g. arun@gmail.com" required>
+                    </div>
+                    <div>
+                        <label class="block text-xs font-mono uppercase tracking-wider text-slate-700 mb-2 font-bold">Phone Number *</label>
+                        <input type="tel" id="leader-phone" class="glass-input w-full px-4 py-3 rounded-2xl text-sm" placeholder="10-digit mobile number" required>
+                    </div>
+                    <div>
+                        <label class="block text-xs font-mono uppercase tracking-wider text-slate-700 mb-2 font-bold">College Name *</label>
+                        <input type="text" id="leader-college" class="glass-input w-full px-4 py-3 rounded-2xl text-sm" placeholder="Full college name" required>
+                    </div>
+                    <div>
+                        <label class="block text-xs font-mono uppercase tracking-wider text-slate-700 mb-2 font-bold">Department *</label>
+                        <input type="text" id="leader-dept" class="glass-input w-full px-4 py-3 rounded-2xl text-sm" placeholder="e.g. EIE / ECE / CSE / EEE" required>
+                    </div>
+                    <div>
+                        <label class="block text-xs font-mono uppercase tracking-wider text-slate-700 mb-2 font-bold">Year of Study *</label>
+                        <select id="leader-year" class="glass-input w-full px-4 py-3 rounded-2xl text-sm">
+                            <option value="I Year">I Year</option>
+                            <option value="II Year">II Year</option>
+                            <option value="III Year" selected>III Year</option>
+                            <option value="IV Year">IV Year</option>
+                        </select>
+                    </div>
+                    <div class="sm:col-span-2">
+                        <label class="block text-xs font-mono uppercase tracking-wider text-slate-700 mb-2 font-bold">Referral ID (Optional)</label>
+                        <input type="text" id="referral-id" class="glass-input w-full px-4 py-3 rounded-2xl text-sm" placeholder="Enter referral code if any (e.g. FRIEND01, KEC)">
+                        <span class="text-[11px] text-slate-500 mt-1 block">Any referral input will be recorded directly without strict validation.</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- STEP 2: EVENT SELECTION -->
+            <div id="wizard-step-2" class="wizard-step-content glass-panel p-6 sm:p-10 rounded-3xl space-y-6 hidden">
+                
+                <!-- Live Counter Status Banner -->
+                <div class="bg-slate-100/90 border border-slate-200 p-5 rounded-2xl flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
+                    <div class="space-y-1">
+                        <span class="text-xs font-mono text-sky-700 uppercase tracking-widest font-bold">Selection Status</span>
+                        <div class="flex items-center space-x-4">
+                            <span class="text-sm font-bold text-slate-900">Events Selected: <span id="rule-count-badge" class="font-mono text-sky-600">0 / 3</span></span>
+                            <span class="text-xs text-slate-600">Technical: <span id="rule-tech-count" class="font-mono text-slate-900 font-bold">0</span></span>
+                            <span class="text-xs text-slate-600">Non-Technical: <span id="rule-nontech-count" class="font-mono text-slate-900 font-bold">0</span></span>
+                        </div>
+                    </div>
+                    <div id="rule-status-box" class="px-4 py-2 rounded-xl text-xs font-bold bg-amber-500/10 text-amber-800 border border-amber-500/30">
+                        ⚠️ Normal registration requires at least 1 Technical + 1 Non-Technical event.
+                    </div>
+                </div>
+
+                <!-- Event Cards Selection Selector -->
+                <div id="wizard-event-cards-grid" class="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
+                    <!-- Populated via Javascript -->
+                </div>
+            </div>
+
+            <!-- STEP 3: TEAM BUILDER -->
+            <div id="wizard-step-3" class="wizard-step-content glass-panel p-6 sm:p-10 rounded-3xl space-y-6 hidden">
+                <div class="border-b border-slate-200 pb-4 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-2">
+                    <div>
+                        <h3 class="font-display text-xl font-bold text-slate-900">Team Rosters & Members</h3>
+                        <p class="text-xs text-slate-500 mt-1">Configure teams for each selected event. You can reuse team members across events easily!</p>
+                    </div>
+                </div>
+
+                <!-- Container for Dynamic Event Team Cards -->
+                <div id="teams-container" class="space-y-8">
+                    <!-- Dynamic Team Cards injected here -->
+                </div>
+            </div>
+
+            <!-- STEP 4: PROJECT DETAILS & WHATSAPP GROUPS -->
+            <div id="wizard-step-4" class="wizard-step-content glass-panel p-6 sm:p-10 rounded-3xl space-y-6 hidden">
+                <div class="border-b border-slate-200 pb-4">
+                    <h3 class="font-display text-xl font-bold text-slate-900">Projects & Event WhatsApp Links</h3>
+                    <p class="text-xs text-slate-500 mt-1">Provide project titles and abstract PDFs if applicable, and join event WhatsApp groups.</p>
+                </div>
+
+                <div id="projects-container" class="space-y-6">
+                    <!-- Dynamic project forms if Paper Mania or Project Inventa selected -->
+                </div>
+
+                <!-- WhatsApp Joining Card -->
+                <div class="bg-emerald-500/10 border border-emerald-500/30 p-6 rounded-2xl space-y-4">
+                    <div class="flex items-center space-x-3 text-emerald-700">
+                        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981z"/></svg>
+                        <h4 class="font-bold text-lg text-slate-900">Event WhatsApp Group Confirmation</h4>
+                    </div>
+                    <p class="text-xs text-slate-600">Please join the WhatsApp group for your registered events to receive instant scheduling updates during the symposium day.</p>
+                    
+                    <div id="whatsapp-groups-list" class="space-y-3 pt-2">
+                        <!-- WhatsApp status radios injected here -->
+                    </div>
+                </div>
+            </div>
+
+            <!-- STEP 5: PAYMENT & TRANSACTION DETAILS -->
+            <div id="wizard-step-5" class="wizard-step-content glass-panel p-6 sm:p-10 rounded-3xl space-y-8 hidden">
+                <div class="border-b border-slate-200 pb-4">
+                    <h3 class="font-display text-xl font-bold text-slate-900">Payment & Verification</h3>
+                    <p class="text-xs text-slate-500 mt-1">Scan the static UPI QR code, complete the exact registration fee payment, and attach transaction details.</p>
+                </div>
+
+                <div class="grid lg:grid-cols-2 gap-8 items-start">
+                    
+                    <!-- Static Payment QR Box -->
+                    <div class="glass-panel p-6 rounded-2xl border-sky-200 text-center space-y-4">
+                        <span class="text-xs font-mono uppercase text-sky-700 tracking-wider font-bold">Official Payment Destination</span>
+                        
+                        <!-- Calculated Fee Display -->
+                        <div class="py-2">
+                            <span class="text-xs text-slate-500 block">Total Amount to Pay</span>
+                            <span id="payment-amount-display" class="font-display text-4xl font-black text-slate-900">₹0</span>
+                        </div>
+
+                        <!-- Static Payment QR Image Placeholder / Asset -->
+                        <div class="w-56 h-56 mx-auto bg-white p-3 rounded-2xl shadow-xl flex items-center justify-center border border-slate-200">
+                            <img id="payment-qr-img" src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='200' height='200' viewBox='0 0 200 200'><rect width='200' height='200' fill='white'/><path d='M20 20h60v60H20zM30 30v40h40V30zM40 40h20v20H40z' fill='%230f172a'/><path d='M120 20h60v60h-60zM130 30v40h40V30zM140 40h20v20h-20z' fill='%230f172a'/><path d='M20 120h60v60H20zM30 130v40h40v-40zM40 140h20v20H40z' fill='%230f172a'/><path d='M100 20h10v30h-10zM100 70h30v10h-30zM120 100h20v40h-20zM90 120h20v20H90zM150 130h30v40h-30zM130 160h40v20h-40z' fill='%230f172a'/><text x='100' y='190' font-size='10' text-anchor='middle' font-family='sans-serif' fill='%23475569'>SCAN TO PAY SENSONICS '26</text></svg>" alt="Payment QR Code" class="w-full h-full object-contain rounded-xl">
+                        </div>
+
+                        <div class="space-y-1">
+                            <span class="text-xs text-slate-500 block">UPI ID:</span>
+                            <div class="inline-flex items-center space-x-2 bg-slate-100 px-3 py-1.5 rounded-xl border border-slate-200 font-mono text-sm text-sky-700 font-bold">
+                                <span id="upi-id-text">sensonics26@upi</span>
+                                <button onclick="copyUpiId()" class="hover:text-slate-900 text-xs text-slate-500 pl-2">Copy</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Payment Details Form -->
+                    <div class="space-y-6">
+                        <div>
+                            <label class="block text-xs font-mono uppercase tracking-wider text-slate-700 mb-2 font-bold">UPI Transaction / Reference ID *</label>
+                            <input type="text" id="transaction-id" class="glass-input w-full px-4 py-3 rounded-2xl text-sm font-mono" placeholder="12-digit UTR or Transaction Ref" required>
+                            <span class="text-[11px] text-slate-500 mt-1 block">Found in Google Pay, PhonePe, Paytm, or BHIM transaction receipt.</span>
+                        </div>
+
+                        <div>
+                            <label class="block text-xs font-mono uppercase tracking-wider text-slate-700 mb-2 font-bold">Upload Payment Screenshot / PDF *</label>
+                            <div class="relative border-2 border-dashed border-slate-300 rounded-2xl p-6 text-center hover:border-sky-500 transition-colors bg-white/70 cursor-pointer" onclick="document.getElementById('payment-proof-file').click()">
+                                <input type="file" id="payment-proof-file" accept="image/png, image/jpeg, application/pdf" class="hidden" onchange="handleProofUpload(event)">
+                                <div id="proof-upload-placeholder" class="space-y-2">
+                                    <svg class="w-8 h-8 text-sky-600 mx-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-8l-4-4m0 0L8 8m4-4v12"/></svg>
+                                    <span class="text-sm text-slate-800 block font-bold">Click to upload proof</span>
+                                    <span class="text-xs text-slate-500 block">JPG, PNG or PDF (Max 5MB)</span>
+                                </div>
+                                <div id="proof-upload-preview" class="hidden space-y-2">
+                                    <span class="text-xs text-emerald-600 font-mono font-bold block">✓ File Selected</span>
+                                    <span id="proof-file-name" class="text-sm font-bold text-slate-900 block truncate">filename.png</span>
+                                    <button type="button" onclick="event.stopPropagation(); resetProofUpload();" class="text-xs text-rose-600 hover:underline font-bold">Remove file</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- STEP 6: REVIEW & FINAL SUBMISSION -->
+            <div id="wizard-step-6" class="wizard-step-content glass-panel p-6 sm:p-10 rounded-3xl space-y-8 hidden">
+                <div class="border-b border-slate-200 pb-4">
+                    <h3 class="font-display text-xl font-bold text-slate-900">Review Registration Details</h3>
+                    <p class="text-xs text-slate-500 mt-1">Please double check all information before submitting your registration.</p>
+                </div>
+
+                <div id="review-summary-container" class="space-y-6">
+                    <!-- Populated dynamically -->
+                </div>
+
+                <!-- Final Submit Action -->
+                <div class="pt-4 border-t border-slate-200 flex flex-col sm:flex-row items-center justify-between gap-4">
+                    <div class="text-xs text-slate-500">
+                        By submitting, you confirm that all entered details and payment proofs are accurate.
+                    </div>
+                    <button id="final-submit-btn" onclick="submitRegistrationAPI()" class="w-full sm:w-auto glass-button-primary px-8 py-4 rounded-2xl text-lg font-bold text-white flex items-center justify-center space-x-2">
+                        <span>SUBMIT REGISTRATION</span>
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Wizard Navigation Action Bar -->
+            <div id="wizard-nav-bar" class="flex items-center justify-between pt-4">
+                <button id="wizard-prev-btn" onclick="wizardPrevStep()" class="glass-button-secondary px-6 py-3 rounded-2xl font-bold text-sm text-slate-700 hover:text-slate-900 disabled:opacity-30 disabled:cursor-not-allowed">
+                    ← Previous Step
+                </button>
+                <button id="wizard-next-btn" onclick="wizardNextStep()" class="glass-button-primary px-8 py-3 rounded-2xl font-bold text-sm text-white">
+                    Next Step →
+                </button>
+            </div>
+
+        </section>
+
+        <!-- ==================== EVENT DETAILS MODAL ==================== -->
+        <div id="event-modal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/40 backdrop-blur-md hidden">
+            <div class="glass-panel p-6 sm:p-8 rounded-3xl max-w-2xl w-full max-h-[85vh] overflow-y-auto space-y-6 border-slate-200">
+                <div class="flex items-start justify-between">
+                    <div>
+                        <span id="modal-event-cat" class="px-3 py-1 rounded-full text-xs font-mono badge-cyan font-bold">Technical</span>
+                        <h3 id="modal-event-title" class="font-display text-3xl font-extrabold text-slate-900 mt-2">Paper Mania</h3>
+                    </div>
+                    <button onclick="closeEventModal()" class="p-2 rounded-xl bg-slate-200 text-slate-600 hover:text-slate-900">✕</button>
+                </div>
+
+                <p id="modal-event-desc" class="text-slate-700 text-sm leading-relaxed">Detailed rules and requirements description.</p>
+
+                <div class="grid grid-cols-2 sm:grid-cols-3 gap-4 font-mono text-xs">
+                    <div class="bg-slate-100 p-3 rounded-xl border border-slate-200">
+                        <span class="text-slate-500 block">Team Size</span>
+                        <span id="modal-event-teamsize" class="font-bold text-slate-900 text-sm">2 - 3 Members</span>
+                    </div>
+                    <div class="bg-slate-100 p-3 rounded-xl border border-slate-200">
+                        <span class="text-slate-500 block">Fee per Participant</span>
+                        <span id="modal-event-fee" class="font-bold text-sky-600 text-sm">₹250</span>
+                    </div>
+                    <div class="bg-slate-100 p-3 rounded-xl border border-slate-200">
+                        <span class="text-slate-500 block">Abstract/Title</span>
+                        <span id="modal-event-abstract" class="font-bold text-slate-900 text-sm">Required</span>
+                    </div>
+                </div>
+
+                <div class="pt-4 flex items-center justify-end space-x-3 border-t border-slate-200">
+                    <button onclick="closeEventModal()" class="px-5 py-2.5 rounded-xl text-sm font-semibold text-slate-600 hover:bg-slate-100">Close</button>
+                    <button id="modal-register-btn" onclick="registerFromModal()" class="glass-button-primary px-6 py-2.5 rounded-xl text-sm font-bold text-white">
+                        Select in Registration
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- ==================== SUBMISSION LOADING OVERLAY ==================== -->
+        <div id="loading-overlay" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/50 backdrop-blur-lg hidden">
+            <div class="glass-panel p-8 sm:p-10 rounded-3xl max-w-md w-full text-center space-y-6">
+                <div class="w-16 h-16 border-4 border-sky-600 border-t-transparent rounded-full animate-spin mx-auto"></div>
+                <div class="space-y-2">
+                    <h3 class="font-display text-2xl font-bold text-slate-900">Submitting Registration...</h3>
+                    <p class="text-xs text-slate-500">Please do not close or refresh this page.</p>
+                </div>
+
+                <div class="space-y-2 text-left text-xs font-mono text-slate-700 bg-slate-100/90 p-4 rounded-xl border border-slate-200">
+                    <div id="prog-step-1" class="text-emerald-600 font-bold">✓ Validating team registration format</div>
+                    <div id="prog-step-2" class="text-emerald-600 font-bold">✓ Preparing payment proof attachment</div>
+                    <div id="prog-step-3" class="text-sky-600 font-bold animate-pulse">• Transmitting data to Google Apps Script...</div>
+                    <div id="prog-step-4" class="text-slate-400">• Generating registration ID & email notification</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ==================== SUCCESS MODAL / SCREEN ==================== -->
+        <div id="success-overlay" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/60 backdrop-blur-xl hidden">
+            <div class="glass-panel p-8 sm:p-12 rounded-3xl max-w-lg w-full text-center space-y-8 border-sky-300">
+                <div class="w-20 h-20 bg-emerald-500/20 border border-emerald-500/40 rounded-full flex items-center justify-center mx-auto text-emerald-600 text-3xl shadow-xl shadow-emerald-500/10 font-bold">
+                    ✓
+                </div>
+
+                <div class="space-y-2">
+                    <span class="text-xs font-mono uppercase text-emerald-600 tracking-widest font-bold">Registration Successful</span>
+                    <h2 class="font-display text-3xl font-extrabold text-slate-900">SENSONICS '26</h2>
+                    <p class="text-sm text-slate-600">Your registration has been successfully recorded in the central database.</p>
+                </div>
+
+                <!-- Registration ID Box -->
+                <div class="bg-slate-100 p-5 rounded-2xl border border-sky-200 space-y-2">
+                    <span class="text-xs font-mono text-slate-500 block">Your Unique Registration ID</span>
+                    <div class="flex items-center justify-center space-x-3">
+                        <span id="success-reg-id" class="font-mono text-3xl font-black text-sky-600 tracking-wider">SEN26-0008</span>
+                        <button onclick="copyRegId()" class="p-2 rounded-xl bg-slate-200 hover:bg-slate-300 text-slate-800 text-xs font-mono flex items-center space-x-1 font-bold">
+                            <span id="copy-reg-text">COPY</span>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="text-xs text-slate-600 space-y-1">
+                    <p>A confirmation notification has been sent to: <span id="success-email-text" class="text-slate-900 font-bold">participant@gmail.com</span></p>
+                    <p class="text-[11px] text-slate-500">Keep this Registration ID safe for check-in on event day.</p>
+                </div>
+
+                <button onclick="finishRegistrationSuccess()" class="w-full glass-button-primary py-3.5 rounded-2xl font-bold text-white">
+                    RETURN TO HOMEPAGE
+                </button>
+            </div>
+        </div>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="border-t border-slate-200 bg-white/80 py-10 text-xs text-slate-600">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center justify-between gap-4">
+            <div class="text-center md:text-left">
+                <span class="font-bold text-slate-900">SENSONICS '26</span> — Dept of EIE, Kongu Engineering College.
+                <p class="mt-1 text-slate-500">Perundurai, Erode - 638060, Tamil Nadu, India.</p>
+            </div>
+            <div class="text-center md:text-right text-slate-500 font-mono">
+                Liquid Glass Engine • EIE Tech Platform
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        /* ==================== CONFIGURATION ==================== */
+        const CONFIG = {
+            API_URL: "https://script.google.com/macros/s/YOUR_GOOGLE_APPS_SCRIPT_EXEC_URL/exec",
+            PAYMENT_QR_IMAGE: "assets/payment/payment-qr.png",
+            UPI_ID: "sensonics26@upi",
+            MAX_EVENTS_PER_PERSON: 3
+        };
+
+        /* ==================== EVENT DATA MASTER ==================== */
+        const EVENT_RULES = {
+            "Paper Mania": {
+                id: "papermania",
+                title: "Paper Mania",
+                category: "tech",
+                categoryLabel: "Technical",
+                minMembers: 2,
+                maxMembers: 3,
+                fee: 250,
+                requiresTitle: true,
+                requiresAbstract: true,
+                desc: "National level paper presentation contest. Showcase innovative engineering concepts, research papers, and experimental designs.",
+                whatsappUrl: "https://chat.whatsapp.com/sample_papermania"
+            },
+            "Project Inventa": {
+                id: "projectinventa",
+                title: "Project Inventa",
+                category: "tech",
+                categoryLabel: "Technical",
+                minMembers: 2,
+                maxMembers: 3,
+                fee: 250,
+                requiresTitle: true,
+                requiresAbstract: true,
+                desc: "Hardware project exposition. Present operational prototypes, embedded hardware solutions, or sensor automation rigs.",
+                whatsappUrl: "https://chat.whatsapp.com/sample_projectinventa"
+            },
+            "Code": {
+                id: "code",
+                title: "Code",
+                category: "tech",
+                categoryLabel: "Technical",
+                minMembers: 3,
+                maxMembers: 3,
+                fee: 250,
+                requiresTitle: false,
+                requiresAbstract: false,
+                desc: "Competitive algorithmic programming and debugging challenge. Strictly 3 members per team.",
+                whatsappUrl: "https://chat.whatsapp.com/sample_code"
+            },
+            "Bot": {
+                id: "bot",
+                title: "Bot",
+                category: "tech",
+                categoryLabel: "Technical",
+                minMembers: 2,
+                maxMembers: 4,
+                fee: 250,
+                requiresTitle: false,
+                requiresAbstract: false,
+                desc: "Robotics arena showdown. Test autonomous or wired robots in precision navigation and obstacle courses.",
+                whatsappUrl: "https://chat.whatsapp.com/sample_bot"
+            },
+            "Jumble": {
+                id: "jumble",
+                title: "Jumble",
+                category: "nontech",
+                categoryLabel: "Non-Technical",
+                minMembers: 2,
+                maxMembers: 3,
+                fee: 250,
+                requiresTitle: false,
+                requiresAbstract: false,
+                desc: "Fast-paced word puzzle and cryptic technical terminology unscrambling contest.",
+                whatsappUrl: "https://chat.whatsapp.com/sample_jumble"
+            },
+            "Memory": {
+                id: "memory",
+                title: "Memory",
+                category: "nontech",
+                categoryLabel: "Non-Technical",
+                minMembers: 2,
+                maxMembers: 2,
+                fee: 250,
+                requiresTitle: false,
+                requiresAbstract: false,
+                desc: "Visual observation and photographic recall challenge for exactly 2 team members.",
+                whatsappUrl: "https://chat.whatsapp.com/sample_memory"
+            },
+            "Recall": {
+                id: "recall",
+                title: "Recall",
+                category: "nontech",
+                categoryLabel: "Non-Technical",
+                minMembers: 2,
+                maxMembers: 2,
+                fee: 250,
+                requiresTitle: false,
+                requiresAbstract: false,
+                desc: "Pattern recognition and audio-visual sequence recall competition.",
+                whatsappUrl: "https://chat.whatsapp.com/sample_recall"
+            },
+            "Pick": {
+                id: "pick",
+                title: "Pick",
+                category: "nontech",
+                categoryLabel: "Non-Technical",
+                minMembers: 2,
+                maxMembers: 3,
+                fee: 250,
+                requiresTitle: false,
+                requiresAbstract: false,
+                desc: "Extempore technical topic picking and rapid visual identification challenge.",
+                whatsappUrl: "https://chat.whatsapp.com/sample_pick"
+            },
+            "PLC": {
+                id: "plc",
+                title: "PLC",
+                category: "workshop",
+                categoryLabel: "Workshop",
+                minMembers: 1,
+                maxMembers: 1,
+                fee: 300,
+                isWorkshop: true,
+                requiresTitle: false,
+                requiresAbstract: false,
+                desc: "Comprehensive hands-on training on Programmable Logic Controllers, ladder logic, and industrial automation interfaces.",
+                whatsappUrl: "https://chat.whatsapp.com/sample_plc"
+            },
+            "NodeRED": {
+                id: "nodered",
+                title: "NodeRED",
+                category: "workshop",
+                categoryLabel: "Workshop",
+                minMembers: 1,
+                maxMembers: 1,
+                fee: 300,
+                isWorkshop: true,
+                requiresTitle: false,
+                requiresAbstract: false,
+                desc: "Hands-on Industrial IoT workflow development using Node-RED programming and MQTT protocols.",
+                whatsappUrl: "https://chat.whatsapp.com/sample_nodered"
+            }
+        };
+
+        /* ==================== CENTRALIZED REGISTRATION STATE ==================== */
+        let state = {
+            currentStep: 1,
+            leader: {
+                name: "",
+                email: "",
+                phone: "",
+                college: "",
+                department: "",
+                year: "III Year",
+                referralId: ""
+            },
+            selectedEvents: [],
+            eventData: {},
+            proofFile: null,
+            transactionId: "",
+            calculatedTotal: 0
+        };
+
+        /* ==================== REACT BITS: PARTICLE TEXT ENGINE ==================== */
+        function createParticleText(options) {
+            const {
+                container,
+                text = 'SENSONICS \'26',
+                particleSize = 2.5,
+                density = 3,
+                color = '#0284c7',
+                highlightColor = '#7c3aed',
+                scatter = 160,
+                gatherDuration = 1500,
+                stagger = 350,
+                pointerRepel = 35,
+                repelRadius = 110,
+                idleDrift = 0.6,
+                trigger = 'hover',
+                fontSize = 'clamp(2.5rem, 8vw, 6rem)',
+                fontWeight = 900,
+                fontFamily = 'Outfit, sans-serif',
+                glow = true
+            } = options;
+
+            if (!container) return;
+
+            // Setup DOM elements
+            container.innerHTML = '';
+            const wrapper = document.createElement('div');
+            wrapper.className = 'particle-text';
+            wrapper.setAttribute('aria-label', text);
+
+            const canvas = document.createElement('canvas');
+            canvas.className = 'particle-text__canvas';
+            canvas.setAttribute('aria-hidden', 'true');
+
+            const srSpan = document.createElement('span');
+            srSpan.className = 'particle-text__sr';
+            srSpan.textContent = text;
+
+            wrapper.appendChild(canvas);
+            wrapper.appendChild(srSpan);
+            container.appendChild(wrapper);
+
+            const ctx = canvas.getContext('2d');
+            if (!ctx) return;
+
+            // Helper Utilities
+            const hexToRgb = hex => {
+                const clean = hex.replace('#', '').trim();
+                if (!/^[0-9a-fA-F]{6}$/.test(clean)) return null;
+                return {
+                    r: parseInt(clean.slice(0, 2), 16),
+                    g: parseInt(clean.slice(2, 4), 16),
+                    b: parseInt(clean.slice(4, 6), 16)
+                };
+            };
+
+            const mixRgb = (from, to, amount) => ({
+                r: Math.round(from.r + (to.r - from.r) * amount),
+                g: Math.round(from.g + (to.g - from.g) * amount),
+                b: Math.round(from.b + (to.b - from.b) * amount)
+            });
+
+            const rgbToCss = rgb => `rgb(${rgb.r}, ${rgb.g}, ${rgb.b})`;
+            const clamp = (val, min, max) => Math.min(Math.max(val, min), max);
+            const easeOutCubic = t => 1 - Math.pow(1 - t, 3);
+
+            const resolveFontSize = (value, parentContainer, weight, family) => {
+                if (typeof value === 'number') return value;
+                const probe = document.createElement('span');
+                probe.textContent = 'M';
+                probe.style.position = 'absolute';
+                probe.style.visibility = 'hidden';
+                probe.style.pointerEvents = 'none';
+                probe.style.fontSize = value;
+                probe.style.fontWeight = String(weight);
+                probe.style.fontFamily = family;
+                parentContainer.appendChild(probe);
+                const size = parseFloat(window.getComputedStyle(probe).fontSize) || 72;
+                probe.remove();
+                return size;
+            };
+
+            let particles = [];
+            let animationFrame = null;
+            let resizeFrame = null;
+            let buildId = 0;
+            let gathering = false;
+            let gatherStart = 0;
+            let reducedMotion = window.matchMedia?.('(prefers-reduced-motion: reduce)').matches ?? false;
+            let width = 0;
+            let height = 0;
+            let dpr = 1;
+
+            const pointer = {
+                active: false,
+                x: 0,
+                y: 0,
+                smoothX: 0,
+                smoothY: 0
+            };
+
+            const startGather = (fromScatter = true) => {
+                if (!particles.length) return;
+                const now = performance.now();
+                const spread = reducedMotion ? 0 : scatter;
+
+                particles.forEach(particle => {
+                    if (fromScatter) {
+                        const angle = particle.seed * Math.PI * 2;
+                        const distance = spread * (0.35 + particle.depth * 0.75);
+                        particle.x = particle.targetX + Math.cos(angle) * distance + (particle.depth - 0.5) * spread * 0.55;
+                        particle.y = particle.targetY + Math.sin(angle) * distance + (particle.seed - 0.5) * spread * 0.55;
+                    }
+                    particle.startX = particle.x;
+                    particle.startY = particle.y;
+                    particle.delay = reducedMotion ? 0 : particle.seed * stagger;
+                });
+
+                gatherStart = now;
+                gathering = true;
+            };
+
+            const drawParticle = particle => {
+                const size = particle.size;
+                ctx.fillStyle = particle.color;
+                if (size <= 2.1) {
+                    ctx.fillRect(particle.x - size / 2, particle.y - size / 2, size, size);
+                    return;
+                }
+                ctx.beginPath();
+                ctx.arc(particle.x, particle.y, size / 2, 0, Math.PI * 2);
+                ctx.fill();
+            };
+
+            const render = now => {
+                ctx.clearRect(0, 0, width, height);
+
+                if (glow && !reducedMotion) {
+                    ctx.shadowBlur = particleSize * 2.5;
+                    ctx.shadowColor = highlightColor;
+                } else {
+                    ctx.shadowBlur = 0;
+                }
+
+                pointer.smoothX += (pointer.x - pointer.smoothX) * 0.18;
+                pointer.smoothY += (pointer.y - pointer.smoothY) * 0.18;
+
+                let complete = true;
+
+                particles.forEach(particle => {
+                    let baseX = particle.targetX;
+                    let baseY = particle.targetY;
+                    let progress = 1;
+
+                    if (gathering) {
+                        const local = (now - gatherStart - particle.delay) / Math.max(1, reducedMotion ? 1 : gatherDuration);
+                        progress = clamp(local, 0, 1);
+                        const eased = easeOutCubic(progress);
+                        baseX = particle.startX + (particle.targetX - particle.startX) * eased;
+                        baseY = particle.startY + (particle.targetY - particle.startY) * eased;
+                        if (progress < 1) complete = false;
+                    } else if (!reducedMotion && idleDrift > 0) {
+                        const driftTime = now * 0.001;
+                        baseX += Math.sin(driftTime * 0.9 + particle.seed * 10) * idleDrift * particle.depth;
+                        baseY += Math.cos(driftTime * 0.75 + particle.depth * 10) * idleDrift * particle.depth;
+                    }
+
+                    if (pointer.active && !reducedMotion && pointerRepel > 0 && repelRadius > 0) {
+                        const dx = baseX - pointer.smoothX;
+                        const dy = baseY - pointer.smoothY;
+                        const distance = Math.hypot(dx, dy);
+                        if (distance > 0 && distance < repelRadius) {
+                            const force = Math.pow(1 - distance / repelRadius, 2) * pointerRepel;
+                            baseX += (dx / distance) * force;
+                            baseY += (dy / distance) * force;
+                        }
+                    }
+
+                    const follow = reducedMotion ? 1 : 0.22;
+                    particle.x += (baseX - particle.x) * follow;
+                    particle.y += (baseY - particle.y) * follow;
+
+                    ctx.globalAlpha = clamp(0.35 + progress * 0.65, 0, 1);
+                    drawParticle(particle);
+                });
+
+                ctx.globalAlpha = 1;
+                ctx.shadowBlur = 0;
+
+                if (gathering && complete) {
+                    gathering = false;
+                }
+
+                animationFrame = window.requestAnimationFrame(render);
+            };
+
+            const ensureRenderLoop = () => {
+                if (animationFrame === null) {
+                    animationFrame = window.requestAnimationFrame(render);
+                }
+            };
+
+            const sampleText = async () => {
+                const currentBuild = ++buildId;
+                const rect = wrapper.getBoundingClientRect();
+                width = Math.floor(rect.width);
+                height = Math.floor(rect.height);
+
+                if (width <= 0 || height <= 0) return;
+
+                dpr = Math.min(window.devicePixelRatio || 1, 2);
+                canvas.width = Math.max(1, Math.floor(width * dpr));
+                canvas.height = Math.max(1, Math.floor(height * dpr));
+                canvas.style.width = '100%';
+                canvas.style.height = '100%';
+                ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+
+                const computed = window.getComputedStyle(wrapper);
+                const resolvedFamily = fontFamily === 'inherit' ? computed.fontFamily || 'sans-serif' : fontFamily;
+                let resolvedSize = resolveFontSize(fontSize, wrapper, fontWeight, resolvedFamily);
+                let font = `${fontWeight} ${resolvedSize}px ${resolvedFamily}`;
+
+                const offscreen = document.createElement('canvas');
+                const offCtx = offscreen.getContext('2d', { willReadFrequently: true });
+                if (!offCtx) return;
+
+                const content = String(text || ' ');
+                const maxTextWidth = width * 0.92;
+                offCtx.font = font;
+                let metrics = offCtx.measureText(content);
+                const measuredWidth = Math.max(1, metrics.width);
+
+                if (measuredWidth > maxTextWidth) {
+                    resolvedSize = Math.max(18, resolvedSize * (maxTextWidth / measuredWidth));
+                    font = `${fontWeight} ${resolvedSize}px ${resolvedFamily}`;
+                    offCtx.font = font;
+                    metrics = offCtx.measureText(content);
+                }
+
+                const left = Math.ceil(metrics.actualBoundingBoxLeft || 0);
+                const right = Math.ceil(metrics.actualBoundingBoxRight || metrics.width);
+                const ascent = Math.ceil(metrics.actualBoundingBoxAscent || resolvedSize * 0.78);
+                const descent = Math.ceil(metrics.actualBoundingBoxDescent || resolvedSize * 0.22);
+                const padding = Math.max(12, Math.ceil(resolvedSize * 0.08));
+                const textWidth = Math.max(1, left + right);
+                const textHeight = Math.max(1, ascent + descent);
+
+                offscreen.width = textWidth + padding * 2;
+                offscreen.height = textHeight + padding * 2;
+                offCtx.clearRect(0, 0, offscreen.width, offscreen.height);
+                offCtx.font = font;
+                offCtx.textAlign = 'left';
+                offCtx.textBaseline = 'alphabetic';
+                offCtx.fillStyle = '#ffffff';
+                offCtx.fillText(content, padding - left, padding + ascent);
+
+                const imageData = offCtx.getImageData(0, 0, offscreen.width, offscreen.height);
+                const targets = [];
+                const step = Math.max(2, Math.floor(density));
+
+                for (let y = 0; y < offscreen.height; y += step) {
+                    for (let x = 0; x < offscreen.width; x += step) {
+                        const alpha = imageData.data[(y * offscreen.width + x) * 4 + 3];
+                        if (alpha > 40) {
+                            targets.push({
+                                x: width / 2 - offscreen.width / 2 + x,
+                                y: height / 2 - offscreen.height / 2 + y,
+                                alpha: alpha / 255
+                            });
+                        }
+                    }
+                }
+
+                const maxParticles = Math.max(900, Math.min(4800, Math.floor((width * height) / 90)));
+                const stride = Math.max(1, Math.ceil(targets.length / maxParticles));
+                const baseRgb = hexToRgb(color);
+                const highlightRgb = hexToRgb(highlightColor);
+                const selected = targets.filter((_, index) => index % stride === 0);
+
+                particles = selected.map((target, index) => {
+                    const seed = ((index * 9301 + 49297) % 233280) / 233280;
+                    const depth = 0.45 + (((index * 233 + 97) % 1000) / 1000) * 0.9;
+                    const blend = baseRgb && highlightRgb ? clamp(target.x / Math.max(1, width) + (seed - 0.5) * 0.35, 0, 1) : 0;
+                    const particleColor = baseRgb && highlightRgb ? rgbToCss(mixRgb(baseRgb, highlightRgb, blend)) : color;
+                    const angle = seed * Math.PI * 2;
+                    const distance = (reducedMotion ? 0 : scatter) * (0.35 + depth * 0.75);
+                    const startX = target.x + Math.cos(angle) * distance + (seed - 0.5) * scatter * 0.45;
+                    const startY = target.y + Math.sin(angle) * distance + (depth - 0.9) * scatter * 0.45;
+
+                    return {
+                        x: reducedMotion ? target.x : startX,
+                        y: reducedMotion ? target.y : startY,
+                        startX,
+                        startY,
+                        targetX: target.x,
+                        targetY: target.y,
+                        size: Math.max(0.6, particleSize * (0.75 + target.alpha * 0.45)),
+                        color: particleColor,
+                        seed,
+                        depth,
+                        delay: seed * stagger
+                    };
+                });
+
+                pointer.x = width / 2;
+                pointer.y = height / 2;
+                pointer.smoothX = pointer.x;
+                pointer.smoothY = pointer.y;
+
+                if (reducedMotion) {
+                    particles.forEach(particle => {
+                        particle.x = particle.targetX;
+                        particle.y = particle.targetY;
+                        particle.startX = particle.targetX;
+                        particle.startY = particle.targetY;
+                        particle.delay = 0;
+                    });
+                    gathering = false;
+                } else {
+                    startGather(false);
+                }
+
+                ensureRenderLoop();
+            };
+
+            const queueSample = () => {
+                if (resizeFrame) window.cancelAnimationFrame(resizeFrame);
+                resizeFrame = window.requestAnimationFrame(sampleText);
+            };
+
+            const handlePointerMove = event => {
+                const rect = canvas.getBoundingClientRect();
+                pointer.x = event.clientX - rect.left;
+                pointer.y = event.clientY - rect.top;
+                pointer.active = true;
+            };
+
+            const handlePointerLeave = () => {
+                pointer.active = false;
+            };
+
+            const handlePointerEnter = event => {
+                handlePointerMove(event);
+                if (trigger === 'hover') startGather(true);
+            };
+
+            const handleClick = () => {
+                if (trigger === 'click') startGather(true);
+            };
+
+            wrapper.addEventListener('pointerenter', handlePointerEnter);
+            wrapper.addEventListener('pointermove', handlePointerMove);
+            wrapper.addEventListener('pointerleave', handlePointerLeave);
+            wrapper.addEventListener('click', handleClick);
+
+            const resizeObserver = new ResizeObserver(queueSample);
+            resizeObserver.observe(wrapper);
+            sampleText();
+        }
+
+        /* ==================== LIGHT MODE AMBIENT BACKGROUND ==================== */
+        const canvas = document.getElementById('bg-canvas');
+        const ctx = canvas.getContext('2d');
+        let width = canvas.width = window.innerWidth;
+        let height = canvas.height = window.innerHeight;
+
+        let mouse = { x: width / 2, y: height / 2, targetX: width / 2, targetY: height / 2 };
+
+        window.addEventListener('resize', () => {
+            width = canvas.width = window.innerWidth;
+            height = canvas.height = window.innerHeight;
+        });
+
+        window.addEventListener('mousemove', (e) => {
+            mouse.targetX = e.clientX;
+            mouse.targetY = e.clientY;
+        });
+
+        const orbs = [
+            { x: width * 0.2, y: height * 0.3, radius: 280, color: 'rgba(56, 189, 248, 0.18)', vx: 0.2, vy: 0.1 },
+            { x: width * 0.8, y: height * 0.7, radius: 320, color: 'rgba(167, 139, 250, 0.18)', vx: -0.15, vy: -0.2 },
+            { x: width * 0.5, y: height * 0.5, radius: 220, color: 'rgba(244, 114, 182, 0.14)', vx: 0.1, vy: -0.1 }
+        ];
+
+        function animateBg() {
+            mouse.x += (mouse.targetX - mouse.x) * 0.05;
+            mouse.y += (mouse.targetY - mouse.y) * 0.05;
+
+            ctx.clearRect(0, 0, width, height);
+
+            orbs.forEach((orb, i) => {
+                orb.x += orb.vx;
+                orb.y += orb.vy;
+
+                if (orb.x < -100 || orb.x > width + 100) orb.vx *= -1;
+                if (orb.y < -100 || orb.y > height + 100) orb.vy *= -1;
+
+                const parallaxX = orb.x + (mouse.x - width / 2) * (i + 1) * 0.02;
+                const parallaxY = orb.y + (mouse.y - height / 2) * (i + 1) * 0.02;
+
+                const grad = ctx.createRadialGradient(parallaxX, parallaxY, 0, parallaxX, parallaxY, orb.radius);
+                grad.addColorStop(0, orb.color);
+                grad.addColorStop(1, 'transparent');
+
+                ctx.fillStyle = grad;
+                ctx.beginPath();
+                ctx.arc(parallaxX, parallaxY, orb.radius, 0, Math.PI * 2);
+                ctx.fill();
+            });
+
+            ctx.fillStyle = 'rgba(148, 163, 184, 0.12)';
+            for (let x = 0; x < width; x += 40) {
+                for (let y = 0; y < height; y += 40) {
+                    ctx.fillRect(x, y, 1.5, 1.5);
+                }
+            }
+
+            requestAnimationFrame(animateBg);
+        }
+
+        /* ==================== PAGE NAVIGATION ==================== */
+        function navTo(pageId) {
+            document.querySelectorAll('.page-section').forEach(sec => sec.classList.add('hidden'));
+            const target = document.getElementById(`page-${pageId}`);
+            if (target) {
+                target.classList.remove('hidden');
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            }
+
+            document.querySelectorAll('.nav-btn').forEach(btn => {
+                if (btn.dataset.page === pageId) {
+                    btn.classList.add('bg-slate-200', 'text-slate-900');
+                } else {
+                    btn.classList.remove('bg-slate-200', 'text-slate-900');
+                }
+            });
+
+            if (pageId === 'events') {
+                renderCatalogEvents('all');
+            }
+        }
+
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobile-menu');
+            menu.classList.toggle('hidden');
+        }
+
+        /* ==================== EVENTS RENDERING & MODALS ==================== */
+        function renderCatalogEvents(category = 'all') {
+            const grid = document.getElementById('events-grid');
+            grid.innerHTML = '';
+
+            Object.keys(EVENT_RULES).forEach(title => {
+                const ev = EVENT_RULES[title];
+                if (category !== 'all') {
+                    if (category === 'workshop' && !ev.isWorkshop) return;
+                    if (category === 'tech' && ev.category !== 'tech') return;
+                    if (category === 'nontech' && ev.category !== 'nontech') return;
+                }
+
+                const card = document.createElement('div');
+                card.className = "glass-panel glass-panel-hover p-6 rounded-3xl space-y-4 flex flex-col justify-between border-slate-200";
+                card.innerHTML = `
+                    <div class="space-y-3">
+                        <div class="flex items-center justify-between">
+                            <span class="px-3 py-1 rounded-full text-xs font-mono font-bold ${ev.isWorkshop ? 'badge-magenta' : ev.category === 'tech' ? 'badge-cyan' : 'badge-violet'}">${ev.categoryLabel}</span>
+                            <span class="font-mono text-xs text-slate-500 font-bold">₹${ev.fee} / part</span>
+                        </div>
+                        <h3 class="font-display text-2xl font-bold text-slate-900">${ev.title}</h3>
+                        <p class="text-xs text-slate-600 leading-relaxed line-clamp-3">${ev.desc}</p>
+                    </div>
+
+                    <div class="space-y-3 pt-3 border-t border-slate-200">
+                        <div class="flex items-center justify-between text-xs font-mono text-slate-600 font-bold">
+                            <span>Team: ${ev.minMembers === ev.maxMembers ? ev.minMembers : ev.minMembers + '-' + ev.maxMembers} Members</span>
+                            <span>${ev.requiresAbstract ? 'PDF Required' : 'No Abstract'}</span>
+                        </div>
+                        <div class="flex items-center space-x-2 pt-1">
+                            <button onclick="openEventModal('${ev.title}')" class="w-1/2 glass-button-secondary py-2.5 rounded-xl text-xs font-bold text-slate-700">
+                                Details
+                            </button>
+                            <button onclick="quickSelectEvent('${ev.title}')" class="w-1/2 glass-button-primary py-2.5 rounded-xl text-xs font-bold text-white">
+                                Register
+                            </button>
+                        </div>
+                    </div>
+                `;
+                grid.appendChild(card);
+            });
+        }
+
+        function filterEvents(cat) {
+            document.querySelectorAll('.event-filter-btn').forEach(btn => {
+                if (btn.dataset.cat === cat) {
+                    btn.className = "event-filter-btn px-4 py-2 rounded-xl text-sm font-bold transition-all bg-sky-600 text-white shadow-sm";
+                } else {
+                    btn.className = "event-filter-btn px-4 py-2 rounded-xl text-sm font-bold transition-all text-slate-600 hover:text-slate-900";
+                }
+            });
+            renderCatalogEvents(cat);
+        }
+
+        let selectedModalEventTitle = "";
+        function openEventModal(title) {
+            const ev = EVENT_RULES[title];
+            selectedModalEventTitle = title;
+            document.getElementById('modal-event-title').innerText = ev.title;
+            document.getElementById('modal-event-cat').innerText = ev.categoryLabel;
+            document.getElementById('modal-event-desc').innerText = ev.desc;
+            document.getElementById('modal-event-teamsize').innerText = `${ev.minMembers === ev.maxMembers ? ev.minMembers : ev.minMembers + ' - ' + ev.maxMembers} Members`;
+            document.getElementById('modal-event-fee').innerText = `₹${ev.fee}`;
+            document.getElementById('modal-event-abstract').innerText = ev.requiresAbstract ? "Required (PDF)" : "Not Required";
+            document.getElementById('event-modal').classList.remove('hidden');
+        }
+
+        function closeEventModal() {
+            document.getElementById('event-modal').classList.add('hidden');
+        }
+
+        function registerFromModal() {
+            closeEventModal();
+            quickSelectEvent(selectedModalEventTitle);
+        }
+
+        function quickSelectEvent(title) {
+            navTo('register');
+            if (!state.selectedEvents.includes(title)) {
+                toggleEventSelection(title);
+            }
+        }
+
+        /* ==================== WIZARD STEP NAVIGATION ==================== */
+        function updateWizardUI() {
+            document.getElementById('wizard-step-title').innerText = getStepTitle(state.currentStep);
+            document.getElementById('wizard-step-badge').innerText = `Step ${state.currentStep} of 6`;
+
+            for (let i = 1; i <= 6; i++) {
+                const bar = document.getElementById(`step-bar-${i}`);
+                if (i <= state.currentStep) {
+                    bar.className = "step-bar-item h-2.5 rounded-full bg-sky-500 shadow-sm transition-all duration-300";
+                } else {
+                    bar.className = "step-bar-item h-2.5 rounded-full bg-slate-200 transition-all duration-300";
+                }
+            }
+
+            document.querySelectorAll('.wizard-step-content').forEach(el => el.classList.add('hidden'));
+            document.getElementById(`wizard-step-${state.currentStep}`).classList.remove('hidden');
+
+            const prevBtn = document.getElementById('wizard-prev-btn');
+            prevBtn.disabled = state.currentStep === 1;
+
+            const nextBtn = document.getElementById('wizard-next-btn');
+            if (state.currentStep === 6) {
+                document.getElementById('wizard-nav-bar').classList.add('hidden');
+            } else {
+                document.getElementById('wizard-nav-bar').classList.remove('hidden');
+                nextBtn.innerText = state.currentStep === 5 ? "Review Summary →" : "Next Step →";
+            }
+        }
+
+        function getStepTitle(step) {
+            switch(step) {
+                case 1: return "01. Participant Details";
+                case 2: return "02. Event Selection";
+                case 3: return "03. Team Roster Builder";
+                case 4: return "04. Projects & WhatsApp Links";
+                case 5: return "05. Payment & Verification";
+                case 6: return "06. Review Registration";
+                default: return "";
+            }
+        }
+
+        function wizardNextStep() {
+            if (validateStep(state.currentStep)) {
+                if (state.currentStep === 2) {
+                    initStep3Teams();
+                } else if (state.currentStep === 3) {
+                    initStep4Projects();
+                } else if (state.currentStep === 4) {
+                    initStep5Payment();
+                } else if (state.currentStep === 5) {
+                    initStep6Review();
+                }
+                state.currentStep++;
+                updateWizardUI();
+                window.scrollTo({ top: 100, behavior: 'smooth' });
+            }
+        }
+
+        function wizardPrevStep() {
+            if (state.currentStep > 1) {
+                state.currentStep--;
+                updateWizardUI();
+                window.scrollTo({ top: 100, behavior: 'smooth' });
+            }
+        }
+
+        /* ==================== STEP VALIDATIONS ==================== */
+        function validateStep(step) {
+            if (step === 1) {
+                const name = document.getElementById('leader-name').value.trim();
+                const email = document.getElementById('leader-email').value.trim();
+                const phone = document.getElementById('leader-phone').value.trim();
+                const college = document.getElementById('leader-college').value.trim();
+                const dept = document.getElementById('leader-dept').value.trim();
+
+                if (!name || !email || !phone || !college || !dept) {
+                    showToast("Please fill in all required participant fields.");
+                    return false;
+                }
+                if (!email.includes('@') || !email.includes('.')) {
+                    showToast("Please enter a valid email address.");
+                    return false;
+                }
+                if (phone.length < 10) {
+                    showToast("Please enter a valid 10-digit mobile number.");
+                    return false;
+                }
+
+                state.leader = {
+                    name, email, phone, college, department: dept,
+                    year: document.getElementById('leader-year').value,
+                    referralId: document.getElementById('referral-id').value.trim()
+                };
+                return true;
+            }
+
+            if (step === 2) {
+                if (state.selectedEvents.length === 0) {
+                    showToast("Please select at least one event or workshop.");
+                    return false;
+                }
+
+                const hasWorkshop = state.selectedEvents.some(t => EVENT_RULES[t].isWorkshop);
+                if (hasWorkshop) {
+                    return true;
+                }
+
+                let techCount = 0;
+                let nonTechCount = 0;
+                state.selectedEvents.forEach(t => {
+                    if (EVENT_RULES[t].category === 'tech') techCount++;
+                    if (EVENT_RULES[t].category === 'nontech') nonTechCount++;
+                });
+
+                if (techCount < 1 || nonTechCount < 1) {
+                    showToast("Normal registration compulsory rule: Select at least 1 Technical + 1 Non-Technical event.");
+                    return false;
+                }
+
+                if (state.selectedEvents.length > 3) {
+                    showToast("Maximum of 3 events allowed per participant.");
+                    return false;
+                }
+
+                return true;
+            }
+
+            if (step === 3) {
+                for (let title of state.selectedEvents) {
+                    const data = state.eventData[title];
+                    if (!data || !data.teamName.trim()) {
+                        showToast(`Please enter a team name for ${title}.`);
+                        return false;
+                    }
+                    if (data.members.length < EVENT_RULES[title].minMembers) {
+                        showToast(`${title} requires at least ${EVENT_RULES[title].minMembers} member(s).`);
+                        return false;
+                    }
+                    for (let m of data.members) {
+                        if (!m.name || !m.email || !m.phone) {
+                            showToast(`Please fill in all member details for team ${data.teamName}.`);
+                            return false;
+                        }
+                    }
+                }
+
+                const personEventCounts = {};
+                for (let title of state.selectedEvents) {
+                    const data = state.eventData[title];
+                    data.members.forEach(m => {
+                        const key = m.email.toLowerCase().trim() || m.name.toLowerCase().trim();
+                        personEventCounts[key] = (personEventCounts[key] || { name: m.name, count: 0 });
+                        personEventCounts[key].count++;
+                    });
+                }
+
+                for (let key in personEventCounts) {
+                    if (personEventCounts[key].count > 3) {
+                        showToast(`Validation Error: ${personEventCounts[key].name} is registered for ${personEventCounts[key].count} events. Maximum allowed per individual is 3.`);
+                        return false;
+                    }
+                }
+
+                return true;
+            }
+
+            if (step === 4) {
+                for (let title of state.selectedEvents) {
+                    const ev = EVENT_RULES[title];
+                    if (ev.requiresTitle || ev.requiresAbstract) {
+                        const data = state.eventData[title];
+                        if (ev.requiresTitle && (!data || !data.projectTitle || !data.projectTitle.trim())) {
+                            showToast(`Project Title required for ${title}.`);
+                            return false;
+                        }
+                        if (ev.requiresAbstract && (!data || !data.abstractFile)) {
+                            showToast(`Abstract PDF file required for ${title}.`);
+                            return false;
+                        }
+                    }
+                }
+                return true;
+            }
+
+            if (step === 5) {
+                const txId = document.getElementById('transaction-id').value.trim();
+                if (!txId) {
+                    showToast("Please enter the UPI Transaction / Ref ID.");
+                    return false;
+                }
+                if (!state.proofFile) {
+                    showToast("Please upload the payment screenshot or proof file.");
+                    return false;
+                }
+                state.transactionId = txId;
+                return true;
+            }
+
+            return true;
+        }
+
+        /* ==================== STEP 2 EVENT SELECTION ENGINE ==================== */
+        function initStep2Events() {
+            const grid = document.getElementById('wizard-event-cards-grid');
+            grid.innerHTML = '';
+
+            Object.keys(EVENT_RULES).forEach(title => {
+                const ev = EVENT_RULES[title];
+                const isSelected = state.selectedEvents.includes(title);
+
+                const card = document.createElement('div');
+                card.id = `wizard-ev-card-${ev.id}`;
+                card.className = `glass-panel p-5 rounded-2xl cursor-pointer transition-all border ${isSelected ? 'border-sky-500 bg-sky-500/10 shadow-lg shadow-sky-500/10' : 'border-slate-200 hover:border-slate-300'}`;
+                card.onclick = () => toggleEventSelection(title);
+
+                card.innerHTML = `
+                    <div class="flex items-start justify-between">
+                        <span class="px-2.5 py-0.5 rounded-full text-[10px] font-mono font-bold ${ev.isWorkshop ? 'badge-magenta' : ev.category === 'tech' ? 'badge-cyan' : 'badge-violet'}">${ev.categoryLabel}</span>
+                        <div class="w-6 h-6 rounded-full border flex items-center justify-center ${isSelected ? 'bg-sky-600 border-sky-600 text-white font-bold' : 'border-slate-300'} text-xs">
+                            ${isSelected ? '✓' : ''}
+                        </div>
+                    </div>
+                    <h4 class="font-display font-bold text-lg text-slate-900 mt-3">${ev.title}</h4>
+                    <p class="text-xs text-slate-600 mt-1 line-clamp-2">${ev.desc}</p>
+                    <div class="flex items-center justify-between text-xs font-mono mt-4 pt-3 border-t border-slate-200 text-slate-700">
+                        <span>${ev.minMembers === ev.maxMembers ? ev.minMembers + ' Members' : ev.minMembers + '-' + ev.maxMembers + ' Members'}</span>
+                        <span class="text-sky-600 font-black">₹${ev.fee}</span>
+                    </div>
+                `;
+                grid.appendChild(card);
+            });
+
+            updateSelectionRuleCounters();
+        }
+
+        function toggleEventSelection(title) {
+            const ev = EVENT_RULES[title];
+
+            if (ev.isWorkshop) {
+                if (state.selectedEvents.includes(title)) {
+                    state.selectedEvents = [];
+                } else {
+                    state.selectedEvents = [title];
+                    showToast(`WORKSHOP REGISTRATION: ${title} cannot be combined with other technical or non-technical events.`);
+                }
+            } else {
+                state.selectedEvents = state.selectedEvents.filter(t => !EVENT_RULES[t].isWorkshop);
+
+                if (state.selectedEvents.includes(title)) {
+                    state.selectedEvents = state.selectedEvents.filter(t => t !== title);
+                } else {
+                    if (state.selectedEvents.length >= 3) {
+                        showToast("Maximum 3 events allowed per registration.");
+                        return;
+                    }
+                    state.selectedEvents.push(title);
+                }
+            }
+
+            initStep2Events();
+        }
+
+        function updateSelectionRuleCounters() {
+            let tech = 0;
+            let nontech = 0;
+            let workshop = false;
+
+            state.selectedEvents.forEach(t => {
+                if (EVENT_RULES[t].category === 'tech') tech++;
+                if (EVENT_RULES[t].category === 'nontech') nontech++;
+                if (EVENT_RULES[t].isWorkshop) workshop = true;
+            });
+
+            document.getElementById('rule-count-badge').innerText = `${state.selectedEvents.length} / 3`;
+            document.getElementById('rule-tech-count').innerText = tech;
+            document.getElementById('rule-nontech-count').innerText = nontech;
+
+            const box = document.getElementById('rule-status-box');
+            if (workshop) {
+                box.className = "px-4 py-2 rounded-xl text-xs font-bold bg-pink-500/10 text-pink-700 border border-pink-500/30";
+                box.innerText = "✓ Workshop Selected (Exclusive Workshop Registration Mode)";
+            } else if (tech >= 1 && nontech >= 1) {
+                box.className = "px-4 py-2 rounded-xl text-xs font-bold bg-emerald-500/10 text-emerald-800 border border-emerald-500/30";
+                box.innerText = "✓ Valid Event Combination Selected!";
+            } else {
+                box.className = "px-4 py-2 rounded-xl text-xs font-bold bg-amber-500/10 text-amber-800 border border-amber-500/30";
+                box.innerText = "⚠️ Select at least 1 Technical + 1 Non-Technical event.";
+            }
+        }
+
+        /* ==================== STEP 3 TEAM BUILDER ENGINE ==================== */
+        function initStep3Teams() {
+            const container = document.getElementById('teams-container');
+            container.innerHTML = '';
+
+            state.selectedEvents.forEach(title => {
+                const ev = EVENT_RULES[title];
+
+                if (!state.eventData[title]) {
+                    state.eventData[title] = {
+                        teamName: `${title} Team`,
+                        members: [
+                            {
+                                name: state.leader.name,
+                                email: state.leader.email,
+                                phone: state.leader.phone,
+                                college: state.leader.college,
+                                department: state.leader.department,
+                                year: state.leader.year
+                            }
+                        ],
+                        projectTitle: "",
+                        abstractFile: null,
+                        whatsappJoined: false
+                    };
+
+                    while (state.eventData[title].members.length < ev.minMembers) {
+                        state.eventData[title].members.push({ name: "", email: "", phone: "", college: state.leader.college, department: state.leader.department, year: "III Year" });
+                    }
+                }
+
+                const card = document.createElement('div');
+                card.className = "glass-panel p-6 rounded-3xl space-y-6 border-slate-200";
+                card.innerHTML = `
+                    <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-2 border-b border-slate-200 pb-4">
+                        <div>
+                            <span class="px-2.5 py-0.5 rounded-full text-[10px] font-mono badge-cyan font-bold">${ev.categoryLabel}</span>
+                            <h4 class="font-display text-2xl font-bold text-slate-900 mt-1">${ev.title}</h4>
+                        </div>
+                        <div class="text-xs font-mono text-slate-600 font-bold">
+                            Required Members: <span class="text-slate-900 font-black">${ev.minMembers === ev.maxMembers ? ev.minMembers : ev.minMembers + '-' + ev.maxMembers}</span>
+                        </div>
+                    </div>
+
+                    <div>
+                        <label class="block text-xs font-mono uppercase tracking-wider text-slate-700 mb-2 font-bold">Team Name *</label>
+                        <input type="text" class="glass-input w-full px-4 py-2.5 rounded-xl text-sm" value="${state.eventData[title].teamName}" onchange="updateTeamName('${title}', this.value)" placeholder="e.g. Innovation Squad">
+                    </div>
+
+                    <div class="space-y-4">
+                        <div class="flex items-center justify-between">
+                            <span class="text-xs font-mono text-slate-700 uppercase font-bold">Team Members (${state.eventData[title].members.length})</span>
+                            ${ev.minMembers !== ev.maxMembers ? `
+                                <button onclick="addTeamMember('${title}')" class="text-xs text-sky-600 hover:underline flex items-center space-x-1 font-mono font-bold">
+                                    <span>+ Add Member</span>
+                                </button>
+                            ` : ''}
+                        </div>
+
+                        <div id="members-list-${ev.id}" class="space-y-4">
+                        </div>
+                    </div>
+                `;
+                container.appendChild(card);
+                renderMembersList(title);
+            });
+        }
+
+        function updateTeamName(title, name) {
+            if (state.eventData[title]) {
+                state.eventData[title].teamName = name;
+            }
+        }
+
+        function renderMembersList(title) {
+            const ev = EVENT_RULES[title];
+            const listContainer = document.getElementById(`members-list-${ev.id}`);
+            listContainer.innerHTML = '';
+
+            const members = state.eventData[title].members;
+            members.forEach((m, idx) => {
+                const box = document.createElement('div');
+                box.className = "bg-slate-100/90 p-4 rounded-2xl border border-slate-200 space-y-4";
+                box.innerHTML = `
+                    <div class="flex items-center justify-between border-b border-slate-200 pb-2">
+                        <span class="text-xs font-mono font-bold text-sky-700">Member ${idx + 1} ${idx === 0 ? '(Team Leader)' : ''}</span>
+                        
+                        <div class="flex items-center space-x-2">
+                            <select onchange="reuseExistingParticipant('${title}', ${idx}, this.value)" class="glass-input px-2 py-1 rounded-lg text-[11px] text-slate-700">
+                                <option value="">+ Reuse Existing Member</option>
+                                ${getAllEnteredParticipants().map(p => `<option value="${p.email}">${p.name} (${p.email})</option>`).join('')}
+                            </select>
+                            ${members.length > ev.minMembers && idx > 0 ? `
+                                <button onclick="removeTeamMember('${title}', ${idx})" class="text-xs text-rose-600 hover:text-rose-800 font-bold">Remove</button>
+                            ` : ''}
+                        </div>
+                    </div>
+
+                    <div class="grid sm:grid-cols-3 gap-3">
+                        <div>
+                            <label class="block text-[10px] font-mono uppercase text-slate-600 mb-1 font-bold">Name *</label>
+                            <input type="text" class="glass-input w-full px-3 py-2 rounded-xl text-xs" value="${m.name}" onchange="updateMemberField('${title}', ${idx}, 'name', this.value)" placeholder="Full Name">
+                        </div>
+                        <div>
+                            <label class="block text-[10px] font-mono uppercase text-slate-600 mb-1 font-bold">Email *</label>
+                            <input type="email" class="glass-input w-full px-3 py-2 rounded-xl text-xs" value="${m.email}" onchange="updateMemberField('${title}', ${idx}, 'email', this.value)" placeholder="Email">
+                        </div>
+                        <div>
+                            <label class="block text-[10px] font-mono uppercase text-slate-600 mb-1 font-bold">Phone *</label>
+                            <input type="tel" class="glass-input w-full px-3 py-2 rounded-xl text-xs" value="${m.phone}" onchange="updateMemberField('${title}', ${idx}, 'phone', this.value)" placeholder="Phone">
+                        </div>
+                    </div>
+                `;
+                listContainer.appendChild(box);
+            });
+        }
+
+        function updateMemberField(title, memberIdx, field, val) {
+            state.eventData[title].members[memberIdx][field] = val;
+        }
+
+        function addTeamMember(title) {
+            const ev = EVENT_RULES[title];
+            const members = state.eventData[title].members;
+            if (members.length < ev.maxMembers) {
+                members.push({ name: "", email: "", phone: "", college: state.leader.college, department: state.leader.department, year: "III Year" });
+                renderMembersList(title);
+            } else {
+                showToast(`Maximum ${ev.maxMembers} members allowed for ${title}.`);
+            }
+        }
+
+        function removeTeamMember(title, memberIdx) {
+            const ev = EVENT_RULES[title];
+            const members = state.eventData[title].members;
+            if (members.length > ev.minMembers) {
+                members.splice(memberIdx, 1);
+                renderMembersList(title);
+            }
+        }
+
+        function getAllEnteredParticipants() {
+            const map = {};
+            if (state.leader.email) map[state.leader.email] = state.leader;
+
+            Object.keys(state.eventData).forEach(t => {
+                state.eventData[t].members.forEach(m => {
+                    if (m.email) map[m.email] = m;
+                });
+            });
+            return Object.values(map);
+        }
+
+        function reuseExistingParticipant(title, memberIdx, email) {
+            if (!email) return;
+            const existing = getAllEnteredParticipants().find(p => p.email === email);
+            if (existing) {
+                state.eventData[title].members[memberIdx] = { ...existing };
+                renderMembersList(title);
+            }
+        }
+
+        /* ==================== STEP 4 PROJECTS & WHATSAPP ENGINE ==================== */
+        function initStep4Projects() {
+            const container = document.getElementById('projects-container');
+            container.innerHTML = '';
+
+            let hasProjects = false;
+            state.selectedEvents.forEach(title => {
+                const ev = EVENT_RULES[title];
+                if (ev.requiresTitle || ev.requiresAbstract) {
+                    hasProjects = true;
+                    const data = state.eventData[title];
+
+                    const card = document.createElement('div');
+                    card.className = "glass-panel p-6 rounded-3xl space-y-4 border-slate-200";
+                    card.innerHTML = `
+                        <div class="flex items-center space-x-2">
+                            <span class="px-2.5 py-0.5 rounded-full text-[10px] font-mono badge-cyan font-bold">Submission Required</span>
+                            <h4 class="font-display font-bold text-lg text-slate-900">${title} Project Details</h4>
+                        </div>
+
+                        <div>
+                            <label class="block text-xs font-mono uppercase text-slate-700 mb-2 font-bold">Project Title *</label>
+                            <input type="text" class="glass-input w-full px-4 py-2.5 rounded-xl text-sm" value="${data.projectTitle || ''}" onchange="updateProjectTitle('${title}', this.value)" placeholder="Enter full paper or project title">
+                        </div>
+
+                        <div>
+                            <label class="block text-xs font-mono uppercase text-slate-700 mb-2 font-bold">Abstract File (PDF format) *</label>
+                            <input type="file" accept="application/pdf" onchange="handleAbstractUpload('${title}', event)" class="glass-input w-full px-4 py-2 rounded-xl text-xs">
+                            <span class="text-[11px] text-slate-500 mt-1 block font-medium">Selected: ${data.abstractFile ? data.abstractFile.name : 'No file chosen'}</span>
+                        </div>
+                    `;
+                    container.appendChild(card);
+                }
+            });
+
+            if (!hasProjects) {
+                container.innerHTML = `<div class="p-4 rounded-2xl bg-slate-100 text-xs text-slate-600 text-center font-medium">None of your selected events require paper abstracts or project titles.</div>`;
+            }
+
+            const waList = document.getElementById('whatsapp-groups-list');
+            waList.innerHTML = '';
+            state.selectedEvents.forEach(title => {
+                const ev = EVENT_RULES[title];
+                const div = document.createElement('div');
+                div.className = "flex flex-col sm:flex-row items-start sm:items-center justify-between p-3 rounded-xl bg-white border border-slate-200 gap-2";
+                div.innerHTML = `
+                    <span class="text-xs font-bold text-slate-900">${title} WhatsApp Group</span>
+                    <div class="flex items-center space-x-3">
+                        <a href="${ev.whatsappUrl}" target="_blank" class="px-3 py-1 rounded-lg bg-emerald-500/20 text-emerald-800 border border-emerald-500/30 text-xs font-mono hover:bg-emerald-500/30 font-bold">
+                            [ JOIN GROUP ]
+                        </a>
+                        <label class="inline-flex items-center text-xs text-slate-700 cursor-pointer font-semibold">
+                            <input type="checkbox" onchange="toggleWhatsappJoined('${title}', this.checked)" ${state.eventData[title]?.whatsappJoined ? 'checked' : ''} class="rounded bg-slate-100 text-emerald-600">
+                            <span class="ml-1.5">Joined?</span>
+                        </label>
+                    </div>
+                `;
+                waList.appendChild(div);
+            });
+        }
+
+        function updateProjectTitle(title, val) {
+            state.eventData[title].projectTitle = val;
+        }
+
+        function handleAbstractUpload(title, event) {
+            const file = event.target.files[0];
+            if (file) {
+                if (file.type !== 'application/pdf') {
+                    showToast("Please select a valid PDF file.");
+                    return;
+                }
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    state.eventData[title].abstractFile = {
+                        name: file.name,
+                        mimeType: file.type,
+                        base64: e.target.result.split(',')[1]
+                    };
+                    initStep4Projects();
+                };
+                reader.readAsDataURL(file);
+            }
+        }
+
+        function toggleWhatsappJoined(title, val) {
+            state.eventData[title].whatsappJoined = val;
+        }
+
+        /* ==================== STEP 5 PAYMENT ENGINE ==================== */
+        function initStep5Payment() {
+            let total = 0;
+            state.selectedEvents.forEach(title => {
+                const ev = EVENT_RULES[title];
+                const memberCount = state.eventData[title].members.length;
+                total += (memberCount * ev.fee);
+            });
+            state.calculatedTotal = total;
+
+            document.getElementById('payment-amount-display').innerText = `₹${total}`;
+            document.getElementById('upi-id-text').innerText = CONFIG.UPI_ID;
+        }
+
+        function handleProofUpload(event) {
+            const file = event.target.files[0];
+            if (file) {
+                if (file.size > 5 * 1024 * 1024) {
+                    showToast("File size exceeds 5MB limit.");
+                    return;
+                }
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    state.proofFile = {
+                        name: file.name,
+                        mimeType: file.type,
+                        base64: e.target.result.split(',')[1]
+                    };
+                    document.getElementById('proof-upload-placeholder').classList.add('hidden');
+                    document.getElementById('proof-upload-preview').classList.remove('hidden');
+                    document.getElementById('proof-file-name').innerText = file.name;
+                };
+                reader.readAsDataURL(file);
+            }
+        }
+
+        function resetProofUpload() {
+            state.proofFile = null;
+            document.getElementById('payment-proof-file').value = "";
+            document.getElementById('proof-upload-placeholder').classList.remove('hidden');
+            document.getElementById('proof-upload-preview').classList.add('hidden');
+        }
+
+        function copyUpiId() {
+            navigator.clipboard.writeText(CONFIG.UPI_ID);
+            showToast("UPI ID copied to clipboard!");
+        }
+
+        /* ==================== STEP 6 REVIEW SUMMARY ENGINE ==================== */
+        function initStep6Review() {
+            const container = document.getElementById('review-summary-container');
+            container.innerHTML = `
+                <div class="glass-panel p-6 rounded-2xl space-y-4 border-slate-200">
+                    <div class="flex items-center justify-between border-b border-slate-200 pb-3">
+                        <span class="text-xs font-mono uppercase text-sky-700 font-bold">Team Leader / Primary Contact</span>
+                        <button onclick="jumpToStep(1)" class="text-xs text-sky-600 hover:underline font-bold">Edit</button>
+                    </div>
+                    <div class="grid sm:grid-cols-2 gap-2 text-sm">
+                        <div><span class="text-slate-500">Name:</span> <span class="font-bold text-slate-900">${state.leader.name}</span></div>
+                        <div><span class="text-slate-500">Email:</span> <span class="font-bold text-slate-900">${state.leader.email}</span></div>
+                        <div><span class="text-slate-500">Phone:</span> <span class="font-bold text-slate-900">${state.leader.phone}</span></div>
+                        <div><span class="text-slate-500">College:</span> <span class="font-bold text-slate-900">${state.leader.college}</span></div>
+                        <div><span class="text-slate-500">Referral ID:</span> <span class="font-mono text-sky-700 font-bold">${state.leader.referralId || 'None'}</span></div>
+                    </div>
+                </div>
+
+                <div class="glass-panel p-6 rounded-2xl space-y-4 border-slate-200">
+                    <div class="flex items-center justify-between border-b border-slate-200 pb-3">
+                        <span class="text-xs font-mono uppercase text-sky-700 font-bold">Registered Events & Teams (${state.selectedEvents.length})</span>
+                        <button onclick="jumpToStep(2)" class="text-xs text-sky-600 hover:underline font-bold">Edit</button>
+                    </div>
+                    <div class="space-y-4">
+                        ${state.selectedEvents.map(title => {
+                            const data = state.eventData[title];
+                            return `
+                                <div class="bg-slate-100/80 p-4 rounded-xl space-y-2 border border-slate-200">
+                                    <div class="flex items-center justify-between">
+                                        <span class="font-bold text-slate-900">${title}</span>
+                                        <span class="text-xs font-mono text-sky-700 font-black">Team: ${data.teamName}</span>
+                                    </div>
+                                    <div class="text-xs text-slate-700 font-medium">
+                                        Members: ${data.members.map(m => m.name).join(', ')}
+                                    </div>
+                                    ${data.projectTitle ? `<div class="text-xs text-slate-500 font-medium">Project: ${data.projectTitle}</div>` : ''}
+                                </div>
+                            `;
+                        }).join('')}
+                    </div>
+                </div>
+
+                <div class="glass-panel p-6 rounded-2xl space-y-4 border-slate-200">
+                    <div class="flex items-center justify-between border-b border-slate-200 pb-3">
+                        <span class="text-xs font-mono uppercase text-sky-700 font-bold">Payment Breakdown</span>
+                        <button onclick="jumpToStep(5)" class="text-xs text-sky-600 hover:underline font-bold">Edit</button>
+                    </div>
+                    <div class="flex items-center justify-between text-lg font-bold">
+                        <span class="text-slate-900">Calculated Registration Fee:</span>
+                        <span class="text-sky-600 font-mono text-2xl font-black">₹${state.calculatedTotal}</span>
+                    </div>
+                    <div class="text-xs text-slate-600 font-mono font-medium">
+                        Transaction ID: ${state.transactionId} | Proof File: ✓ Uploaded (${state.proofFile?.name})
+                    </div>
+                </div>
+            `;
+        }
+
+        function jumpToStep(stepNum) {
+            state.currentStep = stepNum;
+            updateWizardUI();
+        }
+
+        /* ==================== API SUBMISSION & BACKEND COMMUNICATION ==================== */
+        async function submitRegistrationAPI() {
+            document.getElementById('loading-overlay').classList.remove('hidden');
+
+            const payload = {
+                leaderName: state.leader.name,
+                leaderEmail: state.leader.email,
+                leaderPhone: state.leader.phone,
+                college: state.leader.college,
+                department: state.leader.department,
+                year: state.leader.year,
+                referralId: state.leader.referralId,
+                transactionId: state.transactionId,
+                paymentProof: state.proofFile,
+                events: state.selectedEvents,
+                eventData: state.eventData
+            };
+
+            try {
+                let responseData;
+                if (CONFIG.API_URL.includes("YOUR_GOOGLE_APPS_SCRIPT_EXEC_URL")) {
+                    await new Promise(res => setTimeout(res, 2000));
+                    responseData = {
+                        success: true,
+                        registrationId: "SEN26-" + Math.floor(1000 + Math.random() * 9000),
+                        message: "Registration completed successfully (Simulated)."
+                    };
+                } else {
+                    const response = await fetch(CONFIG.API_URL, {
+                        method: "POST",
+                        headers: { "Content-Type": "application/json" },
+                        body: JSON.stringify(payload)
+                    });
+                    responseData = await response.json();
+                }
+
+                document.getElementById('loading-overlay').classList.add('hidden');
+
+                if (responseData.success) {
+                    document.getElementById('success-reg-id').innerText = responseData.registrationId;
+                    document.getElementById('success-email-text').innerText = state.leader.email;
+                    document.getElementById('success-overlay').classList.remove('hidden');
+                } else {
+                    showToast(responseData.message || "Registration failed on server.");
+                }
+
+            } catch (err) {
+                console.error("Submission Error:", err);
+                document.getElementById('loading-overlay').classList.add('hidden');
+                showToast("Network error during submission. Please try again.");
+            }
+        }
+
+        function copyRegId() {
+            const regId = document.getElementById('success-reg-id').innerText;
+            navigator.clipboard.writeText(regId);
+            document.getElementById('copy-reg-text').innerText = "COPIED ✓";
+            setTimeout(() => {
+                document.getElementById('copy-reg-text').innerText = "COPY";
+            }, 2000);
+        }
+
+        function finishRegistrationSuccess() {
+            document.getElementById('success-overlay').classList.add('hidden');
+            state.currentStep = 1;
+            state.selectedEvents = [];
+            state.eventData = {};
+            state.proofFile = null;
+            navTo('home');
+        }
+
+        function showToast(msg) {
+            const toast = document.createElement('div');
+            toast.className = "fixed bottom-5 right-5 z-50 glass-panel border-sky-400 px-5 py-3 rounded-2xl text-xs font-bold text-slate-900 shadow-2xl animate-bounce";
+            toast.innerText = msg;
+            document.body.appendChild(toast);
+            setTimeout(() => toast.remove(), 4000);
+        }
+
+        /* Initial Setup */
+        window.onload = function() {
+            animateBg();
+
+            // Mount React Bits ParticleText Hero Canvas Component
+            createParticleText({
+                container: document.getElementById('particle-text-wrapper'),
+                text: "SENSONICS '26",
+                particleSize: 2.5,
+                density: 3,
+                color: '#0284c7',
+                highlightColor: '#7c3aed',
+                scatter: 160,
+                gatherDuration: 1500,
+                stagger: 350,
+                pointerRepel: 35,
+                repelRadius: 110,
+                idleDrift: 0.6,
+                trigger: 'hover',
+                fontSize: 'clamp(2.5rem, 8vw, 6.5rem)',
+                fontWeight: 900,
+                fontFamily: 'Outfit, sans-serif',
+                glow: true
+            });
+
+            renderCatalogEvents('all');
+            initStep2Events();
+            updateWizardUI();
+        };
+    </script>
+</body>
+</html>
