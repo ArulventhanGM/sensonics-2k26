@@ -237,7 +237,7 @@
                     </div>
                 </a>
 
-                <!-- Desktop Navigation Links -->
+                <!-- Desktop Navigation Links (Workshops link removed) -->
                 <nav
                     class="hidden md:flex items-center space-x-1 glass-panel px-4 py-1.5 rounded-full border-slate-200">
                     <button onclick="navTo('home')"
@@ -246,9 +246,6 @@
                     <button onclick="navTo('events')"
                         class="nav-btn px-4 py-2 rounded-full text-sm font-semibold text-slate-600 hover:text-slate-900 hover:bg-slate-100 transition-all"
                         data-page="events">Events</button>
-                    <button onclick="navTo('schedule')"
-                        class="nav-btn px-4 py-2 rounded-full text-sm font-semibold text-slate-600 hover:text-slate-900 hover:bg-slate-100 transition-all"
-                        data-page="schedule">Schedules</button>
                     <button onclick="navTo('about')"
                         class="nav-btn px-4 py-2 rounded-full text-sm font-semibold text-slate-600 hover:text-slate-900 hover:bg-slate-100 transition-all"
                         data-page="about">About</button>
@@ -282,8 +279,6 @@
                 class="block w-full text-left px-4 py-2.5 rounded-xl text-slate-700 hover:bg-slate-100 font-semibold">Home</button>
             <button onclick="navTo('events'); toggleMobileMenu();"
                 class="block w-full text-left px-4 py-2.5 rounded-xl text-slate-700 hover:bg-slate-100 font-semibold">Events</button>
-            <button onclick="navTo('schedule'); toggleMobileMenu();"
-                class="block w-full text-left px-4 py-2.5 rounded-xl text-slate-700 hover:bg-slate-100 font-semibold">Schedules</button>
             <button onclick="navTo('about'); toggleMobileMenu();"
                 class="block w-full text-left px-4 py-2.5 rounded-xl text-slate-700 hover:bg-slate-100 font-semibold">About
                 KEC</button>
@@ -321,32 +316,6 @@
                         interactive particle dispersion.</p>
                 </div>
 
-                <!-- Interactive Venue Location Button -->
-                <div class="pt-1">
-                    <a href="https://maps.app.goo.gl/DohfVLNbbtbHrmAN7" target="_blank" rel="noopener noreferrer"
-                        class="inline-flex items-center space-x-3 px-5 py-3 rounded-2xl glass-panel border-sky-300/80 bg-sky-50/80 text-slate-800 hover:bg-sky-100/90 hover:border-sky-400 hover:shadow-lg hover:shadow-sky-500/10 transition-all duration-300 group">
-                        <div class="w-9 h-9 rounded-xl bg-sky-500 text-white flex items-center justify-center shadow-md shadow-sky-500/30 group-hover:scale-110 transition-transform">
-                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                    d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                    d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
-                            </svg>
-                        </div>
-                        <div class="text-left">
-                            <span class="text-[11px] font-mono uppercase tracking-wider text-sky-700 font-bold flex items-center space-x-1">
-                                <span>Event Venue (Google Maps)</span>
-                                <svg class="w-3 h-3 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/>
-                                </svg>
-                            </span>
-                            <span class="text-xs sm:text-sm font-bold text-slate-900 group-hover:text-sky-800 transition-colors">
-                                Maharaja Auditorium, Kongu Engineering College, Perundurai
-                            </span>
-                        </div>
-                    </a>
-                </div>
-
                 <div class="flex flex-col sm:flex-row items-center justify-center gap-4 pt-4">
                     <button onclick="navTo('register')"
                         class="w-full sm:w-auto glass-button-primary px-8 py-4 rounded-2xl font-bold text-lg text-white flex items-center justify-center space-x-3 group shadow-xl shadow-sky-500/20">
@@ -364,7 +333,7 @@
                 </div>
 
                 <!-- Highlights Stats Row -->
-                <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 pt-10 max-w-3xl mx-auto">
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-4 pt-10 max-w-4xl mx-auto">
                     <div class="glass-panel p-5 rounded-2xl text-center">
                         <span
                             class="font-display text-3xl sm:text-4xl font-black text-sky-600 block font-mono">04</span>
@@ -380,6 +349,11 @@
                             class="font-display text-3xl sm:text-4xl font-black text-pink-600 block font-mono">02</span>
                         <span class="text-xs uppercase tracking-wider text-slate-500 font-bold">Hands-on
                             Workshops</span>
+                    </div>
+                    <div class="glass-panel p-5 rounded-2xl text-center">
+                        <span
+                            class="font-display text-3xl sm:text-4xl font-black text-amber-600 block font-mono">₹25K+</span>
+                        <span class="text-xs uppercase tracking-wider text-slate-500 font-bold">Cash Prizes</span>
                     </div>
                 </div>
             </div>
@@ -455,353 +429,37 @@
             </div>
         </section>
 
-        <!-- ==================== SCHEDULE SECTION ==================== -->
-        <section id="page-schedule" class="page-section space-y-10 hidden transition-all duration-500 relative">
-            
-            <!-- Dynamic Cursor Glow Backdrop -->
-            <div id="schedule-cursor-glow" class="pointer-events-none absolute -inset-10 rounded-3xl opacity-0 transition-opacity duration-300 z-0 bg-[radial-gradient(600px_circle_at_var(--mouse-x,50%)_var(--mouse-y,50%),rgba(56,189,248,0.15),transparent_80%)]"></div>
-
-            <!-- Page Header -->
-            <div class="relative z-10 flex flex-col md:flex-row md:items-end justify-between gap-6 border-b border-slate-200 pb-6">
-                <div class="space-y-2">
-                    <div class="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-sky-100/80 border border-sky-300/50 text-sky-700 text-xs font-mono font-bold uppercase">
-                        <span class="w-2 h-2 rounded-full bg-sky-500 animate-pulse"></span>
-                        <span>Official Timeline</span>
-                    </div>
-                    <h2 class="font-display text-4xl sm:text-5xl font-black text-slate-900 tracking-tight">Symposium Schedule</h2>
-                    <p class="text-slate-600 font-medium text-sm sm:text-base">Full event itinerary for September 22, 2026</p>
-                </div>
-
-                <!-- Event Details Pills -->
-                <div class="flex flex-wrap items-center gap-3">
-                    <div class="glass-panel px-4 py-2.5 rounded-2xl border-slate-200/80 flex items-center space-x-2 text-xs font-mono font-bold text-slate-800">
-                        <svg class="w-4 h-4 text-sky-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/>
-                        </svg>
-                        <span>September 22, 2026</span>
-                    </div>
-                    <div class="glass-panel px-4 py-2.5 rounded-2xl border-slate-200/80 flex items-center space-x-2 text-xs font-mono font-bold text-slate-800">
-                        <svg class="w-4 h-4 text-emerald-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/>
-                        </svg>
-                        <span>1-Day Event</span>
-                    </div>
-                    <div class="glass-panel px-4 py-2.5 rounded-2xl border-sky-300/80 bg-sky-50/60 flex items-center space-x-2 text-xs font-mono font-bold text-sky-900">
-                        <svg class="w-4 h-4 text-sky-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/>
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/>
-                        </svg>
-                        <span>Venue: Maharaja Auditorium</span>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Timeline Grid with Interactive 3D Cursor Cards -->
-            <div id="schedule-timeline-container" class="relative z-10 max-w-4xl mx-auto space-y-6 pt-4">
-                
-                <!-- Central Timeline Spine Line -->
-                <div class="absolute left-4 sm:left-1/2 top-10 bottom-10 w-0.5 -translate-x-1/2 bg-gradient-to-b from-sky-400 via-violet-400 to-emerald-400 opacity-30 hidden sm:block"></div>
-
-                <!-- Timeline Items -->
-                <!-- Item 1: 09:00 AM -->
-                <div class="schedule-card-wrapper group relative flex flex-col sm:flex-row items-start sm:items-center gap-4 sm:gap-8" data-tilt>
-                    <div class="sm:w-1/2 sm:text-right order-2 sm:order-1 w-full">
-                        <div class="schedule-card glass-panel p-6 rounded-3xl space-y-2 border-slate-200/90 shadow-md group-hover:shadow-sky-500/10 transition-all duration-300 transform group-hover:-translate-y-1">
-                            <span class="inline-block px-2.5 py-0.5 rounded-full text-[10px] font-mono font-bold badge-cyan uppercase">Inaugural Ceremony</span>
-                            <h4 class="font-display text-xl font-extrabold text-slate-900">Inauguration</h4>
-                            <p class="text-xs text-slate-600 leading-relaxed font-medium">Official commencement of Sensonics '26 National Symposium.</p>
-                        </div>
-                    </div>
-                    <!-- Timeline Node -->
-                    <div class="order-1 sm:order-2 flex items-center justify-center w-9 h-9 rounded-full bg-white border-2 border-sky-500 shadow-md shadow-sky-500/20 z-10 sm:mx-auto">
-                        <span class="w-3 h-3 rounded-full bg-sky-500 animate-ping"></span>
-                    </div>
-                    <div class="sm:w-1/2 order-3 w-full">
-                        <div class="inline-flex items-center px-4 py-2 rounded-2xl bg-sky-100/90 border border-sky-300 text-sky-800 font-mono font-bold text-xs shadow-sm">
-                            ⏰ 09:00 AM
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Item 2: 09:30 AM -->
-                <div class="schedule-card-wrapper group relative flex flex-col sm:flex-row items-start sm:items-center gap-4 sm:gap-8" data-tilt>
-                    <div class="sm:w-1/2 sm:text-right order-3 sm:order-1 w-full">
-                        <div class="inline-flex items-center px-4 py-2 rounded-2xl bg-violet-100/90 border border-violet-300 text-violet-800 font-mono font-bold text-xs shadow-sm">
-                            ⏰ 09:30 AM
-                        </div>
-                    </div>
-                    <div class="order-1 sm:order-2 flex items-center justify-center w-9 h-9 rounded-full bg-white border-2 border-violet-500 shadow-md shadow-violet-500/20 z-10 sm:mx-auto">
-                        <span class="w-2.5 h-2.5 rounded-full bg-violet-500"></span>
-                    </div>
-                    <div class="sm:w-1/2 order-2 sm:order-3 w-full">
-                        <div class="schedule-card glass-panel p-6 rounded-3xl space-y-2 border-slate-200/90 shadow-md group-hover:shadow-violet-500/10 transition-all duration-300 transform group-hover:-translate-y-1">
-                            <span class="inline-block px-2.5 py-0.5 rounded-full text-[10px] font-mono font-bold badge-violet uppercase">Felicitation</span>
-                            <h4 class="font-display text-xl font-extrabold text-slate-900">Principal Address & HOD Address</h4>
-                            <p class="text-xs text-slate-600 leading-relaxed font-medium">Inspirational addresses by college dignitaries and EIE Department leadership.</p>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Item 3: 10:30 AM (Paper Mania & PLC, Node-RED) -->
-                <div class="schedule-card-wrapper group relative flex flex-col sm:flex-row items-start sm:items-center gap-4 sm:gap-8" data-tilt>
-                    <div class="sm:w-1/2 sm:text-right order-2 sm:order-1 w-full">
-                        <div class="schedule-card glass-panel p-6 rounded-3xl space-y-3 border-sky-200/90 shadow-md group-hover:shadow-sky-500/15 transition-all duration-300 transform group-hover:-translate-y-1">
-                            <div class="flex flex-wrap gap-1.5 justify-start sm:justify-end">
-                                <span class="px-2.5 py-0.5 rounded-full text-[10px] font-mono font-bold badge-cyan uppercase">Paper Presentation</span>
-                                <span class="px-2.5 py-0.5 rounded-full text-[10px] font-mono font-bold badge-emerald uppercase">Hands-on Workshop</span>
-                            </div>
-                            <h4 class="font-display text-xl font-extrabold text-slate-900">Paper Mania & PLC, Node-RED</h4>
-                            <p class="text-xs text-slate-600 leading-relaxed font-medium">Concurrent research paper presentations and full-day industrial automation / IoT hands-on workshops.</p>
-                        </div>
-                    </div>
-                    <div class="order-1 sm:order-2 flex items-center justify-center w-9 h-9 rounded-full bg-white border-2 border-sky-600 shadow-md shadow-sky-500/20 z-10 sm:mx-auto">
-                        <span class="w-2.5 h-2.5 rounded-full bg-sky-600"></span>
-                    </div>
-                    <div class="sm:w-1/2 order-3 w-full">
-                        <div class="inline-flex items-center px-4 py-2 rounded-2xl bg-sky-100/90 border border-sky-300 text-sky-800 font-mono font-bold text-xs shadow-sm">
-                            ⏰ 10:30 AM
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Item 4: 10:30 AM (Project Inventa) -->
-                <div class="schedule-card-wrapper group relative flex flex-col sm:flex-row items-start sm:items-center gap-4 sm:gap-8" data-tilt>
-                    <div class="sm:w-1/2 sm:text-right order-3 sm:order-1 w-full">
-                        <div class="inline-flex items-center px-4 py-2 rounded-2xl bg-sky-100/90 border border-sky-300 text-sky-800 font-mono font-bold text-xs shadow-sm">
-                            ⏰ 10:30 AM
-                        </div>
-                    </div>
-                    <div class="order-1 sm:order-2 flex items-center justify-center w-9 h-9 rounded-full bg-white border-2 border-sky-600 shadow-md shadow-sky-500/20 z-10 sm:mx-auto">
-                        <span class="w-2.5 h-2.5 rounded-full bg-sky-600"></span>
-                    </div>
-                    <div class="sm:w-1/2 order-2 sm:order-3 w-full">
-                        <div class="schedule-card glass-panel p-6 rounded-3xl space-y-2 border-slate-200/90 shadow-md group-hover:shadow-sky-500/15 transition-all duration-300 transform group-hover:-translate-y-1">
-                            <span class="inline-block px-2.5 py-0.5 rounded-full text-[10px] font-mono font-bold badge-cyan uppercase">Project Presentation</span>
-                            <h4 class="font-display text-xl font-extrabold text-slate-900">Project Inventa</h4>
-                            <p class="text-xs text-slate-600 leading-relaxed font-medium">Hardware prototype exposition & live innovation demonstrations before expert juries.</p>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Item 5: 10:45 AM (Code Debug Console) -->
-                <div class="schedule-card-wrapper group relative flex flex-col sm:flex-row items-start sm:items-center gap-4 sm:gap-8" data-tilt>
-                    <div class="sm:w-1/2 sm:text-right order-2 sm:order-1 w-full">
-                        <div class="schedule-card glass-panel p-6 rounded-3xl space-y-2 border-slate-200/90 shadow-md group-hover:shadow-violet-500/15 transition-all duration-300 transform group-hover:-translate-y-1">
-                            <span class="inline-block px-2.5 py-0.5 rounded-full text-[10px] font-mono font-bold badge-violet uppercase">Programming Challenge</span>
-                            <h4 class="font-display text-xl font-extrabold text-slate-900">Code Debug Console</h4>
-                            <p class="text-xs text-slate-600 leading-relaxed font-medium">Role-based 3-member programming showdown: Coder, Debugger, and Algorithm Designer.</p>
-                        </div>
-                    </div>
-                    <div class="order-1 sm:order-2 flex items-center justify-center w-9 h-9 rounded-full bg-white border-2 border-violet-600 shadow-md shadow-violet-500/20 z-10 sm:mx-auto">
-                        <span class="w-2.5 h-2.5 rounded-full bg-violet-600"></span>
-                    </div>
-                    <div class="sm:w-1/2 order-3 w-full">
-                        <div class="inline-flex items-center px-4 py-2 rounded-2xl bg-violet-100/90 border border-violet-300 text-violet-800 font-mono font-bold text-xs shadow-sm">
-                            ⏰ 10:45 AM
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Item 6: 10:45 AM (Bot Blitz) -->
-                <div class="schedule-card-wrapper group relative flex flex-col sm:flex-row items-start sm:items-center gap-4 sm:gap-8" data-tilt>
-                    <div class="sm:w-1/2 sm:text-right order-3 sm:order-1 w-full">
-                        <div class="inline-flex items-center px-4 py-2 rounded-2xl bg-amber-100/90 border border-amber-300 text-amber-900 font-mono font-bold text-xs shadow-sm">
-                            ⏰ 10:45 AM
-                        </div>
-                    </div>
-                    <div class="order-1 sm:order-2 flex items-center justify-center w-9 h-9 rounded-full bg-white border-2 border-amber-500 shadow-md shadow-amber-500/20 z-10 sm:mx-auto">
-                        <span class="w-2.5 h-2.5 rounded-full bg-amber-500"></span>
-                    </div>
-                    <div class="sm:w-1/2 order-2 sm:order-3 w-full">
-                        <div class="schedule-card glass-panel p-6 rounded-3xl space-y-2 border-slate-200/90 shadow-md group-hover:shadow-amber-500/15 transition-all duration-300 transform group-hover:-translate-y-1">
-                            <span class="inline-block px-2.5 py-0.5 rounded-full text-[10px] font-mono font-bold bg-amber-100 text-amber-800 border border-amber-300 uppercase">Robo Race</span>
-                            <h4 class="font-display text-xl font-extrabold text-slate-900">Bot Blitz</h4>
-                            <p class="text-xs text-slate-600 leading-relaxed font-medium">High-speed robotics arena race navigating obstacles, boundaries, and checkpoints.</p>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Item 7: 12:15 PM - 01:15 PM (Lunch Break) -->
-                <div class="schedule-card-wrapper group relative flex flex-col sm:flex-row items-start sm:items-center gap-4 sm:gap-8 my-4" data-tilt>
-                    <div class="w-full text-center z-10">
-                        <div class="schedule-card inline-flex items-center space-x-3 px-8 py-3.5 rounded-full bg-gradient-to-r from-pink-500/10 via-rose-500/10 to-amber-500/10 border border-pink-300/80 shadow-md text-pink-900 font-bold text-sm backdrop-blur-md">
-                            <span>🍽️</span>
-                            <span class="font-mono uppercase font-black tracking-wider text-pink-700">12:15 PM - 01:15 PM</span>
-                            <span class="text-slate-400">•</span>
-                            <span class="font-display">Lunch Break</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Item 8: 01:15 PM (Memory Morph) -->
-                <div class="schedule-card-wrapper group relative flex flex-col sm:flex-row items-start sm:items-center gap-4 sm:gap-8" data-tilt>
-                    <div class="sm:w-1/2 sm:text-right order-2 sm:order-1 w-full">
-                        <div class="schedule-card glass-panel p-6 rounded-3xl space-y-2 border-slate-200/90 shadow-md group-hover:shadow-violet-500/15 transition-all duration-300 transform group-hover:-translate-y-1">
-                            <span class="inline-block px-2.5 py-0.5 rounded-full text-[10px] font-mono font-bold badge-violet uppercase">Non-Technical Event</span>
-                            <h4 class="font-display text-xl font-extrabold text-slate-900">Memory Morph</h4>
-                            <p class="text-xs text-slate-600 leading-relaxed font-medium">Photographic observation and visual reconstruction challenge from memory.</p>
-                        </div>
-                    </div>
-                    <div class="order-1 sm:order-2 flex items-center justify-center w-9 h-9 rounded-full bg-white border-2 border-violet-500 shadow-md shadow-violet-500/20 z-10 sm:mx-auto">
-                        <span class="w-2.5 h-2.5 rounded-full bg-violet-500"></span>
-                    </div>
-                    <div class="sm:w-1/2 order-3 w-full">
-                        <div class="inline-flex items-center px-4 py-2 rounded-2xl bg-violet-100/90 border border-violet-300 text-violet-800 font-mono font-bold text-xs shadow-sm">
-                            ⏰ 01:15 PM
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Item 9: 02:00 PM (Jumble Jam) -->
-                <div class="schedule-card-wrapper group relative flex flex-col sm:flex-row items-start sm:items-center gap-4 sm:gap-8" data-tilt>
-                    <div class="sm:w-1/2 sm:text-right order-3 sm:order-1 w-full">
-                        <div class="inline-flex items-center px-4 py-2 rounded-2xl bg-violet-100/90 border border-violet-300 text-violet-800 font-mono font-bold text-xs shadow-sm">
-                            ⏰ 02:00 PM
-                        </div>
-                    </div>
-                    <div class="order-1 sm:order-2 flex items-center justify-center w-9 h-9 rounded-full bg-white border-2 border-violet-500 shadow-md shadow-violet-500/20 z-10 sm:mx-auto">
-                        <span class="w-2.5 h-2.5 rounded-full bg-violet-500"></span>
-                    </div>
-                    <div class="sm:w-1/2 order-2 sm:order-3 w-full">
-                        <div class="schedule-card glass-panel p-6 rounded-3xl space-y-2 border-slate-200/90 shadow-md group-hover:shadow-violet-500/15 transition-all duration-300 transform group-hover:-translate-y-1">
-                            <span class="inline-block px-2.5 py-0.5 rounded-full text-[10px] font-mono font-bold badge-violet uppercase">Non-Technical Event</span>
-                            <h4 class="font-display text-xl font-extrabold text-slate-900">Jumble Jam</h4>
-                            <p class="text-xs text-slate-600 leading-relaxed font-medium">Sentence scramble and picture puzzle unscrambling competition.</p>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Item 10: 02:45 PM (Recall Rush) -->
-                <div class="schedule-card-wrapper group relative flex flex-col sm:flex-row items-start sm:items-center gap-4 sm:gap-8" data-tilt>
-                    <div class="sm:w-1/2 sm:text-right order-2 sm:order-1 w-full">
-                        <div class="schedule-card glass-panel p-6 rounded-3xl space-y-2 border-slate-200/90 shadow-md group-hover:shadow-violet-500/15 transition-all duration-300 transform group-hover:-translate-y-1">
-                            <span class="inline-block px-2.5 py-0.5 rounded-full text-[10px] font-mono font-bold badge-violet uppercase">Non-Technical Event</span>
-                            <h4 class="font-display text-xl font-extrabold text-slate-900">Recall Rush</h4>
-                            <p class="text-xs text-slate-600 leading-relaxed font-medium">30-second rapid picture situation analysis and logical item selection.</p>
-                        </div>
-                    </div>
-                    <div class="order-1 sm:order-2 flex items-center justify-center w-9 h-9 rounded-full bg-white border-2 border-violet-500 shadow-md shadow-violet-500/20 z-10 sm:mx-auto">
-                        <span class="w-2.5 h-2.5 rounded-full bg-violet-500"></span>
-                    </div>
-                    <div class="sm:w-1/2 order-3 w-full">
-                        <div class="inline-flex items-center px-4 py-2 rounded-2xl bg-violet-100/90 border border-violet-300 text-violet-800 font-mono font-bold text-xs shadow-sm">
-                            ⏰ 02:45 PM
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Item 11: 03:30 PM (Pick and Unleash) -->
-                <div class="schedule-card-wrapper group relative flex flex-col sm:flex-row items-start sm:items-center gap-4 sm:gap-8" data-tilt>
-                    <div class="sm:w-1/2 sm:text-right order-3 sm:order-1 w-full">
-                        <div class="inline-flex items-center px-4 py-2 rounded-2xl bg-violet-100/90 border border-violet-300 text-violet-800 font-mono font-bold text-xs shadow-sm">
-                            ⏰ 03:30 PM
-                        </div>
-                    </div>
-                    <div class="order-1 sm:order-2 flex items-center justify-center w-9 h-9 rounded-full bg-white border-2 border-violet-500 shadow-md shadow-violet-500/20 z-10 sm:mx-auto">
-                        <span class="w-2.5 h-2.5 rounded-full bg-violet-500"></span>
-                    </div>
-                    <div class="sm:w-1/2 order-2 sm:order-3 w-full">
-                        <div class="schedule-card glass-panel p-6 rounded-3xl space-y-2 border-slate-200/90 shadow-md group-hover:shadow-violet-500/15 transition-all duration-300 transform group-hover:-translate-y-1">
-                            <span class="inline-block px-2.5 py-0.5 rounded-full text-[10px] font-mono font-bold badge-violet uppercase">Non-Technical Event</span>
-                            <h4 class="font-display text-xl font-extrabold text-slate-900">Pick and Unleash</h4>
-                            <p class="text-xs text-slate-600 leading-relaxed font-medium">Random topic charades and creative non-verbal acting competition.</p>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Item 12: 04:00 PM (Valedictory Function) -->
-                <div class="schedule-card-wrapper group relative flex flex-col sm:flex-row items-start sm:items-center gap-4 sm:gap-8" data-tilt>
-                    <div class="sm:w-1/2 sm:text-right order-2 sm:order-1 w-full">
-                        <div class="schedule-card glass-panel p-6 rounded-3xl space-y-2 border-amber-300/90 bg-amber-50/40 shadow-md group-hover:shadow-amber-500/20 transition-all duration-300 transform group-hover:-translate-y-1">
-                            <span class="inline-block px-2.5 py-0.5 rounded-full text-[10px] font-mono font-bold bg-amber-200 text-amber-900 uppercase">Award Ceremony</span>
-                            <h4 class="font-display text-xl font-extrabold text-slate-900">Valedictory Function</h4>
-                            <p class="text-xs text-slate-600 leading-relaxed font-medium">Prize distribution, cash reward announcements, and certificate distribution.</p>
-                        </div>
-                    </div>
-                    <div class="order-1 sm:order-2 flex items-center justify-center w-9 h-9 rounded-full bg-white border-2 border-amber-500 shadow-md shadow-amber-500/20 z-10 sm:mx-auto">
-                        <span class="w-3 h-3 rounded-full bg-amber-500 animate-bounce"></span>
-                    </div>
-                    <div class="sm:w-1/2 order-3 w-full">
-                        <div class="inline-flex items-center px-4 py-2 rounded-2xl bg-amber-100/90 border border-amber-300 text-amber-900 font-mono font-bold text-xs shadow-sm">
-                            🏆 04:00 PM
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Item 13: 04:30 PM (Event End) -->
-                <div class="schedule-card-wrapper group relative flex flex-col sm:flex-row items-start sm:items-center gap-4 sm:gap-8" data-tilt>
-                    <div class="sm:w-1/2 sm:text-right order-3 sm:order-1 w-full">
-                        <div class="inline-flex items-center px-4 py-2 rounded-2xl bg-slate-200/90 border border-slate-300 text-slate-800 font-mono font-bold text-xs shadow-sm">
-                            🎓 04:30 PM
-                        </div>
-                    </div>
-                    <div class="order-1 sm:order-2 flex items-center justify-center w-9 h-9 rounded-full bg-white border-2 border-slate-500 shadow-md z-10 sm:mx-auto">
-                        <span class="w-2.5 h-2.5 rounded-full bg-slate-700"></span>
-                    </div>
-                    <div class="sm:w-1/2 order-2 sm:order-3 w-full">
-                        <div class="schedule-card glass-panel p-5 rounded-3xl space-y-1 border-slate-200/90 shadow-md group-hover:shadow-slate-500/10 transition-all duration-300 transform group-hover:-translate-y-1">
-                            <span class="inline-block px-2.5 py-0.5 rounded-full text-[10px] font-mono font-bold bg-slate-200 text-slate-700 uppercase">Conclusion</span>
-                            <h4 class="font-display text-lg font-bold text-slate-900">Event End</h4>
-                            <p class="text-xs text-slate-600 leading-relaxed">Official closing of Sensonics '26.</p>
-                        </div>
-                    </div>
-                </div>
-
-            </div>
-        </section>
-
         <!-- ==================== ABOUT SECTION ==================== -->
         <section id="page-about" class="page-section space-y-12 hidden transition-all duration-500">
-            <div class="max-w-4xl mx-auto space-y-10">
-                
-                <!-- Page Header -->
+            <div class="max-w-4xl mx-auto space-y-8">
                 <div class="text-center space-y-3">
-                    <span class="text-sky-600 text-xs font-mono tracking-widest uppercase font-bold px-3 py-1 rounded-full bg-sky-100/80 border border-sky-300/50">
-                        Official Overview
-                    </span>
-                    <h2 class="font-display text-4xl sm:text-5xl font-black text-slate-900 tracking-tight">KONGU ENGINEERING COLLEGE</h2>
-                    <p class="text-slate-600 font-medium text-sm sm:text-base">Perundurai, Erode - 638060, Tamil Nadu</p>
+                    <span class="text-sky-600 text-sm font-mono tracking-widest uppercase font-bold">Institution &
+                        Department</span>
+                    <h2 class="font-display text-4xl sm:text-5xl font-black text-slate-900">KONGU ENGINEERING COLLEGE
+                    </h2>
+                    <p class="text-slate-600 font-medium">Perundurai, Erode - 638060, Tamil Nadu</p>
                 </div>
 
-                <!-- 1. About Sensonics Card -->
-                <div class="glass-panel p-8 sm:p-10 rounded-3xl space-y-4 border-sky-200/90 shadow-lg relative overflow-hidden">
-                    <div class="flex items-center space-x-3">
-                        <div class="w-10 h-10 rounded-2xl bg-sky-500 text-white flex items-center justify-center font-black font-mono shadow-md shadow-sky-500/30">
-                            S
-                        </div>
-                        <h3 class="font-display text-2xl font-bold text-slate-900">About Sensonics</h3>
-                    </div>
-                    <p class="text-slate-700 leading-relaxed text-sm sm:text-base font-medium">
-                        Sensonics 2026 is a national-level technical symposium organized by the Department of Electronics and Instrumentation Engineering at Kongu Engineering College. It serves as a platform for students from various institutions to enhance their knowledge and showcase their skills across diverse events. The symposium features competitions such as paper presentations, a project expo, and coding challenges, allowing participants to demonstrate their technical expertise and creativity. Additionally, various non-technical events foster collaboration, creativity, and teamwork. Sensonics aims to promote innovation, facilitate knowledge exchange, and provide students with hands-on experiences in both technical and non-technical areas.
+                <div class="glass-panel p-8 sm:p-10 rounded-3xl space-y-6">
+                    <h3 class="font-display text-2xl font-bold text-slate-900 border-b border-slate-200 pb-3">Department
+                        of Electronics and Instrumentation Engineering</h3>
+                    <p class="text-slate-700 leading-relaxed">
+                        The Department of Electronics and Instrumentation Engineering (EIE) at Kongu Engineering College
+                        was established to produce high-caliber instrumentation engineers skilled in industrial
+                        automation, process control, sensors, and modern embedded systems. SENSONICS '26 is the annual
+                        national flagship symposium bringing together budding engineering minds across the country.
                     </p>
-                </div>
-
-                <!-- 2. About The Department Card -->
-                <div class="glass-panel p-8 sm:p-10 rounded-3xl space-y-4 border-violet-200/90 shadow-lg">
-                    <div class="flex items-center space-x-3">
-                        <div class="w-10 h-10 rounded-2xl bg-violet-600 text-white flex items-center justify-center font-black font-mono shadow-md shadow-violet-500/30">
-                            EIE
+                    <div class="grid sm:grid-cols-2 gap-4 pt-4">
+                        <div class="bg-slate-100/80 p-4 rounded-2xl border border-slate-200">
+                            <span class="text-xs font-mono uppercase text-slate-500 block">Symposium Convener</span>
+                            <span class="font-bold text-slate-900">Head of Department, EIE</span>
                         </div>
-                        <h3 class="font-display text-2xl font-bold text-slate-900">About The Department</h3>
-                    </div>
-                    <p class="text-slate-700 leading-relaxed text-sm sm:text-base font-medium">
-                        Department of Electronics and Instrumentation Engineering is established on 1998 (Silver Jubilee Celebration) and offering a full time B.E programme in Electronics and Instrumentation Engineering. This field of engineering imparts technical knowledge in the areas of Electronics Engineering, Biomedical Instrumentation, Control Systems, Signal and Image Processing, Embedded Systems, VLSI, Industrial automation, Neural Network and Fuzzy Logic. Department has sound infrastructural facilities including separate laboratories like Biomedical Instrumentation lab, Sensor and Transducers lab, Measurements and Instrumentation lab, Microprocessor and Microcontroller lab, Advanced Instrumentation lab and DCS lab. Competent faculty and established library are the highlights of the department. The department was accredited by NBA. It is also the recipient of Best Department award from KEC in twice for the academic years 2004-05 and 2012-13. Established Center Of Excellence in industry IOT with the worth of 30 lakhs on October 2022 with the support of ALAI LABS PTE LTD (Singapore).
-                    </p>
-                </div>
-
-                <!-- 3. About The KEC Card -->
-                <div class="glass-panel p-8 sm:p-10 rounded-3xl space-y-4 border-slate-200/90 shadow-lg">
-                    <div class="flex items-center space-x-3">
-                        <div class="w-10 h-10 rounded-2xl bg-slate-800 text-white flex items-center justify-center font-black font-mono shadow-md">
-                            KEC
+                        <div class="bg-slate-100/80 p-4 rounded-2xl border border-slate-200">
+                            <span class="text-xs font-mono uppercase text-slate-500 block">Venue Location</span>
+                            <span class="font-bold text-slate-900">KEC Campus, Perundurai</span>
                         </div>
-                        <h3 class="font-display text-2xl font-bold text-slate-900">About The KEC</h3>
                     </div>
-                    <p class="text-slate-700 leading-relaxed text-sm sm:text-base font-medium">
-                        Kongu Engineering College was established in the year 1984 (Ruby Jubilee Celebration). Approved by AICTE, New Delhi and affiliated to Anna University, Chennai. The Institution has completed 41 years of dedicated and excellent service in the field of technical education. It offers 14 UG programmes, 6 PG programmes and 16 Research programmes in Engineering, Applied Sciences and Management imparting high quality value added education in India. The college has got NBA accreditation for UG programmes, Best Engineering College award and Best Principal award twice. The institution is ranked high among the Engineering Institutions in India by various surveys conducted by reputed magazines/journals/organization. The institution has established a Technology Business Incubator (TBI) supported by Department of Science and Technology, Government of India in its campus. TBI@KEC has won the National Award for the Best TBI in India, presented by President of India on Technology Day in New Delhi.
-                    </p>
                 </div>
-
             </div>
         </section>
 
@@ -1148,11 +806,6 @@
                     </div>
                 </div>
 
-                <!-- Event Coordinators Section -->
-                <div id="modal-event-coordinators">
-                    <!-- Dynamic coordinators list -->
-                </div>
-
                 <div class="pt-4 flex items-center justify-end space-x-3 border-t border-slate-200">
                     <button onclick="closeEventModal()"
                         class="px-5 py-2.5 rounded-xl text-sm font-semibold text-slate-600 hover:bg-slate-100">Close</button>
@@ -1179,7 +832,8 @@
                     class="space-y-2 text-left text-xs font-mono text-slate-700 bg-slate-100/90 p-4 rounded-xl border border-slate-200">
                     <div id="prog-step-1" class="text-emerald-600 font-bold">✓ Validating team registration format</div>
                     <div id="prog-step-2" class="text-emerald-600 font-bold">✓ Preparing payment proof attachment</div>
-                    <div id="prog-step-3" class="text-sky-600 font-bold animate-pulse">• Transmitting data to the Backend Server</div>
+                    <div id="prog-step-3" class="text-sky-600 font-bold animate-pulse">• Transmitting data to Google
+                        Apps Script...</div>
                     <div id="prog-step-4" class="text-slate-400">• Generating registration ID & email notification</div>
                 </div>
             </div>
@@ -1233,23 +887,11 @@
     <!-- Footer -->
     <footer class="border-t border-slate-200 bg-white/80 py-10 text-xs text-slate-600">
         <div
-            class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center justify-between gap-6">
-            <div class="text-center md:text-left space-y-1">
-                <span class="font-bold text-slate-900 text-sm">SENSONICS '26</span> — Dept of EIE, Kongu Engineering College.
-                <p class="text-slate-500">Perundurai, Erode - 638060, Tamil Nadu, India.</p>
+            class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center justify-between gap-4">
+            <div class="text-center md:text-left">
+                <span class="font-bold text-slate-900">SENSONICS '26</span> — Dept of EIE, Kongu Engineering College.
+                <p class="mt-1 text-slate-500">Perundurai, Erode - 638060, Tamil Nadu, India.</p>
             </div>
-
-            <!-- Instagram Social Link -->
-            <div class="flex items-center space-x-3">
-                <a href="https://www.instagram.com/kec_eie_association?igsi=eXdhOTdnYmtwa29k" target="_blank" rel="noopener noreferrer"
-                    class="inline-flex items-center space-x-2 px-4 py-2 rounded-xl bg-gradient-to-r from-purple-600 via-pink-600 to-amber-500 text-white font-bold text-xs shadow-md shadow-pink-500/20 hover:opacity-90 hover:scale-105 transition-all">
-                    <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24">
-                        <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
-                    </svg>
-                    <span>Follow us on Instagram</span>
-                </a>
-            </div>
-
             <div class="text-center md:text-right text-slate-500 font-mono">
                 Liquid Glass Engine • EIE Tech Platform
             </div>
@@ -1277,22 +919,7 @@
                 requiresTitle: true,
                 requiresAbstract: true,
                 desc: "National level paper presentation contest. Showcase innovative engineering concepts, research papers, and experimental designs.",
-                rules: [
-                    "Papers from any domain are permitted for presentation.",
-                    "Each team should consist of a minimum of 2 and a maximum of 3 members.",
-                    "Any one member from the team (preferably Team Leader) is sufficient to register.",
-                    "The Abstract must be submitted at the time of registration.",
-                    "Plagiarism should be strictly avoided.",
-                    "Refreshments and Lunch will be provided for all participants.",
-                    "Registration Fee: Rs. 250 per participant.",
-                    "Participants are required to carry their College ID Cards.",
-                    "Further information regarding the event will be communicated through registered Email ID."
-                ],
-                coordinators: [
-                    { name: "Rishikeshwaran M", phone: "+91 97157 08810" },
-                    { name: "Abisha Carin D", phone: "+91 94860 67288" }
-                ],
-                whatsappUrl: "https://chat.whatsapp.com/B8apilpW4fGFNwL4GgqHOg?s=cl&p=a&ilr=1"
+                whatsappUrl: "https://chat.whatsapp.com/sample_papermania"
             },
             "Project Inventa": {
                 id: "projectinventa",
@@ -1304,22 +931,8 @@
                 fee: 250,
                 requiresTitle: true,
                 requiresAbstract: true,
-                desc: "Hardware project exposition. Claim your spot among the brightest minds! Present operational prototypes, embedded hardware solutions, or sensor automation rigs.",
-                rules: [
-                    "Select a project from the open innovation problem statements.",
-                    "Team size: Minimum 2 to Maximum 3 members allowed.",
-                    "The Abstract must be submitted at the time of registration.",
-                    "Plagiarism should be strictly avoided.",
-                    "Participants are required to carry their College ID Cards.",
-                    "Refreshments and Lunch will be provided for participants.",
-                    "Note: Abstract selection will be done if count exceeds requirement.",
-                    "If payment was already made for another event, each member should upload that screenshot."
-                ],
-                coordinators: [
-                    { name: "Mr. Arulventhan", phone: "+91 81228 15659" },
-                    { name: "Ms. Prabhashini", phone: "+91 93612 89677" }
-                ],
-                whatsappUrl: "https://chat.whatsapp.com/CJLqhVVE4YT4KXpzifnv4s?s=cl&p=a&ilr=1"
+                desc: "Hardware project exposition. Present operational prototypes, embedded hardware solutions, or sensor automation rigs.",
+                whatsappUrl: "https://chat.whatsapp.com/sample_projectinventa"
             },
             "Code": {
                 id: "code",
@@ -1331,20 +944,8 @@
                 fee: 250,
                 requiresTitle: false,
                 requiresAbstract: false,
-                desc: "Competitive programming & debugging challenge. Team of 3 with specialized roles: Coder, Debugger, and Algorithm Designer.",
-                rules: [
-                    "👨‍💻 Member 1 – Coder: Implement full program based on problem statement.",
-                    "🧑‍🔧 Member 2 – Debugger: Debug faulty program and fix logical/syntax/runtime errors.",
-                    "🧑‍🏫 Member 3 – Algorithm Designer: Write pseudo code or step-by-step algorithm on paper.",
-                    "No discussion allowed until a member finishes their individual task. Once finished, they can assist teammates.",
-                    "Mobile phones, internet, or other gadgets are strictly prohibited.",
-                    "Teams must bring at least one laptop."
-                ],
-                coordinators: [
-                    { name: "Shafeek A", phone: "+91 93423 93529" },
-                    { name: "Pradeep R", phone: "+91 70946 16885" }
-                ],
-                whatsappUrl: "https://chat.whatsapp.com/Ex8orEb79K0Ci03GHkovjL?s=cl&p=a&ilr=1"
+                desc: "Competitive algorithmic programming and debugging challenge. Strictly 3 members per team.",
+                whatsappUrl: "https://chat.whatsapp.com/sample_code"
             },
             "Bot": {
                 id: "bot",
@@ -1356,20 +957,8 @@
                 fee: 250,
                 requiresTitle: false,
                 requiresAbstract: false,
-                desc: "Robotics arena showdown. Test autonomous or wired rovers on predefined obstacle tracks.",
-                rules: [
-                    "Multidisciplinary teams allowed (2–4 members). Individual participation not allowed.",
-                    "Each team must bring their own rover and required equipment. Valid student ID required.",
-                    "Each team operates rover one at a time on obstacle/checkpoint track.",
-                    "Winner determined by lowest Final Time (Actual Completion Time + Penalty Time).",
-                    "Penalties for obstacle touches, boundary crossing, missed checkpoints, or rule violations.",
-                    "Rover must be in working condition and approved by event coordinators. No manual assistance allowed."
-                ],
-                coordinators: [
-                    { name: "Naveen Balaji K", phone: "+91 86828 52928" },
-                    { name: "Prathish C", phone: "+91 98651 93481" }
-                ],
-                whatsappUrl: "https://chat.whatsapp.com/KT6xeXEgxf57wbJferUxln?s=cl&p=a&ilr=1"
+                desc: "Robotics arena showdown. Test autonomous or wired robots in precision navigation and obstacle courses.",
+                whatsappUrl: "https://chat.whatsapp.com/sample_bot"
             },
             "Jumble": {
                 id: "jumble",
@@ -1381,17 +970,8 @@
                 fee: 250,
                 requiresTitle: false,
                 requiresAbstract: false,
-                desc: "Fast-paced word puzzle and picture unscrambling competition across 2 intense rounds.",
-                rules: [
-                    "Round 1 – Sentence Scramble: Unscramble mixed letter pieces into technical terms/sentences within time limit.",
-                    "Round 2 – Picture Puzzle: Assemble cut pieces of famous personality pictures (e.g. Dr. A.P.J. Abdul Kalam) and identify.",
-                    "Scored based on accuracy and completion time across both rounds.",
-                    "Judges' decision is final and binding."
-                ],
-                coordinators: [
-                    { name: "Lathika", phone: "+91 81223 37577" }
-                ],
-                whatsappUrl: "https://chat.whatsapp.com/JvCTMDNbWJI1ZBx08kXTqq?s=cl&p=a&ilr=1"
+                desc: "Fast-paced word puzzle and cryptic technical terminology unscrambling contest.",
+                whatsappUrl: "https://chat.whatsapp.com/sample_jumble"
             },
             "Memory": {
                 id: "memory",
@@ -1403,19 +983,8 @@
                 fee: 250,
                 requiresTitle: false,
                 requiresAbstract: false,
-                desc: "Visual observation and photographic recall challenge for team of 2.",
-                rules: [
-                    "An image will be displayed on screen for 5–10 minutes for observation.",
-                    "Observe objects, colours, shapes, patterns, positions, numbers, symbols & details.",
-                    "Mobile phones, cameras, or external materials are strictly prohibited.",
-                    "Original image hidden; team recreates displayed image from memory using provided materials.",
-                    "Evaluated on accuracy, arrangement, details, creativity, and overall similarity."
-                ],
-                coordinators: [
-                    { name: "Hari Prasanna", phone: "+91 89403 74065" },
-                    { name: "Dharanidharan", phone: "+91 99431 90765" }
-                ],
-                whatsappUrl: "https://chat.whatsapp.com/KkC74MENd5I9DzX9g8tfIs?s=cl&p=a&ilr=1"
+                desc: "Visual observation and photographic recall challenge for exactly 2 team members.",
+                whatsappUrl: "https://chat.whatsapp.com/sample_memory"
             },
             "Recall": {
                 id: "recall",
@@ -1427,19 +996,8 @@
                 fee: 250,
                 requiresTitle: false,
                 requiresAbstract: false,
-                desc: "Observe. Remember. Recall. Win! Memory and logical decision-making challenge under time pressure.",
-                rules: [
-                    "Each team consists of exactly 2 members.",
-                    "Teams given a picture/situation to analyze for 30 seconds.",
-                    "Teams must choose the most suitable items based on situation & justify logically.",
-                    "No external assistance or communication with other teams allowed.",
-                    "Open to all departments with valid student ID cards."
-                ],
-                coordinators: [
-                    { name: "Toejoe Francis F", phone: "+91 93428 13230" },
-                    { name: "Uvanbabu S", phone: "+91 93609 56694" }
-                ],
-                whatsappUrl: "https://chat.whatsapp.com/KkC74MENd5I9DzX9g8tfIs?s=cl&p=a&ilr=1"
+                desc: "Pattern recognition and audio-visual sequence recall competition.",
+                whatsappUrl: "https://chat.whatsapp.com/sample_recall"
             },
             "Pick": {
                 id: "pick",
@@ -1451,20 +1009,8 @@
                 fee: 250,
                 requiresTitle: false,
                 requiresAbstract: false,
-                desc: "Exciting acting & charades challenge. Pick a random word task and unleash your creativity to solve it.",
-                rules: [
-                    "Team size: 2–3 members.",
-                    "A sheet with a word is randomly picked from the box.",
-                    "One member acts out the word; teammates guess.",
-                    "Round 1: 45 seconds per turn. No speaking, verbal clues, or showing sheet.",
-                    "Mobile phones / external help strictly prohibited.",
-                    "Round 2: Top teams qualify with time limit reduced to 30 seconds."
-                ],
-                coordinators: [
-                    { name: "Gowsika P", phone: "+91 99650 51087" },
-                    { name: "Hasika A", phone: "+91 90805 78009" }
-                ],
-                whatsappUrl: "https://chat.whatsapp.com/CjZwKzDdvNcAopwiozA4zf?s=cl&p=a&ilr=1"
+                desc: "Extempore technical topic picking and rapid visual identification challenge.",
+                whatsappUrl: "https://chat.whatsapp.com/sample_pick"
             },
             "PLC": {
                 id: "plc",
@@ -1478,18 +1024,7 @@
                 requiresTitle: false,
                 requiresAbstract: false,
                 desc: "Comprehensive hands-on training on Programmable Logic Controllers, ladder logic, and industrial automation interfaces.",
-                rules: [
-                    "Timing: 9:00 AM to 3:30 PM (Must report by 9:00 AM sharp).",
-                    "Full-day attendance is mandatory to receive participation certificate.",
-                    "Participants cannot take part in any other event during workshop.",
-                    "Lunch and Refreshments will be provided during the workshop.",
-                    "Interactive hands-on sessions with hardware & software."
-                ],
-                coordinators: [
-                    { name: "Rishikeshwaran M (General)", phone: "+91 97157 08810" },
-                    { name: "Thanmathi H T (PLC)", phone: "+91 94439 46200" }
-                ],
-                whatsappUrl: "https://chat.whatsapp.com/Cr6MSrUEBfd1dAbsWLjyTo?s=cl&p=a&ilr=1"
+                whatsappUrl: "https://chat.whatsapp.com/sample_plc"
             },
             "NodeRED": {
                 id: "nodered",
@@ -1503,18 +1038,7 @@
                 requiresTitle: false,
                 requiresAbstract: false,
                 desc: "Hands-on Industrial IoT workflow development using Node-RED programming and MQTT protocols.",
-                rules: [
-                    "Timing: 9:00 AM to 3:30 PM (Must report by 9:00 AM sharp).",
-                    "Full-day attendance is mandatory to receive participation certificate.",
-                    "Participants cannot take part in any other event during workshop.",
-                    "Lunch and Refreshments will be provided during the workshop.",
-                    "Interactive IoT flows, dashboard creation & MQTT integration."
-                ],
-                coordinators: [
-                    { name: "Rishikeshwaran M (General)", phone: "+91 97157 08810" },
-                    { name: "Rasigashri E N (Node-RED)", phone: "+91 93610 16493" }
-                ],
-                whatsappUrl: "https://chat.whatsapp.com/Cr6MSrUEBfd1dAbsWLjyTo?s=cl&p=a&ilr=1"
+                whatsappUrl: "https://chat.whatsapp.com/sample_nodered"
             }
         };
 
@@ -2045,59 +1569,10 @@
             selectedModalEventTitle = title;
             document.getElementById('modal-event-title').innerText = ev.title;
             document.getElementById('modal-event-cat').innerText = ev.categoryLabel;
+            document.getElementById('modal-event-desc').innerText = ev.desc;
             document.getElementById('modal-event-teamsize').innerText = `${ev.minMembers === ev.maxMembers ? ev.minMembers : ev.minMembers + ' - ' + ev.maxMembers} Members`;
             document.getElementById('modal-event-fee').innerText = `₹${ev.fee}`;
             document.getElementById('modal-event-abstract').innerText = ev.requiresAbstract ? "Required (PDF)" : "Not Required";
-
-            // Description & Rules formatting
-            const descContainer = document.getElementById('modal-event-desc');
-            let html = `<div class="space-y-3"><p class="text-slate-700 text-sm leading-relaxed">${ev.desc}</p>`;
-
-            if (ev.rules && ev.rules.length > 0) {
-                html += `
-                    <div class="space-y-2 pt-2 border-t border-slate-100">
-                        <h5 class="text-xs font-mono uppercase font-bold text-slate-900 tracking-wider">Rules & Instructions</h5>
-                        <ul class="space-y-1.5 text-xs text-slate-600">
-                            ${ev.rules.map(r => `
-                                <li class="flex items-start space-x-2">
-                                    <span class="text-sky-600 font-bold mt-0.5">•</span>
-                                    <span class="leading-relaxed">${r}</span>
-                                </li>
-                            `).join('')}
-                        </ul>
-                    </div>
-                `;
-            }
-            html += `</div>`;
-            descContainer.innerHTML = html;
-
-            // Event Coordinators formatting
-            const coordContainer = document.getElementById('modal-event-coordinators');
-            if (coordContainer) {
-                if (ev.coordinators && ev.coordinators.length > 0) {
-                    coordContainer.innerHTML = `
-                        <div class="pt-3 border-t border-slate-200 space-y-2">
-                            <h5 class="text-xs font-mono uppercase font-bold text-slate-900 tracking-wider">Event Coordinators</h5>
-                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-2">
-                                ${ev.coordinators.map(c => `
-                                    <a href="tel:${c.phone.replace(/[^0-9+]/g, '')}" class="flex items-center justify-between p-2.5 rounded-xl bg-sky-50/80 border border-sky-200/80 text-xs hover:bg-sky-100 transition-all group">
-                                        <div class="flex items-center space-x-2">
-                                            <svg class="w-3.5 h-3.5 text-sky-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/>
-                                            </svg>
-                                            <span class="font-bold text-slate-900">${c.name}</span>
-                                        </div>
-                                        <span class="font-mono text-sky-700 font-bold group-hover:underline text-[11px]">${c.phone}</span>
-                                    </a>
-                                `).join('')}
-                            </div>
-                        </div>
-                    `;
-                } else {
-                    coordContainer.innerHTML = '';
-                }
-            }
-
             document.getElementById('event-modal').classList.remove('hidden');
         }
 
@@ -2855,45 +2330,6 @@
             setTimeout(() => toast.remove(), 4000);
         }
 
-        /* ==================== CURSOR INTERACTIVE ANIMATION FOR SCHEDULE ==================== */
-        function initScheduleCursorEffects() {
-            const section = document.getElementById('page-schedule');
-            const glow = document.getElementById('schedule-cursor-glow');
-            if (!section || !glow) return;
-
-            section.addEventListener('mousemove', (e) => {
-                const rect = section.getBoundingClientRect();
-                const x = e.clientX - rect.left;
-                const y = e.clientY - rect.top;
-                glow.style.setProperty('--mouse-x', `${x}px`);
-                glow.style.setProperty('--mouse-y', `${y}px`);
-                glow.style.opacity = '1';
-            });
-
-            section.addEventListener('mouseleave', () => {
-                glow.style.opacity = '0';
-            });
-
-            // Interactive 3D Card tilt on mouse move
-            document.querySelectorAll('#schedule-timeline-container [data-tilt]').forEach(cardWrapper => {
-                const card = cardWrapper.querySelector('.schedule-card');
-                if (!card) return;
-
-                cardWrapper.addEventListener('mousemove', (e) => {
-                    const rect = cardWrapper.getBoundingClientRect();
-                    const x = e.clientX - rect.left - rect.width / 2;
-                    const y = e.clientY - rect.top - rect.height / 2;
-                    const rotX = (y / (rect.height / 2)) * -8;
-                    const rotY = (x / (rect.width / 2)) * 8;
-                    card.style.transform = `perspective(1000px) rotateX(${rotX}deg) rotateY(${rotY}deg) translateY(-3px)`;
-                });
-
-                cardWrapper.addEventListener('mouseleave', () => {
-                    card.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) translateY(0px)';
-                });
-            });
-        }
-
         /* Initial Setup */
         window.onload = function () {
             animateBg();
@@ -2922,7 +2358,6 @@
             renderCatalogEvents('all');
             initStep2Events();
             updateWizardUI();
-            initScheduleCursorEffects();
 
             /* Production: no temporary test widgets */
         };
