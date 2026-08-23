@@ -1955,11 +1955,23 @@
         /* ==================== STEP 5 PAYMENT ENGINE ==================== */
         function initStep5Payment() {
             let total = 0;
+            const uniqueParticipants = new Set();
+            let isWorkshop = false;
+            
             state.selectedEvents.forEach(title => {
                 const ev = EVENT_RULES[title];
-                const memberCount = state.eventData[title].members.length;
-                total += (memberCount * ev.fee);
+                if (ev.isWorkshop) isWorkshop = true;
+                
+                state.eventData[title].members.forEach(m => {
+                    const identifier = m.email ? m.email.toLowerCase().trim() : (m.phone || m.name);
+                    if (identifier) uniqueParticipants.add(identifier);
+                });
             });
+            
+            const participantCount = uniqueParticipants.size;
+            const feePerParticipant = isWorkshop ? 300 : 250;
+            total = participantCount * feePerParticipant;
+            
             state.calculatedTotal = total;
 
             document.getElementById('payment-amount-display').innerText = `₹${total}`;
