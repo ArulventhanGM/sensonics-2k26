@@ -2073,7 +2073,7 @@
                         <div>
                             <label class="block text-xs font-mono uppercase text-slate-700 mb-2 font-bold">Abstract File (PDF format) *</label>
                             <input type="file" accept="application/pdf" onchange="handleAbstractUpload('${title}', event)" class="glass-input w-full px-4 py-2 rounded-xl text-xs">
-                            <span class="text-[11px] text-slate-500 mt-1 block font-medium">Selected: ${data.abstractFile ? data.abstractFile.name : 'No file chosen'}</span>
+                            <span id="abstract-label-${ev.id}" class="text-[11px] mt-1 block font-medium font-mono ${data.abstractFile ? 'text-emerald-600' : 'text-slate-500'}">Selected: ${data.abstractFile ? data.abstractFile.name : 'No file chosen'}</span>
                         </div>
                     `;
                     container.appendChild(card);
@@ -2112,22 +2112,36 @@
 
         function handleAbstractUpload(title, event) {
             const file = event.target.files[0];
-            if (file) {
-                if (file.type !== 'application/pdf') {
-                    showToast("Please select a valid PDF file.");
-                    return;
-                }
-                const reader = new FileReader();
-                reader.onload = function (e) {
-                    state.eventData[title].abstractFile = {
-                        name: file.name,
-                        mimeType: file.type,
-                        base64: e.target.result.split(',')[1]
-                    };
-                    initStep4Projects();
-                };
-                reader.readAsDataURL(file);
+            if (!file) return;
+
+            if (file.type !== 'application/pdf') {
+                showToast("Please select a valid PDF file.");
+                event.target.value = "";
+                return;
             }
+
+            const reader = new FileReader();
+            reader.onload = function (e) {
+                // Save to state FIRST
+                state.eventData[title].abstractFile = {
+                    name: file.name,
+                    mimeType: file.type,
+                    base64: e.target.result.split(',')[1]
+                };
+
+                // Update ONLY the label — do NOT call initStep4Projects().
+                // That function rebuilds the entire DOM which resets the file
+                // input element. Because onload fires asynchronously, the DOM
+                // rebuild happens before the state is written, making
+                // abstractFile appear null when step-4 validation runs.
+                const ev = EVENT_RULES[title];
+                const labelEl = document.getElementById('abstract-label-' + ev.id);
+                if (labelEl) {
+                    labelEl.textContent = 'Selected: ' + file.name;
+                    labelEl.className = 'text-[11px] text-emerald-600 mt-1 block font-medium font-mono';
+                }
+            };
+            reader.readAsDataURL(file);
         }
 
         function toggleWhatsappJoined(title, val) {
