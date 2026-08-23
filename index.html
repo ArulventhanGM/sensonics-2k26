@@ -783,8 +783,15 @@
                         class="p-2 rounded-xl bg-slate-200 text-slate-600 hover:text-slate-900">✕</button>
                 </div>
 
-                <p id="modal-event-desc" class="text-slate-700 text-sm leading-relaxed">Detailed rules and requirements
-                    description.</p>
+                <div class="space-y-2">
+                    <h4 class="text-xs font-mono uppercase text-slate-500 font-bold tracking-wider">Event Instructions & Description</h4>
+                    <div id="modal-event-desc" class="text-slate-700 text-xs sm:text-sm leading-relaxed whitespace-pre-line bg-slate-50 p-4 rounded-2xl border border-slate-200"></div>
+                </div>
+
+                <div class="space-y-2">
+                    <h4 class="text-xs font-mono uppercase text-slate-500 font-bold tracking-wider">Event Coordinators & Queries</h4>
+                    <div id="modal-event-coordinators" class="grid sm:grid-cols-2 gap-3"></div>
+                </div>
 
                 <div class="grid grid-cols-2 sm:grid-cols-3 gap-4 font-mono text-xs">
                     <div class="bg-slate-100 p-3 rounded-xl border border-slate-200">
@@ -913,7 +920,21 @@
                 fee: 250,
                 requiresTitle: true,
                 requiresAbstract: true,
-                desc: "National level paper presentation contest. Showcase innovative engineering concepts, research papers, and experimental designs.",
+                shortDesc: "National level paper presentation contest. Showcase innovative engineering concepts and research papers.",
+                desc: `📌 RULES & INSTRUCTIONS FOR PAPER MANIA:
+• Papers from any engineering/technology domain are permitted for presentation.
+• Each team should consist of a minimum of 2 and a maximum of 3 members.
+• Any one member from the team (preferably Team Leader) is sufficient to register for the event.
+• The Abstract must be submitted at the time of registration.
+• Plagiarism should be strictly avoided.
+• Refreshments and Lunch will be provided for the participants.
+• Registration Fee: ₹250 per head.
+• Participants are required to carry their College ID Cards.
+• Further information regarding the event will be communicated through the registered email ID.`,
+                coordinators: [
+                    { name: "Rishikeshwaran M", phone: "+91 97157 08810" },
+                    { name: "Abisha Carin D", phone: "+91 94860 67288" }
+                ],
                 whatsappUrl: "https://chat.whatsapp.com/sample_papermania"
             },
             "Project Inventa": {
@@ -926,7 +947,26 @@
                 fee: 250,
                 requiresTitle: true,
                 requiresAbstract: true,
-                desc: "Hardware project exposition. Present operational prototypes, embedded hardware solutions, or sensor automation rigs.",
+                shortDesc: "Hardware project exposition. Present operational prototypes, embedded hardware solutions, or sensor automation rigs.",
+                desc: `💡 Claim your spot among the brightest minds - Register for Project Inventa now!
+"The only difference between a dream and a breakthrough is the courage to take the first step."
+
+📌 INSTRUCTIONS FOR PROJECT INVENTA:
+• Select a project from the open innovation problem statements.
+• Each team must consist of a minimum of 2 and a maximum of 3 members.
+• The Abstract must be submitted at the time of registration.
+• Plagiarism should be strictly avoided.
+• Participants are required to carry their College ID Cards.
+• Further information regarding the event will be communicated through the registered Email ID.
+• Refreshments and Lunch will be provided for the participants.
+
+⚠️ NOTE:
+• Abstract selection will be done if count exceeds our requirement.
+• If payment was already made for another event, each member should upload that screenshot.`,
+                coordinators: [
+                    { name: "Mr. Arulventhan", phone: "81228 15659" },
+                    { name: "Ms. Prabhashini", phone: "93612 89677" }
+                ],
                 whatsappUrl: "https://chat.whatsapp.com/sample_projectinventa"
             },
             "Code": {
@@ -939,7 +979,23 @@
                 fee: 250,
                 requiresTitle: false,
                 requiresAbstract: false,
-                desc: "Competitive algorithmic programming and debugging challenge. Strictly 3 members per team.",
+                shortDesc: "Competitive algorithmic programming and debugging challenge. Strictly 3 members per team.",
+                desc: `⚡ CODE DEBUG CONSOLE
+
+Each team consists of 3 members, each with a dedicated role:
+👨‍💻 Member 1 – Coder: Implement the full program based on a given problem statement. Write correct and efficient code within the given time.
+🧑‍🔧 Member 2 – Debugger: Debug a faulty or broken program and fix all errors (logical/syntax/runtime). Identify issues quickly and provide a working solution.
+🧑‍🏫 Member 3 – Algorithm Designer: Write pseudo code, step-by-step algorithm, or method implementation on paper. Represent the logic clearly and accurately in human-readable form.
+
+📌 RULES & COLLABORATION POLICY:
+• No discussion allowed until a team member finishes their individual task.
+• Once finished, that member can assist any of their team members.
+• Mobile phones, internet, or other gadgets are strictly prohibited in the event.
+• Teams must bring at least one laptop.`,
+                coordinators: [
+                    { name: "Shafeek A", phone: "93423 93529" },
+                    { name: "Pradeep R", phone: "70946 16885" }
+                ],
                 whatsappUrl: "https://chat.whatsapp.com/sample_code"
             },
             "Bot": {
@@ -948,11 +1004,38 @@
                 category: "tech",
                 categoryLabel: "Technical",
                 minMembers: 2,
-                maxMembers: 4,
+                maxMembers: 3,
                 fee: 250,
                 requiresTitle: false,
                 requiresAbstract: false,
-                desc: "Robotics arena showdown. Test autonomous or wired robots in precision navigation and obstacle courses.",
+                shortDesc: "Robotics arena showdown. Test autonomous or wired rovers in obstacle courses and time trials.",
+                desc: `🤖 BOT BLITZ
+
+📌 ELIGIBILITY & TEAM FORMATION:
+• Multidisciplinary teams allowed from different colleges/academic disciplines.
+• Each team must consist of 2–3 members (Individual participation is not allowed).
+• Each team must bring their own rover and required equipment.
+• Valid student ID cards must be produced during verification.
+
+🏆 EVENT FORMAT:
+• Operate rovers on a predefined track with obstacles, turns, checkpoints, boundaries, and task areas.
+• Complete course and assigned tasks within specified time limit.
+
+⏱️ WINNER DETERMINATION:
+• Final Time = Actual Completion Time + Penalty Time.
+• Penalties applied for obstacle touches, boundary crossing, missed checkpoints, or rule violations.
+• Lowest final completion time wins. Tie-breaker attempt conducted if tie persists.
+
+📜 IMPORTANT INSTRUCTIONS:
+• Rover must be in proper working condition and approved by coordinators.
+• Operate rover only within designated track; manual assistance strictly prohibited unless permitted by organizers.
+• Safety instructions must be strictly followed.
+
+⚠️ Note: Participants are responsible for bringing their own rover.`,
+                coordinators: [
+                    { name: "Naveen Balaji K", phone: "+91 86828 52928" },
+                    { name: "Prathish C", phone: "+91 98651 93481" }
+                ],
                 whatsappUrl: "https://chat.whatsapp.com/sample_bot"
             },
             "Jumble": {
@@ -965,7 +1048,23 @@
                 fee: 250,
                 requiresTitle: false,
                 requiresAbstract: false,
-                desc: "Fast-paced word puzzle and cryptic technical terminology unscrambling contest.",
+                shortDesc: "Fast-paced word puzzle, sentence scramble, and picture puzzle unscrambling contest.",
+                desc: `🔤 JUMBLE JAM – EVENT RULES
+
+👥 TEAM FORMATION:
+• Each team must have a minimum of 2 and maximum of 3 members.
+• Teams must register with a team name before the event begins.
+
+🏆 EVENT STRUCTURE (2 ROUNDS):
+• Round 1 – Sentence Scramble: Letters of different words cut into pieces and mixed. Arrange letters to form a meaningful sentence within the time limit. Top teams qualify.
+• Round 2 – Picture Puzzle: Pictures of well-known personalities (e.g. Dr. A.P.J. Abdul Kalam) cut into pieces. Identify and arrange the picture correctly in shortest time. Highest total score wins.
+
+📜 GENERAL RULES:
+• Judges' decision will be final and binding.
+• Participants are expected to maintain sportsmanship throughout.`,
+                coordinators: [
+                    { name: "Lathika", phone: "+91 81223 37577" }
+                ],
                 whatsappUrl: "https://chat.whatsapp.com/sample_jumble"
             },
             "Memory": {
@@ -978,7 +1077,23 @@
                 fee: 250,
                 requiresTitle: false,
                 requiresAbstract: false,
-                desc: "Visual observation and photographic recall challenge for exactly 2 team members.",
+                shortDesc: "Visual observation and photographic recall challenge for exactly 2 team members.",
+                desc: `🧠 MEMORY MORPH
+
+📌 RULES & REGULATIONS:
+• Team Size: Exactly 2 members per team.
+• An image will be displayed on the screen for 5–10 minutes.
+• Carefully observe and memorize objects, colours, shapes, patterns, positions, numbers, and symbols.
+• Mobile phones, cameras, and external reference materials are strictly prohibited.
+• After observation, the original image will be completely hidden.
+• Recreate the image from memory using materials provided by organizers within the time limit.
+• Evaluation based on accuracy, arrangement, details, creativity, and overall similarity.
+• Both team members can collaborate during recreation.
+• Judges' decision will be final and binding.`,
+                coordinators: [
+                    { name: "Hari Prasanna", phone: "89403 74065" },
+                    { name: "Dharanidharan", phone: "99431 90765" }
+                ],
                 whatsappUrl: "https://chat.whatsapp.com/sample_memory"
             },
             "Recall": {
@@ -991,7 +1106,25 @@
                 fee: 250,
                 requiresTitle: false,
                 requiresAbstract: false,
-                desc: "Pattern recognition and audio-visual sequence recall competition.",
+                shortDesc: "Fun memory-based challenge testing observation, concentration, and logical recall.",
+                desc: `⚡ RECALL RUSH
+
+Recall Rush is a fun and exciting memory-based challenge where participants observe a picture carefully and memorize the objects shown.
+Observe. Remember. Recall. Win! 🧠⚡
+
+📌 RULES AND REGULATIONS:
+• Each team must have exactly 2 members.
+• Teams will be given a picture/situation to analyze.
+• 30 seconds provided to observe and analyze the picture.
+• Choose the most suitable items based on the given situation and justify choices logically.
+• No external assistance or communication with other teams.
+• Judges' decision will be final and binding.
+
+🎓 ELIGIBILITY: Open to all students from any department background with valid student ID cards.`,
+                coordinators: [
+                    { name: "Toejoe Francis F", phone: "93428 13230" },
+                    { name: "Uvanbabu S", phone: "93609 56694" }
+                ],
                 whatsappUrl: "https://chat.whatsapp.com/sample_recall"
             },
             "Pick": {
@@ -1004,7 +1137,21 @@
                 fee: 250,
                 requiresTitle: false,
                 requiresAbstract: false,
-                desc: "Extempore technical topic picking and rapid visual identification challenge.",
+                shortDesc: "Extempore task picking, creativity, and charades-style problem solving challenge.",
+                desc: `🎯 PICK & UNLEASH
+
+Pick & Unleash is an exciting challenge where participants pick a random task or problem and unleash their creativity to solve it. Tests quick thinking, problem-solving skills, creativity, and teamwork!
+
+📌 RULES & REGULATIONS:
+• Team size: 2–3 members.
+• A sheet with a word will be randomly picked from a box.
+• One member acts out the word while other members guess it.
+• Round 1: Time limit is 45 seconds per turn. No speaking/verbal clues allowed. Sheet must not be shown. No mobile phones or external help allowed.
+• Round 2: Top scoring teams qualify; same format with time limit reduced to 30 seconds.`,
+                coordinators: [
+                    { name: "Gowsika P", phone: "+91 99650 51087" },
+                    { name: "Hasika A", phone: "+91 90805 78009" }
+                ],
                 whatsappUrl: "https://chat.whatsapp.com/sample_pick"
             },
             "PLC": {
@@ -1018,7 +1165,26 @@
                 isWorkshop: true,
                 requiresTitle: false,
                 requiresAbstract: false,
-                desc: "Comprehensive hands-on training on Programmable Logic Controllers, ladder logic, and industrial automation interfaces.",
+                shortDesc: "Hands-on industrial automation training on Programmable Logic Controllers (PLC) & ladder logic.",
+                desc: `⚙️ WORKSHOP ON PLC
+
+📌 INSTRUCTIONS:
+1. All participants must be present by 9:00 AM sharp.
+2. Registered participants must attend the workshop for the full duration (9:00 AM to 3:30 PM).
+3. Participants should not take part in any other events during the workshop.
+4. Full-day attendance is mandatory to receive the participation certificate.
+5. Participants leaving midway will not be eligible for the certificate.
+
+📜 RULES:
+1. Workshop timing: 9:00 AM to 3:30 PM.
+2. Attendance will be monitored throughout the session.
+3. Lunch and refreshments will be provided during the workshop.
+4. Sessions will include interactive discussions and hands-on activities.
+5. A student can register for only one workshop.`,
+                coordinators: [
+                    { name: "Rishikeshwaran M (General Query)", phone: "97157 08810" },
+                    { name: "Thanmathi H T (PLC Coordinator)", phone: "94439 46200" }
+                ],
                 whatsappUrl: "https://chat.whatsapp.com/sample_plc"
             },
             "NodeRED": {
@@ -1032,7 +1198,26 @@
                 isWorkshop: true,
                 requiresTitle: false,
                 requiresAbstract: false,
-                desc: "Hands-on Industrial IoT workflow development using Node-RED programming and MQTT protocols.",
+                shortDesc: "Hands-on Industrial IoT workflow development using Node-RED programming and MQTT protocols.",
+                desc: `🌐 WORKSHOP ON NODERED
+
+📌 INSTRUCTIONS:
+1. All participants must be present by 9:00 AM sharp.
+2. Registered participants must attend the workshop for the full duration (9:00 AM to 3:30 PM).
+3. Participants should not take part in any other events during the workshop.
+4. Full-day attendance is mandatory to receive the participation certificate.
+5. Participants leaving midway will not be eligible for the certificate.
+
+📜 RULES:
+1. Workshop timing: 9:00 AM to 3:30 PM.
+2. Attendance will be monitored throughout the session.
+3. Lunch and refreshments will be provided during the workshop.
+4. Sessions will include interactive discussions and hands-on activities.
+5. A student can register for only one workshop.`,
+                coordinators: [
+                    { name: "Rishikeshwaran M (General Query)", phone: "97157 08810" },
+                    { name: "Rasigashri E N (Node-RED Coordinator)", phone: "93610 16493" }
+                ],
                 whatsappUrl: "https://chat.whatsapp.com/sample_nodered"
             }
         };
@@ -1525,7 +1710,7 @@
                             <span class="font-mono text-xs text-slate-500 font-bold">₹${ev.fee} / part</span>
                         </div>
                         <h3 class="font-display text-2xl font-bold text-slate-900">${ev.title}</h3>
-                        <p class="text-xs text-slate-600 leading-relaxed line-clamp-3">${ev.desc}</p>
+                        <p class="text-xs text-slate-600 leading-relaxed line-clamp-3">${ev.shortDesc || ev.desc}</p>
                     </div>
 
                     <div class="space-y-3 pt-3 border-t border-slate-200">
@@ -1568,6 +1753,23 @@
             document.getElementById('modal-event-teamsize').innerText = `${ev.minMembers === ev.maxMembers ? ev.minMembers : ev.minMembers + ' - ' + ev.maxMembers} Members`;
             document.getElementById('modal-event-fee').innerText = `₹${ev.fee}`;
             document.getElementById('modal-event-abstract').innerText = ev.requiresAbstract ? "Required (PDF)" : "Not Required";
+
+            const coordContainer = document.getElementById('modal-event-coordinators');
+            if (coordContainer && ev.coordinators) {
+                coordContainer.innerHTML = ev.coordinators.map(c => `
+                    <div class="flex items-center justify-between p-3 rounded-2xl bg-white border border-slate-200 shadow-sm text-xs">
+                        <div class="flex items-center space-x-2">
+                            <span class="w-7 h-7 rounded-xl bg-sky-500/10 text-sky-600 flex items-center justify-center font-bold">👤</span>
+                            <span class="font-bold text-slate-900">${c.name}</span>
+                        </div>
+                        <a href="tel:${c.phone.replace(/[^0-9+]/g, '')}" class="glass-button-secondary px-3 py-1.5 rounded-xl text-sky-700 font-mono font-bold hover:bg-sky-50 transition-all flex items-center space-x-1">
+                            <span>📞</span>
+                            <span>${c.phone}</span>
+                        </a>
+                    </div>
+                `).join('');
+            }
+
             document.getElementById('event-modal').classList.remove('hidden');
         }
 
