@@ -1,5 +1,5 @@
 const CONFIG = {
-    API_URL: "https://script.google.com/macros/library/d/10Slpr6X9lMCzPPC9Aaw-Gazl46LsSsaTffT4db0gZuW0Vyvamp4MLugN/2",
+    API_URL: "https://script.google.com/macros/s/AKfycbxS7xlk3AMi15GTi5Q7uogd4XU6N7_xYET_7Nmwm4A18CXCrvCEm1Cs65tu81ACIIV6/exec",
     PAYMENT_QR_URL: "/payment-qr/unnamed.jpg",
     UPI_ID: "YOUR_UPI_ID",
     SYMPOSIUM_NAME: "Sensonics '26",
