@@ -1,15 +1,18 @@
 <!DOCTYPE html>
 <html lang="en" class="light">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sensonics '26 | National Level Technical Symposium | Kongu Engineering College</title>
-    
+
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Outfit:wght@400;600;700;800;900&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
-    
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Outfit:wght@400;600;700;800;900&family=Space+Grotesk:wght@500;700&display=swap"
+        rel="stylesheet">
+
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
@@ -45,14 +48,17 @@
         ::-webkit-scrollbar {
             width: 8px;
         }
+
         ::-webkit-scrollbar-track {
             background: #f1f5f9;
         }
+
         ::-webkit-scrollbar-thumb {
             background: rgba(148, 163, 184, 0.4);
             border-radius: 9999px;
             border: 2px solid #f1f5f9;
         }
+
         ::-webkit-scrollbar-thumb:hover {
             background: rgba(100, 116, 139, 0.6);
         }
@@ -69,6 +75,7 @@
         .glass-panel-hover {
             transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
         }
+
         .glass-panel-hover:hover {
             background: rgba(255, 255, 255, 0.92);
             border-color: rgba(2, 132, 199, 0.35);
@@ -91,6 +98,7 @@
             backdrop-filter: blur(10px);
             transition: all 0.3s ease;
         }
+
         .glass-input:focus {
             background: #ffffff;
             border-color: #0284c7;
@@ -105,6 +113,7 @@
             box-shadow: 0 8px 25px rgba(2, 132, 199, 0.3);
             transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
         }
+
         .glass-button-primary:hover {
             transform: translateY(-2px) scale(1.02);
             box-shadow: 0 12px 35px rgba(124, 58, 237, 0.4);
@@ -118,6 +127,7 @@
             color: #334155;
             transition: all 0.3s ease;
         }
+
         .glass-button-secondary:hover {
             background: #ffffff;
             border-color: #94a3b8;
@@ -145,11 +155,13 @@
             color: #0284c7;
             border: 1px solid rgba(2, 132, 199, 0.25);
         }
+
         .badge-violet {
             background: rgba(124, 58, 237, 0.1);
             color: #7c3aed;
             border: 1px solid rgba(124, 58, 237, 0.25);
         }
+
         .badge-magenta {
             background: rgba(219, 39, 119, 0.1);
             color: #db2777;
@@ -197,53 +209,82 @@
         }
     </style>
 </head>
-<body class="bg-[#f6f8fd] text-slate-800 min-h-screen flex flex-col font-sans selection:bg-sky-500 selection:text-white overflow-x-hidden">
+
+<body
+    class="bg-[#f6f8fd] text-slate-800 min-h-screen flex flex-col font-sans selection:bg-sky-500 selection:text-white overflow-x-hidden">
 
     <canvas id="bg-canvas"></canvas>
 
     <header class="glass-nav fixed top-0 left-0 right-0 z-50 transition-all duration-300">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex items-center justify-between h-20">
-                
+
                 <!-- Logo / Department Info -->
                 <a href="#home" onclick="navTo('home')" class="flex items-center space-x-3 group cursor-pointer">
-                    <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-sky-500 to-violet-600 p-[1px] shadow-lg shadow-sky-500/20 group-hover:scale-105 transition-transform duration-300">
+                    <div
+                        class="w-10 h-10 rounded-xl bg-gradient-to-tr from-sky-500 to-violet-600 p-[1px] shadow-lg shadow-sky-500/20 group-hover:scale-105 transition-transform duration-300">
                         <div class="w-full h-full bg-white rounded-[11px] flex items-center justify-center">
-                            <span class="font-display font-black text-transparent bg-clip-text bg-gradient-to-r from-sky-600 to-violet-600 text-xl">S</span>
+                            <span
+                                class="font-display font-black text-transparent bg-clip-text bg-gradient-to-r from-sky-600 to-violet-600 text-xl">S</span>
                         </div>
                     </div>
                     <div>
-                        <span class="font-display font-black tracking-wider text-xl bg-clip-text text-transparent bg-gradient-to-r from-slate-900 via-sky-900 to-violet-900">SENSONICS '26</span>
-                        <p class="text-[10px] text-slate-500 font-mono tracking-wider uppercase hidden sm:block">Dept of EIE • Kongu Engg College</p>
+                        <span
+                            class="font-display font-black tracking-wider text-xl bg-clip-text text-transparent bg-gradient-to-r from-slate-900 via-sky-900 to-violet-900">SENSONICS
+                            '26</span>
+                        <p class="text-[10px] text-slate-500 font-mono tracking-wider uppercase hidden sm:block">Dept of
+                            EIE • Kongu Engg College</p>
                     </div>
                 </a>
 
                 <!-- Desktop Navigation Links (Workshops link removed) -->
-                <nav class="hidden md:flex items-center space-x-1 glass-panel px-4 py-1.5 rounded-full border-slate-200">
-                    <button onclick="navTo('home')" class="nav-btn px-4 py-2 rounded-full text-sm font-semibold text-slate-600 hover:text-slate-900 hover:bg-slate-100 transition-all" data-page="home">Home</button>
-                    <button onclick="navTo('events')" class="nav-btn px-4 py-2 rounded-full text-sm font-semibold text-slate-600 hover:text-slate-900 hover:bg-slate-100 transition-all" data-page="events">Events</button>
-                    <button onclick="navTo('about')" class="nav-btn px-4 py-2 rounded-full text-sm font-semibold text-slate-600 hover:text-slate-900 hover:bg-slate-100 transition-all" data-page="about">About</button>
+                <nav
+                    class="hidden md:flex items-center space-x-1 glass-panel px-4 py-1.5 rounded-full border-slate-200">
+                    <button onclick="navTo('home')"
+                        class="nav-btn px-4 py-2 rounded-full text-sm font-semibold text-slate-600 hover:text-slate-900 hover:bg-slate-100 transition-all"
+                        data-page="home">Home</button>
+                    <button onclick="navTo('events')"
+                        class="nav-btn px-4 py-2 rounded-full text-sm font-semibold text-slate-600 hover:text-slate-900 hover:bg-slate-100 transition-all"
+                        data-page="events">Events</button>
+                    <button onclick="navTo('about')"
+                        class="nav-btn px-4 py-2 rounded-full text-sm font-semibold text-slate-600 hover:text-slate-900 hover:bg-slate-100 transition-all"
+                        data-page="about">About</button>
                 </nav>
 
                 <!-- Action Button & Cart Indicator -->
                 <div class="flex items-center space-x-3">
-                    <button onclick="navTo('register')" class="glass-button-primary px-5 py-2.5 rounded-full text-sm font-bold text-white flex items-center space-x-2">
+                    <button onclick="navTo('register')"
+                        class="glass-button-primary px-5 py-2.5 rounded-full text-sm font-bold text-white flex items-center space-x-2">
                         <span>Register Now</span>
-                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                        </svg>
                     </button>
                     <!-- Mobile Hamburger -->
-                    <button onclick="toggleMobileMenu()" class="md:hidden p-2 rounded-xl glass-panel text-slate-600 hover:text-slate-900 border-slate-200">
-                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"/></svg>
+                    <button onclick="toggleMobileMenu()"
+                        class="md:hidden p-2 rounded-xl glass-panel text-slate-600 hover:text-slate-900 border-slate-200">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M4 6h16M4 12h16m-7 6h7" />
+                        </svg>
                     </button>
                 </div>
             </div>
         </div>
 
-        <div id="mobile-menu" class="hidden md:hidden glass-panel border-t border-slate-200/80 px-4 pt-3 pb-6 space-y-2">
-            <button onclick="navTo('home'); toggleMobileMenu();" class="block w-full text-left px-4 py-2.5 rounded-xl text-slate-700 hover:bg-slate-100 font-semibold">Home</button>
-            <button onclick="navTo('events'); toggleMobileMenu();" class="block w-full text-left px-4 py-2.5 rounded-xl text-slate-700 hover:bg-slate-100 font-semibold">Events</button>
-            <button onclick="navTo('about'); toggleMobileMenu();" class="block w-full text-left px-4 py-2.5 rounded-xl text-slate-700 hover:bg-slate-100 font-semibold">About KEC</button>
-            <button onclick="navTo('register'); toggleMobileMenu();" class="block w-full text-left px-4 py-2.5 rounded-xl bg-gradient-to-r from-sky-500 to-violet-600 text-white font-bold">Register Wizard</button>
+        <div id="mobile-menu"
+            class="hidden md:hidden glass-panel border-t border-slate-200/80 px-4 pt-3 pb-6 space-y-2">
+            <button onclick="navTo('home'); toggleMobileMenu();"
+                class="block w-full text-left px-4 py-2.5 rounded-xl text-slate-700 hover:bg-slate-100 font-semibold">Home</button>
+            <button onclick="navTo('events'); toggleMobileMenu();"
+                class="block w-full text-left px-4 py-2.5 rounded-xl text-slate-700 hover:bg-slate-100 font-semibold">Events</button>
+            <button onclick="navTo('about'); toggleMobileMenu();"
+                class="block w-full text-left px-4 py-2.5 rounded-xl text-slate-700 hover:bg-slate-100 font-semibold">About
+                KEC</button>
+            <button onclick="navTo('register'); toggleMobileMenu();"
+                class="block w-full text-left px-4 py-2.5 rounded-xl bg-gradient-to-r from-sky-500 to-violet-600 text-white font-bold">Register
+                Wizard</button>
         </div>
     </header>
 
@@ -251,10 +292,11 @@
 
         <!-- ==================== HOME PAGE SECTION ==================== -->
         <section id="page-home" class="page-section space-y-16 transition-all duration-500">
-            
+
             <!-- Hero Banner with Integrated ParticleText Canvas -->
             <div class="relative py-8 md:py-14 text-center space-y-6">
-                <div class="inline-flex items-center space-x-2 px-4 py-1.5 rounded-full glass-panel border-sky-300/60 text-sky-700 text-xs sm:text-sm font-mono tracking-wide uppercase shadow-sm">
+                <div
+                    class="inline-flex items-center space-x-2 px-4 py-1.5 rounded-full glass-panel border-sky-300/60 text-sky-700 text-xs sm:text-sm font-mono tracking-wide uppercase shadow-sm">
                     <span class="w-2.5 h-2.5 rounded-full bg-sky-500 animate-ping"></span>
                     <span>National Level Technical Symposium</span>
                 </div>
@@ -267,17 +309,25 @@
                 <div class="space-y-3 max-w-3xl mx-auto">
                     <p class="text-lg sm:text-2xl text-slate-700 font-medium leading-relaxed">
                         Department of Electronics and Instrumentation Engineering
-                        <span class="block text-sky-600 font-bold mt-1">Kongu Engineering College (Autonomous), Perundurai</span>
+                        <span class="block text-sky-600 font-bold mt-1">Kongu Engineering College (Autonomous),
+                            Perundurai</span>
                     </p>
-                    <p class="text-xs text-slate-500 font-mono">Hover over or tap the header title above to trigger interactive particle dispersion.</p>
+                    <p class="text-xs text-slate-500 font-mono">Hover over or tap the header title above to trigger
+                        interactive particle dispersion.</p>
                 </div>
 
                 <div class="flex flex-col sm:flex-row items-center justify-center gap-4 pt-4">
-                    <button onclick="navTo('register')" class="w-full sm:w-auto glass-button-primary px-8 py-4 rounded-2xl font-bold text-lg text-white flex items-center justify-center space-x-3 group shadow-xl shadow-sky-500/20">
+                    <button onclick="navTo('register')"
+                        class="w-full sm:w-auto glass-button-primary px-8 py-4 rounded-2xl font-bold text-lg text-white flex items-center justify-center space-x-3 group shadow-xl shadow-sky-500/20">
                         <span>EXPLORE & REGISTER</span>
-                        <svg class="w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"/></svg>
+                        <svg class="w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none"
+                            stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                        </svg>
                     </button>
-                    <button onclick="navTo('events')" class="w-full sm:w-auto glass-button-secondary px-8 py-4 rounded-2xl font-bold text-lg text-slate-700 hover:text-slate-900">
+                    <button onclick="navTo('events')"
+                        class="w-full sm:w-auto glass-button-secondary px-8 py-4 rounded-2xl font-bold text-lg text-slate-700 hover:text-slate-900">
                         Browse Events
                     </button>
                 </div>
@@ -285,19 +335,24 @@
                 <!-- Highlights Stats Row -->
                 <div class="grid grid-cols-2 md:grid-cols-4 gap-4 pt-10 max-w-4xl mx-auto">
                     <div class="glass-panel p-5 rounded-2xl text-center">
-                        <span class="font-display text-3xl sm:text-4xl font-black text-sky-600 block font-mono">04</span>
+                        <span
+                            class="font-display text-3xl sm:text-4xl font-black text-sky-600 block font-mono">04</span>
                         <span class="text-xs uppercase tracking-wider text-slate-500 font-bold">Technical Events</span>
                     </div>
                     <div class="glass-panel p-5 rounded-2xl text-center">
-                        <span class="font-display text-3xl sm:text-4xl font-black text-violet-600 block font-mono">04</span>
+                        <span
+                            class="font-display text-3xl sm:text-4xl font-black text-violet-600 block font-mono">04</span>
                         <span class="text-xs uppercase tracking-wider text-slate-500 font-bold">Non-Tech Events</span>
                     </div>
                     <div class="glass-panel p-5 rounded-2xl text-center">
-                        <span class="font-display text-3xl sm:text-4xl font-black text-pink-600 block font-mono">02</span>
-                        <span class="text-xs uppercase tracking-wider text-slate-500 font-bold">Hands-on Workshops</span>
+                        <span
+                            class="font-display text-3xl sm:text-4xl font-black text-pink-600 block font-mono">02</span>
+                        <span class="text-xs uppercase tracking-wider text-slate-500 font-bold">Hands-on
+                            Workshops</span>
                     </div>
                     <div class="glass-panel p-5 rounded-2xl text-center">
-                        <span class="font-display text-3xl sm:text-4xl font-black text-amber-600 block font-mono">₹25K+</span>
+                        <span
+                            class="font-display text-3xl sm:text-4xl font-black text-amber-600 block font-mono">₹25K+</span>
                         <span class="text-xs uppercase tracking-wider text-slate-500 font-bold">Cash Prizes</span>
                     </div>
                 </div>
@@ -305,25 +360,40 @@
 
             <div class="grid md:grid-cols-3 gap-6">
                 <div class="glass-panel glass-panel-hover p-8 rounded-3xl space-y-4">
-                    <div class="w-12 h-12 rounded-2xl bg-sky-500/10 border border-sky-500/20 flex items-center justify-center text-sky-600">
-                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 01-2 2h-1a2 2 0 01-2-2v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"/></svg>
+                    <div
+                        class="w-12 h-12 rounded-2xl bg-sky-500/10 border border-sky-500/20 flex items-center justify-center text-sky-600">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 01-2 2h-1a2 2 0 01-2-2v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
+                        </svg>
                     </div>
                     <h3 class="font-display text-xl font-bold text-slate-900">Innovation & Hardware</h3>
-                    <p class="text-slate-600 text-sm leading-relaxed">Showcase your ground-breaking engineering projects, paper presentations, and robotic creations before expert juries.</p>
+                    <p class="text-slate-600 text-sm leading-relaxed">Showcase your ground-breaking engineering
+                        projects, paper presentations, and robotic creations before expert juries.</p>
                 </div>
                 <div class="glass-panel glass-panel-hover p-8 rounded-3xl space-y-4">
-                    <div class="w-12 h-12 rounded-2xl bg-violet-500/10 border border-violet-500/20 flex items-center justify-center text-violet-600">
-                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"/></svg>
+                    <div
+                        class="w-12 h-12 rounded-2xl bg-violet-500/10 border border-violet-500/20 flex items-center justify-center text-violet-600">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
+                        </svg>
                     </div>
                     <h3 class="font-display text-xl font-bold text-slate-900">Industrial Automation</h3>
-                    <p class="text-slate-600 text-sm leading-relaxed">Master PLC programming and NodeRED IoT protocols through intensive practical workshops led by industry specialists.</p>
+                    <p class="text-slate-600 text-sm leading-relaxed">Master PLC programming and NodeRED IoT protocols
+                        through intensive practical workshops led by industry specialists.</p>
                 </div>
                 <div class="glass-panel glass-panel-hover p-8 rounded-3xl space-y-4">
-                    <div class="w-12 h-12 rounded-2xl bg-pink-500/10 border border-pink-500/20 flex items-center justify-center text-pink-600">
-                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"/></svg>
+                    <div
+                        class="w-12 h-12 rounded-2xl bg-pink-500/10 border border-pink-500/20 flex items-center justify-center text-pink-600">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
+                        </svg>
                     </div>
                     <h3 class="font-display text-xl font-bold text-slate-900">Seamless Team Registration</h3>
-                    <p class="text-slate-600 text-sm leading-relaxed">Register across multiple events with smart team member reuse, real-time fee calculation, and quick UPI verification.</p>
+                    <p class="text-slate-600 text-sm leading-relaxed">Register across multiple events with smart team
+                        member reuse, real-time fee calculation, and quick UPI verification.</p>
                 </div>
             </div>
         </section>
@@ -333,15 +403,24 @@
             <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 border-b border-slate-200 pb-6">
                 <div>
                     <h2 class="font-display text-3xl sm:text-5xl font-extrabold text-slate-900">SYMPOSIUM EVENTS</h2>
-                    <p class="text-slate-600 mt-2">Explore 10 curated technical, non-technical, and workshop challenges.</p>
+                    <p class="text-slate-600 mt-2">Explore 10 curated technical, non-technical, and workshop challenges.
+                    </p>
                 </div>
 
                 <!-- Category Filters -->
                 <div class="flex flex-wrap gap-2 glass-panel p-1.5 rounded-2xl border-slate-200">
-                    <button onclick="filterEvents('all')" class="event-filter-btn px-4 py-2 rounded-xl text-sm font-bold transition-all bg-sky-600 text-white shadow-sm" data-cat="all">All</button>
-                    <button onclick="filterEvents('tech')" class="event-filter-btn px-4 py-2 rounded-xl text-sm font-bold transition-all text-slate-600 hover:text-slate-900" data-cat="tech">Technical</button>
-                    <button onclick="filterEvents('nontech')" class="event-filter-btn px-4 py-2 rounded-xl text-sm font-bold transition-all text-slate-600 hover:text-slate-900" data-cat="nontech">Non-Technical</button>
-                    <button onclick="filterEvents('workshop')" class="event-filter-btn px-4 py-2 rounded-xl text-sm font-bold transition-all text-slate-600 hover:text-slate-900" data-cat="workshop">Workshops</button>
+                    <button onclick="filterEvents('all')"
+                        class="event-filter-btn px-4 py-2 rounded-xl text-sm font-bold transition-all bg-sky-600 text-white shadow-sm"
+                        data-cat="all">All</button>
+                    <button onclick="filterEvents('tech')"
+                        class="event-filter-btn px-4 py-2 rounded-xl text-sm font-bold transition-all text-slate-600 hover:text-slate-900"
+                        data-cat="tech">Technical</button>
+                    <button onclick="filterEvents('nontech')"
+                        class="event-filter-btn px-4 py-2 rounded-xl text-sm font-bold transition-all text-slate-600 hover:text-slate-900"
+                        data-cat="nontech">Non-Technical</button>
+                    <button onclick="filterEvents('workshop')"
+                        class="event-filter-btn px-4 py-2 rounded-xl text-sm font-bold transition-all text-slate-600 hover:text-slate-900"
+                        data-cat="workshop">Workshops</button>
                 </div>
             </div>
 
@@ -355,15 +434,21 @@
         <section id="page-about" class="page-section space-y-12 hidden transition-all duration-500">
             <div class="max-w-4xl mx-auto space-y-8">
                 <div class="text-center space-y-3">
-                    <span class="text-sky-600 text-sm font-mono tracking-widest uppercase font-bold">Institution & Department</span>
-                    <h2 class="font-display text-4xl sm:text-5xl font-black text-slate-900">KONGU ENGINEERING COLLEGE</h2>
+                    <span class="text-sky-600 text-sm font-mono tracking-widest uppercase font-bold">Institution &
+                        Department</span>
+                    <h2 class="font-display text-4xl sm:text-5xl font-black text-slate-900">KONGU ENGINEERING COLLEGE
+                    </h2>
                     <p class="text-slate-600 font-medium">Perundurai, Erode - 638060, Tamil Nadu</p>
                 </div>
 
                 <div class="glass-panel p-8 sm:p-10 rounded-3xl space-y-6">
-                    <h3 class="font-display text-2xl font-bold text-slate-900 border-b border-slate-200 pb-3">Department of Electronics and Instrumentation Engineering</h3>
+                    <h3 class="font-display text-2xl font-bold text-slate-900 border-b border-slate-200 pb-3">Department
+                        of Electronics and Instrumentation Engineering</h3>
                     <p class="text-slate-700 leading-relaxed">
-                        The Department of Electronics and Instrumentation Engineering (EIE) at Kongu Engineering College was established to produce high-caliber instrumentation engineers skilled in industrial automation, process control, sensors, and modern embedded systems. SENSONICS '26 is the annual national flagship symposium bringing together budding engineering minds across the country.
+                        The Department of Electronics and Instrumentation Engineering (EIE) at Kongu Engineering College
+                        was established to produce high-caliber instrumentation engineers skilled in industrial
+                        automation, process control, sensors, and modern embedded systems. SENSONICS '26 is the annual
+                        national flagship symposium bringing together budding engineering minds across the country.
                     </p>
                     <div class="grid sm:grid-cols-2 gap-4 pt-4">
                         <div class="bg-slate-100/80 p-4 rounded-2xl border border-slate-200">
@@ -381,60 +466,89 @@
 
         <!-- ==================== REGISTRATION WIZARD SECTION ==================== -->
         <section id="page-register" class="page-section space-y-8 hidden transition-all duration-500">
-            
+
             <!-- Wizard Header & Progress Bar -->
             <div class="glass-panel p-6 rounded-3xl space-y-6 border-slate-200">
                 <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
                     <div>
-                        <span class="text-sky-600 text-xs font-mono tracking-widest uppercase font-bold">Sensonics '26 Registration Wizard</span>
-                        <h2 id="wizard-step-title" class="font-display text-2xl sm:text-3xl font-extrabold text-slate-900">01. Participant Details</h2>
+                        <span class="text-sky-600 text-xs font-mono tracking-widest uppercase font-bold">Sensonics '26
+                            Registration Wizard</span>
+                        <h2 id="wizard-step-title"
+                            class="font-display text-2xl sm:text-3xl font-extrabold text-slate-900">01. Participant
+                            Details</h2>
                     </div>
                     <div class="flex items-center space-x-2">
-                        <span id="wizard-step-badge" class="px-3 py-1 rounded-full badge-cyan text-xs font-mono font-bold">Step 1 of 6</span>
+                        <span id="wizard-step-badge"
+                            class="px-3 py-1 rounded-full badge-cyan text-xs font-mono font-bold">Step 1 of 6</span>
                     </div>
                 </div>
 
                 <!-- Step Tabs Bar -->
                 <div class="grid grid-cols-6 gap-2 pt-2">
-                    <div class="step-bar-item h-2.5 rounded-full bg-sky-500 transition-all duration-300" id="step-bar-1"></div>
-                    <div class="step-bar-item h-2.5 rounded-full bg-slate-200 transition-all duration-300" id="step-bar-2"></div>
-                    <div class="step-bar-item h-2.5 rounded-full bg-slate-200 transition-all duration-300" id="step-bar-3"></div>
-                    <div class="step-bar-item h-2.5 rounded-full bg-slate-200 transition-all duration-300" id="step-bar-4"></div>
-                    <div class="step-bar-item h-2.5 rounded-full bg-slate-200 transition-all duration-300" id="step-bar-5"></div>
-                    <div class="step-bar-item h-2.5 rounded-full bg-slate-200 transition-all duration-300" id="step-bar-6"></div>
+                    <div class="step-bar-item h-2.5 rounded-full bg-sky-500 transition-all duration-300"
+                        id="step-bar-1"></div>
+                    <div class="step-bar-item h-2.5 rounded-full bg-slate-200 transition-all duration-300"
+                        id="step-bar-2"></div>
+                    <div class="step-bar-item h-2.5 rounded-full bg-slate-200 transition-all duration-300"
+                        id="step-bar-3"></div>
+                    <div class="step-bar-item h-2.5 rounded-full bg-slate-200 transition-all duration-300"
+                        id="step-bar-4"></div>
+                    <div class="step-bar-item h-2.5 rounded-full bg-slate-200 transition-all duration-300"
+                        id="step-bar-5"></div>
+                    <div class="step-bar-item h-2.5 rounded-full bg-slate-200 transition-all duration-300"
+                        id="step-bar-6"></div>
                 </div>
             </div>
 
             <!-- STEP 1: PARTICIPANT / LEADER DETAILS -->
             <div id="wizard-step-1" class="wizard-step-content glass-panel p-6 sm:p-10 rounded-3xl space-y-6">
                 <div class="border-b border-slate-200 pb-4">
-                    <h3 class="font-display text-xl font-bold text-slate-900">Team Leader / Primary Participant Information</h3>
-                    <p class="text-xs text-slate-500 mt-1">This person will serve as the primary contact for all event communications.</p>
+                    <h3 class="font-display text-xl font-bold text-slate-900">Team Leader / Primary Participant
+                        Information</h3>
+                    <p class="text-xs text-slate-500 mt-1">This person will serve as the primary contact for all event
+                        communications.</p>
                 </div>
 
                 <div class="grid sm:grid-cols-2 gap-6">
                     <div>
-                        <label class="block text-xs font-mono uppercase tracking-wider text-slate-700 mb-2 font-bold">Full Name *</label>
-                        <input type="text" id="leader-name" class="glass-input w-full px-4 py-3 rounded-2xl text-sm" placeholder="e.g. Arun Kumar" required>
+                        <label
+                            class="block text-xs font-mono uppercase tracking-wider text-slate-700 mb-2 font-bold">Full
+                            Name *</label>
+                        <input type="text" id="leader-name" class="glass-input w-full px-4 py-3 rounded-2xl text-sm"
+                            placeholder="e.g. Arun Kumar" required>
                     </div>
                     <div>
-                        <label class="block text-xs font-mono uppercase tracking-wider text-slate-700 mb-2 font-bold">Email Address *</label>
-                        <input type="email" id="leader-email" class="glass-input w-full px-4 py-3 rounded-2xl text-sm" placeholder="e.g. arun@gmail.com" required>
+                        <label
+                            class="block text-xs font-mono uppercase tracking-wider text-slate-700 mb-2 font-bold">Email
+                            Address *</label>
+                        <input type="email" id="leader-email" class="glass-input w-full px-4 py-3 rounded-2xl text-sm"
+                            placeholder="e.g. arun@gmail.com" required>
                     </div>
                     <div>
-                        <label class="block text-xs font-mono uppercase tracking-wider text-slate-700 mb-2 font-bold">Phone Number *</label>
-                        <input type="tel" id="leader-phone" class="glass-input w-full px-4 py-3 rounded-2xl text-sm" placeholder="10-digit mobile number" required>
+                        <label
+                            class="block text-xs font-mono uppercase tracking-wider text-slate-700 mb-2 font-bold">Phone
+                            Number *</label>
+                        <input type="tel" id="leader-phone" class="glass-input w-full px-4 py-3 rounded-2xl text-sm"
+                            placeholder="10-digit mobile number" required>
                     </div>
                     <div>
-                        <label class="block text-xs font-mono uppercase tracking-wider text-slate-700 mb-2 font-bold">College Name *</label>
-                        <input type="text" id="leader-college" class="glass-input w-full px-4 py-3 rounded-2xl text-sm" placeholder="Full college name" required>
+                        <label
+                            class="block text-xs font-mono uppercase tracking-wider text-slate-700 mb-2 font-bold">College
+                            Name *</label>
+                        <input type="text" id="leader-college" class="glass-input w-full px-4 py-3 rounded-2xl text-sm"
+                            placeholder="Full college name" required>
                     </div>
                     <div>
-                        <label class="block text-xs font-mono uppercase tracking-wider text-slate-700 mb-2 font-bold">Department *</label>
-                        <input type="text" id="leader-dept" class="glass-input w-full px-4 py-3 rounded-2xl text-sm" placeholder="e.g. EIE / ECE / CSE / EEE" required>
+                        <label
+                            class="block text-xs font-mono uppercase tracking-wider text-slate-700 mb-2 font-bold">Department
+                            *</label>
+                        <input type="text" id="leader-dept" class="glass-input w-full px-4 py-3 rounded-2xl text-sm"
+                            placeholder="e.g. EIE / ECE / CSE / EEE" required>
                     </div>
                     <div>
-                        <label class="block text-xs font-mono uppercase tracking-wider text-slate-700 mb-2 font-bold">Year of Study *</label>
+                        <label
+                            class="block text-xs font-mono uppercase tracking-wider text-slate-700 mb-2 font-bold">Year
+                            of Study *</label>
                         <select id="leader-year" class="glass-input w-full px-4 py-3 rounded-2xl text-sm">
                             <option value="I Year">I Year</option>
                             <option value="II Year">II Year</option>
@@ -443,27 +557,37 @@
                         </select>
                     </div>
                     <div class="sm:col-span-2">
-                        <label class="block text-xs font-mono uppercase tracking-wider text-slate-700 mb-2 font-bold">Referral ID (Optional)</label>
-                        <input type="text" id="referral-id" class="glass-input w-full px-4 py-3 rounded-2xl text-sm" placeholder="Enter referral code if any (e.g. FRIEND01, KEC)">
-                        <span class="text-[11px] text-slate-500 mt-1 block">Any referral input will be recorded directly without strict validation.</span>
+                        <label
+                            class="block text-xs font-mono uppercase tracking-wider text-slate-700 mb-2 font-bold">Referral
+                            ID (Optional)</label>
+                        <input type="text" id="referral-id" class="glass-input w-full px-4 py-3 rounded-2xl text-sm"
+                            placeholder="Enter referral code if any (e.g. FRIEND01, KEC)">
+                        <span class="text-[11px] text-slate-500 mt-1 block">Any referral input will be recorded directly
+                            without strict validation.</span>
                     </div>
                 </div>
             </div>
 
             <!-- STEP 2: EVENT SELECTION -->
             <div id="wizard-step-2" class="wizard-step-content glass-panel p-6 sm:p-10 rounded-3xl space-y-6 hidden">
-                
+
                 <!-- Live Counter Status Banner -->
-                <div class="bg-slate-100/90 border border-slate-200 p-5 rounded-2xl flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
+                <div
+                    class="bg-slate-100/90 border border-slate-200 p-5 rounded-2xl flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
                     <div class="space-y-1">
-                        <span class="text-xs font-mono text-sky-700 uppercase tracking-widest font-bold">Selection Status</span>
+                        <span class="text-xs font-mono text-sky-700 uppercase tracking-widest font-bold">Selection
+                            Status</span>
                         <div class="flex items-center space-x-4">
-                            <span class="text-sm font-bold text-slate-900">Events Selected: <span id="rule-count-badge" class="font-mono text-sky-600">0 / 3</span></span>
-                            <span class="text-xs text-slate-600">Technical: <span id="rule-tech-count" class="font-mono text-slate-900 font-bold">0</span></span>
-                            <span class="text-xs text-slate-600">Non-Technical: <span id="rule-nontech-count" class="font-mono text-slate-900 font-bold">0</span></span>
+                            <span class="text-sm font-bold text-slate-900">Events Selected: <span id="rule-count-badge"
+                                    class="font-mono text-sky-600">0 / 3</span></span>
+                            <span class="text-xs text-slate-600">Technical: <span id="rule-tech-count"
+                                    class="font-mono text-slate-900 font-bold">0</span></span>
+                            <span class="text-xs text-slate-600">Non-Technical: <span id="rule-nontech-count"
+                                    class="font-mono text-slate-900 font-bold">0</span></span>
                         </div>
                     </div>
-                    <div id="rule-status-box" class="px-4 py-2 rounded-xl text-xs font-bold bg-amber-500/10 text-amber-800 border border-amber-500/30">
+                    <div id="rule-status-box"
+                        class="px-4 py-2 rounded-xl text-xs font-bold bg-amber-500/10 text-amber-800 border border-amber-500/30">
                         ⚠️ Normal registration requires at least 1 Technical + 1 Non-Technical event.
                     </div>
                 </div>
@@ -476,10 +600,12 @@
 
             <!-- STEP 3: TEAM BUILDER -->
             <div id="wizard-step-3" class="wizard-step-content glass-panel p-6 sm:p-10 rounded-3xl space-y-6 hidden">
-                <div class="border-b border-slate-200 pb-4 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-2">
+                <div
+                    class="border-b border-slate-200 pb-4 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-2">
                     <div>
                         <h3 class="font-display text-xl font-bold text-slate-900">Team Rosters & Members</h3>
-                        <p class="text-xs text-slate-500 mt-1">Configure teams for each selected event. You can reuse team members across events easily!</p>
+                        <p class="text-xs text-slate-500 mt-1">Configure teams for each selected event. You can reuse
+                            team members across events easily!</p>
                     </div>
                 </div>
 
@@ -493,7 +619,8 @@
             <div id="wizard-step-4" class="wizard-step-content glass-panel p-6 sm:p-10 rounded-3xl space-y-6 hidden">
                 <div class="border-b border-slate-200 pb-4">
                     <h3 class="font-display text-xl font-bold text-slate-900">Projects & Event WhatsApp Links</h3>
-                    <p class="text-xs text-slate-500 mt-1">Provide project titles and abstract PDFs if applicable, and join event WhatsApp groups.</p>
+                    <p class="text-xs text-slate-500 mt-1">Provide project titles and abstract PDFs if applicable, and
+                        join event WhatsApp groups.</p>
                 </div>
 
                 <div id="projects-container" class="space-y-6">
@@ -503,11 +630,15 @@
                 <!-- WhatsApp Joining Card -->
                 <div class="bg-emerald-500/10 border border-emerald-500/30 p-6 rounded-2xl space-y-4">
                     <div class="flex items-center space-x-3 text-emerald-700">
-                        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981z"/></svg>
+                        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                            <path
+                                d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981z" />
+                        </svg>
                         <h4 class="font-bold text-lg text-slate-900">Event WhatsApp Group Confirmation</h4>
                     </div>
-                    <p class="text-xs text-slate-600">Please join the WhatsApp group for your registered events to receive instant scheduling updates during the symposium day.</p>
-                    
+                    <p class="text-xs text-slate-600">Please join the WhatsApp group for your registered events to
+                        receive instant scheduling updates during the symposium day.</p>
+
                     <div id="whatsapp-groups-list" class="space-y-3 pt-2">
                         <!-- WhatsApp status radios injected here -->
                     </div>
@@ -518,31 +649,38 @@
             <div id="wizard-step-5" class="wizard-step-content glass-panel p-6 sm:p-10 rounded-3xl space-y-8 hidden">
                 <div class="border-b border-slate-200 pb-4">
                     <h3 class="font-display text-xl font-bold text-slate-900">Payment & Verification</h3>
-                    <p class="text-xs text-slate-500 mt-1">Scan the static UPI QR code, complete the exact registration fee payment, and attach transaction details.</p>
+                    <p class="text-xs text-slate-500 mt-1">Scan the static UPI QR code, complete the exact registration
+                        fee payment, and attach transaction details.</p>
                 </div>
 
                 <div class="grid lg:grid-cols-2 gap-8 items-start">
-                    
+
                     <!-- Static Payment QR Box -->
                     <div class="glass-panel p-6 rounded-2xl border-sky-200 text-center space-y-4">
-                        <span class="text-xs font-mono uppercase text-sky-700 tracking-wider font-bold">Official Payment Destination</span>
-                        
+                        <span class="text-xs font-mono uppercase text-sky-700 tracking-wider font-bold">Official Payment
+                            Destination</span>
+
                         <!-- Calculated Fee Display -->
                         <div class="py-2">
                             <span class="text-xs text-slate-500 block">Total Amount to Pay</span>
-                            <span id="payment-amount-display" class="font-display text-4xl font-black text-slate-900">₹0</span>
+                            <span id="payment-amount-display"
+                                class="font-display text-4xl font-black text-slate-900">₹0</span>
                         </div>
 
                         <!-- Static Payment QR Image Placeholder / Asset -->
-                        <div class="w-64 mx-auto bg-white p-2 rounded-2xl shadow-xl flex items-center justify-center border border-slate-200">
-                            <img id="payment-qr-img" src="payment-qr/unnamed.jpg" alt="Payment QR Code" class="w-full h-auto rounded-xl">
+                        <div
+                            class="w-64 mx-auto bg-white p-2 rounded-2xl shadow-xl flex items-center justify-center border border-slate-200">
+                            <img id="payment-qr-img" src="payment-qr/unnamed.jpg" alt="Payment QR Code"
+                                class="w-full h-auto rounded-xl">
                         </div>
 
                         <div class="space-y-1">
                             <span class="text-xs text-slate-500 block">UPI ID:</span>
-                            <div class="inline-flex items-center space-x-2 bg-slate-100 px-3 py-1.5 rounded-xl border border-slate-200 font-mono text-sm text-sky-700 font-bold">
+                            <div
+                                class="inline-flex items-center space-x-2 bg-slate-100 px-3 py-1.5 rounded-xl border border-slate-200 font-mono text-sm text-sky-700 font-bold">
                                 <span id="upi-id-text">sensonics26@upi</span>
-                                <button onclick="copyUpiId()" class="hover:text-slate-900 text-xs text-slate-500 pl-2">Copy</button>
+                                <button onclick="copyUpiId()"
+                                    class="hover:text-slate-900 text-xs text-slate-500 pl-2">Copy</button>
                             </div>
                         </div>
                     </div>
@@ -550,24 +688,41 @@
                     <!-- Payment Details Form -->
                     <div class="space-y-6">
                         <div>
-                            <label class="block text-xs font-mono uppercase tracking-wider text-slate-700 mb-2 font-bold">UPI Transaction / Reference ID *</label>
-                            <input type="text" id="transaction-id" class="glass-input w-full px-4 py-3 rounded-2xl text-sm font-mono" placeholder="12-digit UTR or Transaction Ref" required>
-                            <span class="text-[11px] text-slate-500 mt-1 block">Found in Google Pay, PhonePe, Paytm, or BHIM transaction receipt.</span>
+                            <label
+                                class="block text-xs font-mono uppercase tracking-wider text-slate-700 mb-2 font-bold">UPI
+                                Transaction / Reference ID *</label>
+                            <input type="text" id="transaction-id"
+                                class="glass-input w-full px-4 py-3 rounded-2xl text-sm font-mono"
+                                placeholder="12-digit UTR or Transaction Ref" required>
+                            <span class="text-[11px] text-slate-500 mt-1 block">Found in Google Pay, PhonePe, Paytm, or
+                                BHIM transaction receipt.</span>
                         </div>
 
                         <div>
-                            <label class="block text-xs font-mono uppercase tracking-wider text-slate-700 mb-2 font-bold">Upload Payment Screenshot / PDF *</label>
-                            <div class="relative border-2 border-dashed border-slate-300 rounded-2xl p-6 text-center hover:border-sky-500 transition-colors bg-white/70 cursor-pointer" onclick="document.getElementById('payment-proof-file').click()">
-                                <input type="file" id="payment-proof-file" accept="image/png, image/jpeg, application/pdf" class="hidden" onchange="handleProofUpload(event)">
+                            <label
+                                class="block text-xs font-mono uppercase tracking-wider text-slate-700 mb-2 font-bold">Upload
+                                Payment Screenshot / PDF *</label>
+                            <div class="relative border-2 border-dashed border-slate-300 rounded-2xl p-6 text-center hover:border-sky-500 transition-colors bg-white/70 cursor-pointer"
+                                onclick="document.getElementById('payment-proof-file').click()">
+                                <input type="file" id="payment-proof-file"
+                                    accept="image/png, image/jpeg, application/pdf" class="hidden"
+                                    onchange="handleProofUpload(event)">
                                 <div id="proof-upload-placeholder" class="space-y-2">
-                                    <svg class="w-8 h-8 text-sky-600 mx-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-8l-4-4m0 0L8 8m4-4v12"/></svg>
+                                    <svg class="w-8 h-8 text-sky-600 mx-auto" fill="none" stroke="currentColor"
+                                        viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                            d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-8l-4-4m0 0L8 8m4-4v12" />
+                                    </svg>
                                     <span class="text-sm text-slate-800 block font-bold">Click to upload proof</span>
                                     <span class="text-xs text-slate-500 block">JPG, PNG or PDF (Max 5MB)</span>
                                 </div>
                                 <div id="proof-upload-preview" class="hidden space-y-2">
-                                    <span class="text-xs text-emerald-600 font-mono font-bold block">✓ File Selected</span>
-                                    <span id="proof-file-name" class="text-sm font-bold text-slate-900 block truncate">filename.png</span>
-                                    <button type="button" onclick="event.stopPropagation(); resetProofUpload();" class="text-xs text-rose-600 hover:underline font-bold">Remove file</button>
+                                    <span class="text-xs text-emerald-600 font-mono font-bold block">✓ File
+                                        Selected</span>
+                                    <span id="proof-file-name"
+                                        class="text-sm font-bold text-slate-900 block truncate">filename.png</span>
+                                    <button type="button" onclick="event.stopPropagation(); resetProofUpload();"
+                                        class="text-xs text-rose-600 hover:underline font-bold">Remove file</button>
                                 </div>
                             </div>
                         </div>
@@ -580,7 +735,8 @@
             <div id="wizard-step-6" class="wizard-step-content glass-panel p-6 sm:p-10 rounded-3xl space-y-8 hidden">
                 <div class="border-b border-slate-200 pb-4">
                     <h3 class="font-display text-xl font-bold text-slate-900">Review Registration Details</h3>
-                    <p class="text-xs text-slate-500 mt-1">Please double check all information before submitting your registration.</p>
+                    <p class="text-xs text-slate-500 mt-1">Please double check all information before submitting your
+                        registration.</p>
                 </div>
 
                 <div id="review-summary-container" class="space-y-6">
@@ -588,32 +744,29 @@
                 </div>
 
                 <!-- Final Submit Action -->
-                <div class="pt-4 border-t border-slate-200 flex flex-col sm:flex-row items-center justify-between gap-4">
+                <div
+                    class="pt-4 border-t border-slate-200 flex flex-col sm:flex-row items-center justify-between gap-4">
                     <div class="text-xs text-slate-500">
                         By submitting, you confirm that all entered details and payment proofs are accurate.
                     </div>
-                    <button id="final-submit-btn" onclick="submitRegistrationAPI()" class="w-full sm:w-auto glass-button-primary px-8 py-4 rounded-2xl text-lg font-bold text-white flex items-center justify-center space-x-2">
+                    <button id="final-submit-btn" onclick="submitRegistrationAPI()"
+                        class="w-full sm:w-auto glass-button-primary px-8 py-4 rounded-2xl text-lg font-bold text-white flex items-center justify-center space-x-2">
                         <span>SUBMIT REGISTRATION</span>
-                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                        </svg>
                     </button>
                 </div>
             </div>
 
-            <!-- TEMPORARY: Backend Connection Test -->
-            <div class="flex items-center gap-4 pt-2 pb-2 border-t border-slate-200">
-                <button id="backendTestBtn" class="glass-button-secondary px-5 py-2.5 rounded-2xl text-sm font-bold text-slate-700 hover:text-slate-900 flex items-center space-x-2">
-                    <svg class="w-4 h-4 text-sky-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
-                    <span>Test Registration Server</span>
-                </button>
-                <p id="backendStatus" class="text-xs font-mono text-slate-600"></p>
-            </div>
-
             <!-- Wizard Navigation Action Bar -->
             <div id="wizard-nav-bar" class="flex items-center justify-between pt-4">
-                <button id="wizard-prev-btn" onclick="wizardPrevStep()" class="glass-button-secondary px-6 py-3 rounded-2xl font-bold text-sm text-slate-700 hover:text-slate-900 disabled:opacity-30 disabled:cursor-not-allowed">
+                <button id="wizard-prev-btn" onclick="wizardPrevStep()"
+                    class="glass-button-secondary px-6 py-3 rounded-2xl font-bold text-sm text-slate-700 hover:text-slate-900 disabled:opacity-30 disabled:cursor-not-allowed">
                     ← Previous Step
                 </button>
-                <button id="wizard-next-btn" onclick="wizardNextStep()" class="glass-button-primary px-8 py-3 rounded-2xl font-bold text-sm text-white">
+                <button id="wizard-next-btn" onclick="wizardNextStep()"
+                    class="glass-button-primary px-8 py-3 rounded-2xl font-bold text-sm text-white">
                     Next Step →
                 </button>
             </div>
@@ -621,17 +774,23 @@
         </section>
 
         <!-- ==================== EVENT DETAILS MODAL ==================== -->
-        <div id="event-modal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/40 backdrop-blur-md hidden">
-            <div class="glass-panel p-6 sm:p-8 rounded-3xl max-w-2xl w-full max-h-[85vh] overflow-y-auto space-y-6 border-slate-200">
+        <div id="event-modal"
+            class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/40 backdrop-blur-md hidden">
+            <div
+                class="glass-panel p-6 sm:p-8 rounded-3xl max-w-2xl w-full max-h-[85vh] overflow-y-auto space-y-6 border-slate-200">
                 <div class="flex items-start justify-between">
                     <div>
-                        <span id="modal-event-cat" class="px-3 py-1 rounded-full text-xs font-mono badge-cyan font-bold">Technical</span>
-                        <h3 id="modal-event-title" class="font-display text-3xl font-extrabold text-slate-900 mt-2">Paper Mania</h3>
+                        <span id="modal-event-cat"
+                            class="px-3 py-1 rounded-full text-xs font-mono badge-cyan font-bold">Technical</span>
+                        <h3 id="modal-event-title" class="font-display text-3xl font-extrabold text-slate-900 mt-2">
+                            Paper Mania</h3>
                     </div>
-                    <button onclick="closeEventModal()" class="p-2 rounded-xl bg-slate-200 text-slate-600 hover:text-slate-900">✕</button>
+                    <button onclick="closeEventModal()"
+                        class="p-2 rounded-xl bg-slate-200 text-slate-600 hover:text-slate-900">✕</button>
                 </div>
 
-                <p id="modal-event-desc" class="text-slate-700 text-sm leading-relaxed">Detailed rules and requirements description.</p>
+                <p id="modal-event-desc" class="text-slate-700 text-sm leading-relaxed">Detailed rules and requirements
+                    description.</p>
 
                 <div class="grid grid-cols-2 sm:grid-cols-3 gap-4 font-mono text-xs">
                     <div class="bg-slate-100 p-3 rounded-xl border border-slate-200">
@@ -649,8 +808,10 @@
                 </div>
 
                 <div class="pt-4 flex items-center justify-end space-x-3 border-t border-slate-200">
-                    <button onclick="closeEventModal()" class="px-5 py-2.5 rounded-xl text-sm font-semibold text-slate-600 hover:bg-slate-100">Close</button>
-                    <button id="modal-register-btn" onclick="registerFromModal()" class="glass-button-primary px-6 py-2.5 rounded-xl text-sm font-bold text-white">
+                    <button onclick="closeEventModal()"
+                        class="px-5 py-2.5 rounded-xl text-sm font-semibold text-slate-600 hover:bg-slate-100">Close</button>
+                    <button id="modal-register-btn" onclick="registerFromModal()"
+                        class="glass-button-primary px-6 py-2.5 rounded-xl text-sm font-bold text-white">
                         Select in Registration
                     </button>
                 </div>
@@ -658,53 +819,65 @@
         </div>
 
         <!-- ==================== SUBMISSION LOADING OVERLAY ==================== -->
-        <div id="loading-overlay" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/50 backdrop-blur-lg hidden">
+        <div id="loading-overlay"
+            class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/50 backdrop-blur-lg hidden">
             <div class="glass-panel p-8 sm:p-10 rounded-3xl max-w-md w-full text-center space-y-6">
-                <div class="w-16 h-16 border-4 border-sky-600 border-t-transparent rounded-full animate-spin mx-auto"></div>
+                <div class="w-16 h-16 border-4 border-sky-600 border-t-transparent rounded-full animate-spin mx-auto">
+                </div>
                 <div class="space-y-2">
                     <h3 class="font-display text-2xl font-bold text-slate-900">Submitting Registration...</h3>
                     <p class="text-xs text-slate-500">Please do not close or refresh this page.</p>
                 </div>
 
-                <div class="space-y-2 text-left text-xs font-mono text-slate-700 bg-slate-100/90 p-4 rounded-xl border border-slate-200">
+                <div
+                    class="space-y-2 text-left text-xs font-mono text-slate-700 bg-slate-100/90 p-4 rounded-xl border border-slate-200">
                     <div id="prog-step-1" class="text-emerald-600 font-bold">✓ Validating team registration format</div>
                     <div id="prog-step-2" class="text-emerald-600 font-bold">✓ Preparing payment proof attachment</div>
-                    <div id="prog-step-3" class="text-sky-600 font-bold animate-pulse">• Transmitting data to Google Apps Script...</div>
+                    <div id="prog-step-3" class="text-sky-600 font-bold animate-pulse">• Transmitting data to Google
+                        Apps Script...</div>
                     <div id="prog-step-4" class="text-slate-400">• Generating registration ID & email notification</div>
                 </div>
             </div>
         </div>
 
         <!-- ==================== SUCCESS MODAL / SCREEN ==================== -->
-        <div id="success-overlay" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/60 backdrop-blur-xl hidden">
+        <div id="success-overlay"
+            class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/60 backdrop-blur-xl hidden">
             <div class="glass-panel p-8 sm:p-12 rounded-3xl max-w-lg w-full text-center space-y-8 border-sky-300">
-                <div class="w-20 h-20 bg-emerald-500/20 border border-emerald-500/40 rounded-full flex items-center justify-center mx-auto text-emerald-600 text-3xl shadow-xl shadow-emerald-500/10 font-bold">
+                <div
+                    class="w-20 h-20 bg-emerald-500/20 border border-emerald-500/40 rounded-full flex items-center justify-center mx-auto text-emerald-600 text-3xl shadow-xl shadow-emerald-500/10 font-bold">
                     ✓
                 </div>
 
                 <div class="space-y-2">
-                    <span class="text-xs font-mono uppercase text-emerald-600 tracking-widest font-bold">Registration Successful</span>
+                    <span class="text-xs font-mono uppercase text-emerald-600 tracking-widest font-bold">Registration
+                        Successful</span>
                     <h2 class="font-display text-3xl font-extrabold text-slate-900">SENSONICS '26</h2>
-                    <p class="text-sm text-slate-600">Your registration has been successfully recorded in the central database.</p>
+                    <p class="text-sm text-slate-600">Your registration has been successfully recorded in the central
+                        database.</p>
                 </div>
 
                 <!-- Registration ID Box -->
                 <div class="bg-slate-100 p-5 rounded-2xl border border-sky-200 space-y-2">
                     <span class="text-xs font-mono text-slate-500 block">Your Unique Registration ID</span>
                     <div class="flex items-center justify-center space-x-3">
-                        <span id="success-reg-id" class="font-mono text-3xl font-black text-sky-600 tracking-wider">SEN26-0008</span>
-                        <button onclick="copyRegId()" class="p-2 rounded-xl bg-slate-200 hover:bg-slate-300 text-slate-800 text-xs font-mono flex items-center space-x-1 font-bold">
+                        <span id="success-reg-id"
+                            class="font-mono text-3xl font-black text-sky-600 tracking-wider">SEN26-0008</span>
+                        <button onclick="copyRegId()"
+                            class="p-2 rounded-xl bg-slate-200 hover:bg-slate-300 text-slate-800 text-xs font-mono flex items-center space-x-1 font-bold">
                             <span id="copy-reg-text">COPY</span>
                         </button>
                     </div>
                 </div>
 
                 <div class="text-xs text-slate-600 space-y-1">
-                    <p>A confirmation notification has been sent to: <span id="success-email-text" class="text-slate-900 font-bold">participant@gmail.com</span></p>
+                    <p>A confirmation notification has been sent to: <span id="success-email-text"
+                            class="text-slate-900 font-bold">participant@gmail.com</span></p>
                     <p class="text-[11px] text-slate-500">Keep this Registration ID safe for check-in on event day.</p>
                 </div>
 
-                <button onclick="finishRegistrationSuccess()" class="w-full glass-button-primary py-3.5 rounded-2xl font-bold text-white">
+                <button onclick="finishRegistrationSuccess()"
+                    class="w-full glass-button-primary py-3.5 rounded-2xl font-bold text-white">
                     RETURN TO HOMEPAGE
                 </button>
             </div>
@@ -714,7 +887,8 @@
 
     <!-- Footer -->
     <footer class="border-t border-slate-200 bg-white/80 py-10 text-xs text-slate-600">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center justify-between gap-4">
+        <div
+            class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center justify-between gap-4">
             <div class="text-center md:text-left">
                 <span class="font-bold text-slate-900">SENSONICS '26</span> — Dept of EIE, Kongu Engineering College.
                 <p class="mt-1 text-slate-500">Perundurai, Erode - 638060, Tamil Nadu, India.</p>
@@ -725,14 +899,13 @@
         </div>
     </footer>
 
+    <!-- External JS modules (config → api → registration → app) -->
+    <script src="js/config.js"></script>
+    <script src="js/api.js"></script>
+    <script src="js/registration.js"></script>
+
     <script>
-        /* ==================== CONFIGURATION ==================== */
-        const CONFIG = {
-            API_URL: "https://script.google.com/macros/s/YOUR_GOOGLE_APPS_SCRIPT_EXEC_URL/exec",
-            PAYMENT_QR_IMAGE: "assets/payment/payment-qr.png",
-            UPI_ID: "sensonics26@upi",
-            MAX_EVENTS_PER_PERSON: 3
-        };
+        /* CONFIG is defined in js/config.js */
 
         /* ==================== EVENT DATA MASTER ==================== */
         const EVENT_RULES = {
@@ -1450,7 +1623,7 @@
         }
 
         function getStepTitle(step) {
-            switch(step) {
+            switch (step) {
                 case 1: return "01. Participant Details";
                 case 2: return "02. Event Selection";
                 case 3: return "03. Team Roster Builder";
@@ -1945,7 +2118,7 @@
                     return;
                 }
                 const reader = new FileReader();
-                reader.onload = function(e) {
+                reader.onload = function (e) {
                     state.eventData[title].abstractFile = {
                         name: file.name,
                         mimeType: file.type,
@@ -1966,21 +2139,21 @@
             let total = 0;
             const uniqueParticipants = new Set();
             let isWorkshop = false;
-            
+
             state.selectedEvents.forEach(title => {
                 const ev = EVENT_RULES[title];
                 if (ev.isWorkshop) isWorkshop = true;
-                
+
                 state.eventData[title].members.forEach(m => {
                     const identifier = m.email ? m.email.toLowerCase().trim() : (m.phone || m.name);
                     if (identifier) uniqueParticipants.add(identifier);
                 });
             });
-            
+
             const participantCount = uniqueParticipants.size;
             const feePerParticipant = isWorkshop ? 300 : 250;
             total = participantCount * feePerParticipant;
-            
+
             state.calculatedTotal = total;
 
             document.getElementById('payment-amount-display').innerText = `₹${total}`;
@@ -1995,7 +2168,7 @@
                     return;
                 }
                 const reader = new FileReader();
-                reader.onload = function(e) {
+                reader.onload = function (e) {
                     state.proofFile = {
                         name: file.name,
                         mimeType: file.type,
@@ -2046,8 +2219,8 @@
                     </div>
                     <div class="space-y-4">
                         ${state.selectedEvents.map(title => {
-                            const data = state.eventData[title];
-                            return `
+                const data = state.eventData[title];
+                return `
                                 <div class="bg-slate-100/80 p-4 rounded-xl space-y-2 border border-slate-200">
                                     <div class="flex items-center justify-between">
                                         <span class="font-bold text-slate-900">${title}</span>
@@ -2059,7 +2232,7 @@
                                     ${data.projectTitle ? `<div class="text-xs text-slate-500 font-medium">Project: ${data.projectTitle}</div>` : ''}
                                 </div>
                             `;
-                        }).join('')}
+            }).join('')}
                     </div>
                 </div>
 
@@ -2086,55 +2259,36 @@
 
         /* ==================== API SUBMISSION & BACKEND COMMUNICATION ==================== */
         async function submitRegistrationAPI() {
-            document.getElementById('loading-overlay').classList.remove('hidden');
+            await handleSubmitRegistration(state, {
 
-            const payload = {
-                leaderName: state.leader.name,
-                leaderEmail: state.leader.email,
-                leaderPhone: state.leader.phone,
-                college: state.leader.college,
-                department: state.leader.department,
-                year: state.leader.year,
-                referralId: state.leader.referralId,
-                transactionId: state.transactionId,
-                paymentProof: state.proofFile,
-                events: state.selectedEvents,
-                eventData: state.eventData
-            };
+                onStart() {
+                    document
+                        .getElementById('loading-overlay')
+                        .classList.remove('hidden');
+                },
 
-            try {
-                let responseData;
-                if (CONFIG.API_URL.includes("YOUR_GOOGLE_APPS_SCRIPT_EXEC_URL")) {
-                    await new Promise(res => setTimeout(res, 2000));
-                    responseData = {
-                        success: true,
-                        registrationId: "SEN26-" + Math.floor(1000 + Math.random() * 9000),
-                        message: "Registration completed successfully (Simulated)."
-                    };
-                } else {
-                    const response = await fetch(CONFIG.API_URL, {
-                        method: "POST",
-                        headers: { "Content-Type": "application/json" },
-                        body: JSON.stringify(payload)
-                    });
-                    responseData = await response.json();
+                onSuccess(registrationId) {
+                    document
+                        .getElementById('success-reg-id')
+                        .innerText = registrationId;
+                    document
+                        .getElementById('success-email-text')
+                        .innerText = state.leader.email;
+                    document
+                        .getElementById('success-overlay')
+                        .classList.remove('hidden');
+                },
+
+                onError(message) {
+                    showToast(message);
+                },
+
+                onFinally() {
+                    document
+                        .getElementById('loading-overlay')
+                        .classList.add('hidden');
                 }
-
-                document.getElementById('loading-overlay').classList.add('hidden');
-
-                if (responseData.success) {
-                    document.getElementById('success-reg-id').innerText = responseData.registrationId;
-                    document.getElementById('success-email-text').innerText = state.leader.email;
-                    document.getElementById('success-overlay').classList.remove('hidden');
-                } else {
-                    showToast(responseData.message || "Registration failed on server.");
-                }
-
-            } catch (err) {
-                console.error("Submission Error:", err);
-                document.getElementById('loading-overlay').classList.add('hidden');
-                showToast("Network error during submission. Please try again.");
-            }
+            });
         }
 
         function copyRegId() {
@@ -2164,7 +2318,7 @@
         }
 
         /* Initial Setup */
-        window.onload = function() {
+        window.onload = function () {
             animateBg();
 
             // Mount React Bits ParticleText Hero Canvas Component
@@ -2192,30 +2346,9 @@
             initStep2Events();
             updateWizardUI();
 
-            // TEMPORARY: Backend connection test listener
-            document.getElementById('backendTestBtn').addEventListener('click', async () => {
-                const status = document.getElementById('backendStatus');
-                const btn = document.getElementById('backendTestBtn');
-                status.textContent = 'Connecting...';
-                status.className = 'text-xs font-mono text-amber-600 animate-pulse';
-                btn.disabled = true;
-                try {
-                    const result = await checkBackend();
-                    if (result.success) {
-                        status.textContent = '✓ Backend connected successfully.';
-                        status.className = 'text-xs font-mono text-emerald-600 font-bold';
-                    } else {
-                        status.textContent = '⚠ Backend responded, but reported an error.';
-                        status.className = 'text-xs font-mono text-amber-700 font-bold';
-                    }
-                } catch (error) {
-                    status.textContent = '✕ Unable to connect to registration server.';
-                    status.className = 'text-xs font-mono text-rose-600 font-bold';
-                } finally {
-                    btn.disabled = false;
-                }
-            });
+            /* Production: no temporary test widgets */
         };
     </script>
 </body>
+
 </html>
