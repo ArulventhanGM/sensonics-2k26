@@ -1768,10 +1768,6 @@
                             showToast(`Project Title required for ${title}.`);
                             return false;
                         }
-                        if (ev.requiresAbstract && (!data || !data.abstractFile)) {
-                            showToast(`Abstract PDF file required for ${title}.`);
-                            return false;
-                        }
                     }
                 }
                 return true;
@@ -2071,7 +2067,7 @@
                         </div>
 
                         <div>
-                            <label class="block text-xs font-mono uppercase text-slate-700 mb-2 font-bold">Abstract File (PDF format) *</label>
+                            <label class="block text-xs font-mono uppercase text-slate-700 mb-2 font-bold">Abstract File (PDF format) (Optional)</label>
                             <input type="file" accept="application/pdf" onchange="handleAbstractUpload('${title}', event)" class="glass-input w-full px-4 py-2 rounded-xl text-xs">
                             <span id="abstract-label-${ev.id}" class="text-[11px] mt-1 block font-medium font-mono ${data.abstractFile ? 'text-emerald-600' : 'text-slate-500'}">Selected: ${data.abstractFile ? data.abstractFile.name : 'No file chosen'}</span>
                         </div>

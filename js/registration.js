@@ -56,16 +56,13 @@ function buildPayload(state) {
             };
         });
 
+        const hasAbstract = data.abstractFile && data.abstractFile.name;
+
         eventData[eventName] = {
             teamName:       (data.teamName     || eventName + " Team").trim(),
             projectTitle:   (data.projectTitle || "").trim(),
-            /* Abstract is uploaded as the payment proof for project
-               events; the backend fields below are left empty so the
-               server falls back to the uploaded proof when needed.
-               If you ever add a separate abstract upload flow,
-               populate these from state.eventData[eventName].abstractFile */
-            abstractFileId: "",
-            abstractUrl:    "",
+            abstractFileId: hasAbstract ? data.abstractFile.name : (data.projectTitle ? "TITLE_PROVIDED" : "OPTIONAL_SKIPPED"),
+            abstractUrl:    hasAbstract ? ("data:" + data.abstractFile.mimeType + ";base64," + data.abstractFile.base64) : "NONE",
             whatsappJoined: data.whatsappJoined === true,
             members:        members,
         };
