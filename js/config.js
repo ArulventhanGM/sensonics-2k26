@@ -17,7 +17,7 @@ const CONFIG = {
 
     /* UPI ID shown on the payment screen */
     UPI_ID:
-        "",
+        "indhunatarajan31@oksbi",
 
     /* Symposium metadata */
     SYMPOSIUM_NAME:  "Sensonics '26",
