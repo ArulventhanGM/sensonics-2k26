@@ -246,6 +246,9 @@
                     <button onclick="navTo('events')"
                         class="nav-btn px-4 py-2 rounded-full text-sm font-semibold text-slate-600 hover:text-slate-900 hover:bg-slate-100 transition-all"
                         data-page="events">Events</button>
+                    <button onclick="navTo('schedules')"
+                        class="nav-btn px-4 py-2 rounded-full text-sm font-semibold text-slate-600 hover:text-slate-900 hover:bg-slate-100 transition-all"
+                        data-page="schedules">Schedules</button>
                     <button onclick="navTo('about')"
                         class="nav-btn px-4 py-2 rounded-full text-sm font-semibold text-slate-600 hover:text-slate-900 hover:bg-slate-100 transition-all"
                         data-page="about">About</button>
@@ -279,6 +282,8 @@
                 class="block w-full text-left px-4 py-2.5 rounded-xl text-slate-700 hover:bg-slate-100 font-semibold">Home</button>
             <button onclick="navTo('events'); toggleMobileMenu();"
                 class="block w-full text-left px-4 py-2.5 rounded-xl text-slate-700 hover:bg-slate-100 font-semibold">Events</button>
+            <button onclick="navTo('schedules'); toggleMobileMenu();"
+                class="block w-full text-left px-4 py-2.5 rounded-xl text-slate-700 hover:bg-slate-100 font-semibold">Schedules</button>
             <button onclick="navTo('about'); toggleMobileMenu();"
                 class="block w-full text-left px-4 py-2.5 rounded-xl text-slate-700 hover:bg-slate-100 font-semibold">About
                 KEC</button>
@@ -453,6 +458,235 @@
                             <span class="text-xs font-mono uppercase text-slate-500 block">Venue Location</span>
                             <span class="font-bold text-slate-900">KEC Campus, Perundurai</span>
                         </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==================== SCHEDULES SECTION ==================== -->
+        <section id="page-schedules" class="page-section space-y-12 hidden transition-all duration-500 relative">
+            <div class="max-w-5xl mx-auto space-y-10">
+                
+                <!-- Section Header -->
+                <div class="text-center space-y-4 relative z-10">
+                    <div class="inline-flex items-center space-x-2 px-3.5 py-1 rounded-full badge-cyan text-xs font-mono font-bold uppercase tracking-wider">
+                        <span>🗓️ Official Itinerary</span>
+                    </div>
+                    <h2 class="font-display text-4xl sm:text-5xl font-black text-slate-900 tracking-tight">
+                        Symposium Schedule
+                    </h2>
+                    <p class="text-slate-600 text-sm sm:text-base font-medium max-w-xl mx-auto">
+                        Full event itinerary for <span class="text-sky-600 font-bold font-mono">September 22, 2026</span>
+                    </p>
+
+                    <!-- Key Event Badges -->
+                    <div class="flex flex-wrap items-center justify-center gap-3 pt-2">
+                        <span class="px-4 py-1.5 rounded-full bg-slate-900 text-white font-mono text-xs font-bold shadow-md shadow-slate-900/10 flex items-center space-x-1.5">
+                            <span>⚡</span>
+                            <span>1-Day Event</span>
+                        </span>
+                        <span class="px-4 py-1.5 rounded-full bg-sky-500/10 border border-sky-500/20 text-sky-700 font-mono text-xs font-bold flex items-center space-x-1.5">
+                            <span>🏛️</span>
+                            <span>Venue: Maharaja Auditorium</span>
+                        </span>
+                    </div>
+                </div>
+
+                <!-- Interactive Cursor Glow Spotlight Box -->
+                <div id="schedule-cursor-container" class="relative glass-panel p-6 sm:p-10 rounded-3xl space-y-8 border-slate-200 overflow-hidden shadow-2xl">
+                    
+                    <!-- Dynamic Mouse Glow Element -->
+                    <div id="schedule-mouse-glow" class="pointer-events-none absolute -inset-px transition-opacity duration-300 opacity-0" style="background: radial-gradient(600px circle at var(--mouse-x, 50%) var(--mouse-y, 50%), rgba(2, 132, 199, 0.12), transparent 40%);"></div>
+
+                    <!-- Interactive Time Category Filters -->
+                    <div class="flex flex-wrap items-center justify-center gap-2 relative z-10 border-b border-slate-200/80 pb-6">
+                        <button onclick="filterSchedule('all')" class="sched-filter-btn px-4 py-2 rounded-xl text-xs font-bold transition-all bg-sky-600 text-white shadow-sm" data-sched="all">All Timings</button>
+                        <button onclick="filterSchedule('morning')" class="sched-filter-btn px-4 py-2 rounded-xl text-xs font-bold transition-all text-slate-600 hover:text-slate-900" data-sched="morning">Morning Ceremonies</button>
+                        <button onclick="filterSchedule('tech')" class="sched-filter-btn px-4 py-2 rounded-xl text-xs font-bold transition-all text-slate-600 hover:text-slate-900" data-sched="tech">Tech & Workshops (10:30 AM)</button>
+                        <button onclick="filterSchedule('nontech')" class="sched-filter-btn px-4 py-2 rounded-xl text-xs font-bold transition-all text-slate-600 hover:text-slate-900" data-sched="nontech">Non-Tech Events (Afternoon)</button>
+                        <button onclick="filterSchedule('valedictory')" class="sched-filter-btn px-4 py-2 rounded-xl text-xs font-bold transition-all text-slate-600 hover:text-slate-900" data-sched="valedictory">Valedictory & Closing</button>
+                    </div>
+
+                    <!-- Timeline Vertical Spine -->
+                    <div class="relative pl-6 sm:pl-10 border-l-2 border-slate-200/80 space-y-6 z-10" id="schedule-timeline">
+
+                        <!-- Item 1: 09:00 AM Inauguration -->
+                        <div class="sched-item relative group transition-all duration-300" data-category="morning">
+                            <div class="absolute -left-[33px] sm:-left-[49px] top-1.5 w-6 h-6 rounded-full bg-white border-4 border-sky-500 shadow-md group-hover:scale-125 group-hover:border-violet-600 transition-all duration-300"></div>
+                            <div class="glass-panel p-5 rounded-2xl border-slate-200/90 group-hover:border-sky-400 group-hover:shadow-lg transition-all duration-300">
+                                <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-1">
+                                    <span class="font-mono text-sm font-black text-sky-600">09:00 AM</span>
+                                    <span class="px-2.5 py-0.5 rounded-full text-[10px] font-mono badge-cyan w-max font-bold">Inaugural Session</span>
+                                </div>
+                                <h4 class="font-display text-xl font-extrabold text-slate-900 mt-1">Inauguration</h4>
+                                <p class="text-xs text-slate-500 mt-1">Official grand opening of Sensonics '26 with traditional lamp lighting ceremony at Maharaja Auditorium.</p>
+                            </div>
+                        </div>
+
+                        <!-- Item 2: 09:30 AM Felicitation -->
+                        <div class="sched-item relative group transition-all duration-300" data-category="morning">
+                            <div class="absolute -left-[33px] sm:-left-[49px] top-1.5 w-6 h-6 rounded-full bg-white border-4 border-sky-500 shadow-md group-hover:scale-125 group-hover:border-violet-600 transition-all duration-300"></div>
+                            <div class="glass-panel p-5 rounded-2xl border-slate-200/90 group-hover:border-sky-400 group-hover:shadow-lg transition-all duration-300">
+                                <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-1">
+                                    <span class="font-mono text-sm font-black text-sky-600">09:30 AM</span>
+                                    <span class="px-2.5 py-0.5 rounded-full text-[10px] font-mono badge-violet w-max font-bold">Keynote Addresses</span>
+                                </div>
+                                <h4 class="font-display text-xl font-extrabold text-slate-900 mt-1">Felicitation</h4>
+                                <p class="text-xs text-slate-700 font-bold mt-1">Principal Address & HOD Address</p>
+                                <p class="text-xs text-slate-500 mt-0.5">Inspirational addresses by college leadership and Head of Department (EIE).</p>
+                            </div>
+                        </div>
+
+                        <!-- Item 3: 10:30 AM Paper Mania & PLC, Node-RED -->
+                        <div class="sched-item relative group transition-all duration-300" data-category="tech">
+                            <div class="absolute -left-[33px] sm:-left-[49px] top-1.5 w-6 h-6 rounded-full bg-white border-4 border-violet-500 shadow-md group-hover:scale-125 group-hover:border-sky-600 transition-all duration-300"></div>
+                            <div class="glass-panel p-5 rounded-2xl border-slate-200/90 group-hover:border-violet-400 group-hover:shadow-lg transition-all duration-300">
+                                <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-1">
+                                    <span class="font-mono text-sm font-black text-violet-600">10:30 AM</span>
+                                    <div class="flex items-center space-x-1.5">
+                                        <span class="px-2.5 py-0.5 rounded-full text-[10px] font-mono badge-cyan font-bold">Technical</span>
+                                        <span class="px-2.5 py-0.5 rounded-full text-[10px] font-mono badge-magenta font-bold">Workshops</span>
+                                    </div>
+                                </div>
+                                <h4 class="font-display text-xl font-extrabold text-slate-900 mt-1">Paper Mania & PLC, Node-RED</h4>
+                                <p class="text-xs text-slate-700 font-bold mt-1">Paper Presentation & Hands-on Workshops</p>
+                                <p class="text-xs text-slate-500 mt-0.5">National level research paper presentations alongside full-day industrial PLC and Node-RED IoT hands-on workshops.</p>
+                            </div>
+                        </div>
+
+                        <!-- Item 4: 10:30 AM Project Inventa -->
+                        <div class="sched-item relative group transition-all duration-300" data-category="tech">
+                            <div class="absolute -left-[33px] sm:-left-[49px] top-1.5 w-6 h-6 rounded-full bg-white border-4 border-sky-500 shadow-md group-hover:scale-125 group-hover:border-violet-600 transition-all duration-300"></div>
+                            <div class="glass-panel p-5 rounded-2xl border-slate-200/90 group-hover:border-sky-400 group-hover:shadow-lg transition-all duration-300">
+                                <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-1">
+                                    <span class="font-mono text-sm font-black text-sky-600">10:30 AM</span>
+                                    <span class="px-2.5 py-0.5 rounded-full text-[10px] font-mono badge-cyan w-max font-bold">Technical</span>
+                                </div>
+                                <h4 class="font-display text-xl font-extrabold text-slate-900 mt-1">Project Inventa</h4>
+                                <p class="text-xs text-slate-700 font-bold mt-1">Project Presentation / Hardware Expo</p>
+                                <p class="text-xs text-slate-500 mt-0.5">Open innovation project exposition showcasing operational prototypes, embedded systems, and automation rigs.</p>
+                            </div>
+                        </div>
+
+                        <!-- Item 5: 10:45 AM Code Debug Console -->
+                        <div class="sched-item relative group transition-all duration-300" data-category="tech">
+                            <div class="absolute -left-[33px] sm:-left-[49px] top-1.5 w-6 h-6 rounded-full bg-white border-4 border-sky-500 shadow-md group-hover:scale-125 group-hover:border-violet-600 transition-all duration-300"></div>
+                            <div class="glass-panel p-5 rounded-2xl border-slate-200/90 group-hover:border-sky-400 group-hover:shadow-lg transition-all duration-300">
+                                <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-1">
+                                    <span class="font-mono text-sm font-black text-sky-600">10:45 AM</span>
+                                    <span class="px-2.5 py-0.5 rounded-full text-[10px] font-mono badge-cyan w-max font-bold">Technical</span>
+                                </div>
+                                <h4 class="font-display text-xl font-extrabold text-slate-900 mt-1">Code Debug Console</h4>
+                                <p class="text-xs text-slate-700 font-bold mt-1">Programming & Debugging Challenge</p>
+                                <p class="text-xs text-slate-500 mt-0.5">Competitive tri-role coding relay featuring Coder, Debugger, and Algorithm Designer team strategy.</p>
+                            </div>
+                        </div>
+
+                        <!-- Item 6: 10:45 AM Bot Blitz -->
+                        <div class="sched-item relative group transition-all duration-300" data-category="tech">
+                            <div class="absolute -left-[33px] sm:-left-[49px] top-1.5 w-6 h-6 rounded-full bg-white border-4 border-sky-500 shadow-md group-hover:scale-125 group-hover:border-violet-600 transition-all duration-300"></div>
+                            <div class="glass-panel p-5 rounded-2xl border-slate-200/90 group-hover:border-sky-400 group-hover:shadow-lg transition-all duration-300">
+                                <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-1">
+                                    <span class="font-mono text-sm font-black text-sky-600">10:45 AM</span>
+                                    <span class="px-2.5 py-0.5 rounded-full text-[10px] font-mono badge-cyan w-max font-bold">Technical</span>
+                                </div>
+                                <h4 class="font-display text-xl font-extrabold text-slate-900 mt-1">Bot Blitz</h4>
+                                <p class="text-xs text-slate-700 font-bold mt-1">Robo Race Showdown</p>
+                                <p class="text-xs text-slate-500 mt-0.5">Rover obstacle navigation, turn checkpoints, and precision speed trials on the competition track.</p>
+                            </div>
+                        </div>
+
+                        <!-- Item 7: 12:15 PM - 01:15 PM Lunch Break -->
+                        <div class="sched-item relative group transition-all duration-300" data-category="morning">
+                            <div class="absolute -left-[33px] sm:-left-[49px] top-1.5 w-6 h-6 rounded-full bg-emerald-500 border-4 border-white shadow-md group-hover:scale-125 transition-all duration-300"></div>
+                            <div class="glass-panel p-5 rounded-2xl bg-emerald-500/10 border-emerald-500/30 group-hover:shadow-lg transition-all duration-300">
+                                <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-1">
+                                    <span class="font-mono text-sm font-black text-emerald-700">12:15 PM - 01:15 PM</span>
+                                    <span class="px-2.5 py-0.5 rounded-full text-[10px] font-mono bg-emerald-600 text-white w-max font-bold">Refreshment Break</span>
+                                </div>
+                                <h4 class="font-display text-xl font-extrabold text-slate-900 mt-1">🍱 Lunch Break</h4>
+                                <p class="text-xs text-slate-600 mt-1">Complimentary lunch and networking session provided for all registered participants.</p>
+                            </div>
+                        </div>
+
+                        <!-- Item 8: 01:15 PM Memory Morph -->
+                        <div class="sched-item relative group transition-all duration-300" data-category="nontech">
+                            <div class="absolute -left-[33px] sm:-left-[49px] top-1.5 w-6 h-6 rounded-full bg-white border-4 border-violet-500 shadow-md group-hover:scale-125 group-hover:border-sky-600 transition-all duration-300"></div>
+                            <div class="glass-panel p-5 rounded-2xl border-slate-200/90 group-hover:border-violet-400 group-hover:shadow-lg transition-all duration-300">
+                                <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-1">
+                                    <span class="font-mono text-sm font-black text-violet-600">01:15 PM</span>
+                                    <span class="px-2.5 py-0.5 rounded-full text-[10px] font-mono badge-violet w-max font-bold">Non-Technical</span>
+                                </div>
+                                <h4 class="font-display text-xl font-extrabold text-slate-900 mt-1">Memory Morph</h4>
+                                <p class="text-xs text-slate-500 mt-1">Visual observation and photographic recall challenge. Teams observe and recreate images from memory.</p>
+                            </div>
+                        </div>
+
+                        <!-- Item 9: 02:00 PM Jumble Jam -->
+                        <div class="sched-item relative group transition-all duration-300" data-category="nontech">
+                            <div class="absolute -left-[33px] sm:-left-[49px] top-1.5 w-6 h-6 rounded-full bg-white border-4 border-violet-500 shadow-md group-hover:scale-125 group-hover:border-sky-600 transition-all duration-300"></div>
+                            <div class="glass-panel p-5 rounded-2xl border-slate-200/90 group-hover:border-violet-400 group-hover:shadow-lg transition-all duration-300">
+                                <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-1">
+                                    <span class="font-mono text-sm font-black text-violet-600">02:00 PM</span>
+                                    <span class="px-2.5 py-0.5 rounded-full text-[10px] font-mono badge-violet w-max font-bold">Non-Technical</span>
+                                </div>
+                                <h4 class="font-display text-xl font-extrabold text-slate-900 mt-1">Jumble Jam</h4>
+                                <p class="text-xs text-slate-500 mt-1">Sentence scramble and picture puzzle unscrambling competition across 2 round formats.</p>
+                            </div>
+                        </div>
+
+                        <!-- Item 10: 02:45 PM Recall Rush -->
+                        <div class="sched-item relative group transition-all duration-300" data-category="nontech">
+                            <div class="absolute -left-[33px] sm:-left-[49px] top-1.5 w-6 h-6 rounded-full bg-white border-4 border-violet-500 shadow-md group-hover:scale-125 group-hover:border-sky-600 transition-all duration-300"></div>
+                            <div class="glass-panel p-5 rounded-2xl border-slate-200/90 group-hover:border-violet-400 group-hover:shadow-lg transition-all duration-300">
+                                <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-1">
+                                    <span class="font-mono text-sm font-black text-violet-600">02:45 PM</span>
+                                    <span class="px-2.5 py-0.5 rounded-full text-[10px] font-mono badge-violet w-max font-bold">Non-Technical</span>
+                                </div>
+                                <h4 class="font-display text-xl font-extrabold text-slate-900 mt-1">Recall Rush</h4>
+                                <p class="text-xs text-slate-500 mt-1">Memory challenge testing 30-second image observation, situation analysis, and logical recall.</p>
+                            </div>
+                        </div>
+
+                        <!-- Item 11: 03:30 PM Pick and Unleash -->
+                        <div class="sched-item relative group transition-all duration-300" data-category="nontech">
+                            <div class="absolute -left-[33px] sm:-left-[49px] top-1.5 w-6 h-6 rounded-full bg-white border-4 border-violet-500 shadow-md group-hover:scale-125 group-hover:border-sky-600 transition-all duration-300"></div>
+                            <div class="glass-panel p-5 rounded-2xl border-slate-200/90 group-hover:border-violet-400 group-hover:shadow-lg transition-all duration-300">
+                                <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-1">
+                                    <span class="font-mono text-sm font-black text-violet-600">03:30 PM</span>
+                                    <span class="px-2.5 py-0.5 rounded-full text-[10px] font-mono badge-violet w-max font-bold">Non-Technical</span>
+                                </div>
+                                <h4 class="font-display text-xl font-extrabold text-slate-900 mt-1">Pick and Unleash</h4>
+                                <p class="text-xs text-slate-500 mt-1">Charades-style extempore word picking and rapid team problem-solving challenge.</p>
+                            </div>
+                        </div>
+
+                        <!-- Item 12: 04:00 PM Valedictory Function -->
+                        <div class="sched-item relative group transition-all duration-300" data-category="valedictory">
+                            <div class="absolute -left-[33px] sm:-left-[49px] top-1.5 w-6 h-6 rounded-full bg-amber-500 border-4 border-white shadow-md group-hover:scale-125 transition-all duration-300"></div>
+                            <div class="glass-panel p-5 rounded-2xl bg-amber-500/10 border-amber-500/30 group-hover:shadow-lg transition-all duration-300">
+                                <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-1">
+                                    <span class="font-mono text-sm font-black text-amber-700">04:00 PM</span>
+                                    <span class="px-2.5 py-0.5 rounded-full text-[10px] font-mono bg-amber-600 text-white w-max font-bold">Awards Ceremony</span>
+                                </div>
+                                <h4 class="font-display text-xl font-extrabold text-slate-900 mt-1">🏆 Valedictory Function</h4>
+                                <p class="text-xs text-slate-600 mt-1">Prize distribution, trophy presentation, winner announcements, and certificate awardings.</p>
+                            </div>
+                        </div>
+
+                        <!-- Item 13: 04:30 PM Event End -->
+                        <div class="sched-item relative group transition-all duration-300" data-category="valedictory">
+                            <div class="absolute -left-[33px] sm:-left-[49px] top-1.5 w-6 h-6 rounded-full bg-slate-900 border-4 border-white shadow-md group-hover:scale-125 transition-all duration-300"></div>
+                            <div class="glass-panel p-5 rounded-2xl bg-slate-900 text-white border-slate-800 group-hover:shadow-xl transition-all duration-300">
+                                <div class="flex items-center justify-between">
+                                    <span class="font-mono text-sm font-black text-sky-400">04:30 PM</span>
+                                    <span class="px-2.5 py-0.5 rounded-full text-[10px] font-mono bg-sky-500/20 text-sky-300 font-bold">Conclusion</span>
+                                </div>
+                                <h4 class="font-display text-xl font-extrabold text-white mt-1">🎉 Event End</h4>
+                                <p class="text-xs text-slate-400 mt-1">Official conclusion of Sensonics '26 symposium. Thank you to all participants!</p>
+                            </div>
+                        </div>
+
                     </div>
                 </div>
             </div>
@@ -1688,6 +1922,44 @@ Pick & Unleash is an exciting challenge where participants pick a random task or
             menu.classList.toggle('hidden');
         }
 
+        /* ==================== SCHEDULE CURSOR ANIMATION & FILTER ==================== */
+        function initScheduleCursorAnimation() {
+            const container = document.getElementById('schedule-cursor-container');
+            const glow = document.getElementById('schedule-mouse-glow');
+            if (!container || !glow) return;
+
+            container.addEventListener('mousemove', (e) => {
+                const rect = container.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                container.style.setProperty('--mouse-x', `${x}px`);
+                container.style.setProperty('--mouse-y', `${y}px`);
+                glow.style.opacity = '1';
+            });
+
+            container.addEventListener('mouseleave', () => {
+                glow.style.opacity = '0';
+            });
+        }
+
+        function filterSchedule(category) {
+            document.querySelectorAll('.sched-filter-btn').forEach(btn => {
+                if (btn.dataset.sched === category) {
+                    btn.className = "sched-filter-btn px-4 py-2 rounded-xl text-xs font-bold transition-all bg-sky-600 text-white shadow-sm";
+                } else {
+                    btn.className = "sched-filter-btn px-4 py-2 rounded-xl text-xs font-bold transition-all text-slate-600 hover:text-slate-900";
+                }
+            });
+
+            document.querySelectorAll('.sched-item').forEach(item => {
+                if (category === 'all' || item.dataset.category === category) {
+                    item.classList.remove('hidden');
+                } else {
+                    item.classList.add('hidden');
+                }
+            });
+        }
+
         /* ==================== EVENTS RENDERING & MODALS ==================== */
         function renderCatalogEvents(category = 'all') {
             const grid = document.getElementById('events-grid');
@@ -2555,6 +2827,7 @@ Pick & Unleash is an exciting challenge where participants pick a random task or
             renderCatalogEvents('all');
             initStep2Events();
             updateWizardUI();
+            initScheduleCursorAnimation();
 
             /* Production: no temporary test widgets */
         };
