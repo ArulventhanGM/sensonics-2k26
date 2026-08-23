@@ -59,7 +59,7 @@ function buildPayload(state) {
         const hasAbstract = data.abstractFile && data.abstractFile.name;
 
         eventData[eventName] = {
-            teamName:       (data.teamName     || eventName + " Team").trim(),
+            teamName:       (data.teamName || "").trim(),
             projectTitle:   (data.projectTitle || "").trim(),
             abstractFileId: hasAbstract ? data.abstractFile.name : "ATTACHED",
             abstractUrl:    hasAbstract ? ("data:" + (data.abstractFile.mimeType || "application/pdf") + ";base64," + data.abstractFile.base64) : "ATTACHED",
