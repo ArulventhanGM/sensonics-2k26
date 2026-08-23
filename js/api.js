@@ -16,12 +16,12 @@
  * ---------------------------------------------------------- */
 async function checkBackend() {
 
+    /*
+     * GET requests are simple CORS requests — no preflight.
+     * Apps Script doGet() handles these correctly.
+     */
     const response = await fetch(CONFIG.API_URL, {
         method: "GET",
-        /* No-CORS is NOT used here intentionally:
-         * The Apps Script endpoint responds with the correct
-         * Access-Control-Allow-Origin header.
-         * If you switch to no-cors you lose the response body. */
     });
 
     if (!response.ok) {
@@ -41,54 +41,35 @@ async function checkBackend() {
 /* ----------------------------------------------------------
  * submitRegistration(payload)
  *
- * POSTs a fully-formed registration payload to the Apps Script
- * doPost() endpoint.
+ * POSTs registration data to the Apps Script doPost() endpoint.
  *
- * Returns the parsed JSON response from the server.
- * Throws on network failure or non-OK HTTP status.
+ * WHY text/plain instead of application/json:
  *
- * payload shape — matches Apps Script validateRegistration():
- * {
- *   leaderName:     string,
- *   leaderEmail:    string,
- *   leaderPhone:    string,
- *   college:        string,
- *   department:     string,
- *   year:           string,
- *   referralId:     string,       // unrestricted, may be ""
- *   transactionId:  string,
- *   paymentProof: {
- *     fileName:  string,
- *     mimeType:  string,
- *     base64:    string,
- *   },
- *   events:     string[],         // e.g. ["Paper Mania", "Jumble"]
- *   eventData: {
- *     [eventName]: {
- *       teamName:       string,
- *       projectTitle:   string,   // only for Paper Mania / Project Inventa
- *       abstractFileId: string,   // ""  — abstract goes via proof upload
- *       abstractUrl:    string,   // ""
- *       whatsappJoined: boolean,
- *       members: [{
- *         name:       string,
- *         email:      string,
- *         phone:      string,
- *         college:    string,
- *         department: string,
- *         year:       string,
- *       }],
- *     },
- *   },
- * }
+ *   Sending Content-Type: application/json triggers a CORS
+ *   "preflight" OPTIONS request.  Google Apps Script has no
+ *   doOptions() handler, so the browser blocks the request
+ *   entirely before it reaches the server — causing the
+ *   "Unable to reach the registration server" network error.
+ *
+ *   Sending Content-Type: text/plain is a CORS "simple
+ *   request" — no preflight is triggered.  The body is still
+ *   JSON-stringified, and Apps Script reads it via
+ *   e.postData.contents then JSON.parse() — zero backend
+ *   changes required.
  * ---------------------------------------------------------- */
 async function submitRegistration(payload) {
 
-    console.log("[API] Submitting registration …");
+    console.log("[API] Submitting registration ...");
 
     const response = await fetch(CONFIG.API_URL, {
         method:  "POST",
-        headers: { "Content-Type": "application/json" },
+        /*
+         * text/plain avoids the CORS preflight that
+         * application/json would trigger.
+         * Apps Script doPost() reads e.postData.contents
+         * regardless of content-type.
+         */
+        headers: { "Content-Type": "text/plain;charset=UTF-8" },
         body:    JSON.stringify(payload),
     });
 
