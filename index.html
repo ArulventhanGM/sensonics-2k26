@@ -1383,7 +1383,7 @@ Each team consists of 3 members, each with a dedicated role:
 • Both team members can collaborate during recreation.
 • Judges' decision will be final and binding.`,
                 coordinators: [
-                    { name: "Hari Prasanna", phone: "89403 74065" },
+                    { name: "Hariprasanna", phone: "89403 74065" },
                     { name: "Dharanidharan", phone: "99431 90765" }
                 ],
                 whatsappUrl: "https://chat.whatsapp.com/KkC74MENd5I9DzX9g8tfIs?s=cl&p=a&ilr=1"
@@ -2023,8 +2023,8 @@ Pick & Unleash is an exciting challenge where participants pick a random task or
             const grid = document.getElementById('events-grid');
             grid.innerHTML = '';
 
-            Object.keys(EVENT_RULES).forEach(title => {
-                const ev = EVENT_RULES[title];
+            Object.keys(EVENT_RULES).forEach(key => {
+                const ev = EVENT_RULES[key];
                 if (category !== 'all') {
                     if (category === 'workshop' && !ev.isWorkshop) return;
                     if (category === 'tech' && ev.category !== 'tech') return;
@@ -2049,10 +2049,10 @@ Pick & Unleash is an exciting challenge where participants pick a random task or
                             <span>${ev.requiresAbstract ? 'PDF Required' : 'No Abstract'}</span>
                         </div>
                         <div class="flex items-center space-x-2 pt-1">
-                            <button onclick="openEventModal('${ev.title}')" class="w-1/2 glass-button-secondary py-2.5 rounded-xl text-xs font-bold text-slate-700">
+                            <button onclick="openEventModal('${key}')" class="w-1/2 glass-button-secondary py-2.5 rounded-xl text-xs font-bold text-slate-700">
                                 Details
                             </button>
-                            <button onclick="quickSelectEvent('${ev.title}')" class="w-1/2 glass-button-primary py-2.5 rounded-xl text-xs font-bold text-white">
+                            <button onclick="quickSelectEvent('${key}')" class="w-1/2 glass-button-primary py-2.5 rounded-xl text-xs font-bold text-white">
                                 Register
                             </button>
                         </div>
@@ -2074,9 +2074,11 @@ Pick & Unleash is an exciting challenge where participants pick a random task or
         }
 
         let selectedModalEventTitle = "";
-        function openEventModal(title) {
-            const ev = EVENT_RULES[title];
-            selectedModalEventTitle = title;
+        function openEventModal(eventKey) {
+            const key = EVENT_RULES[eventKey] ? eventKey : Object.keys(EVENT_RULES).find(k => EVENT_RULES[k].title === eventKey || EVENT_RULES[k].id === eventKey);
+            const ev = EVENT_RULES[key];
+            if (!ev) return;
+            selectedModalEventTitle = key;
             document.getElementById('modal-event-title').innerText = ev.title;
             document.getElementById('modal-event-cat').innerText = ev.categoryLabel;
             document.getElementById('modal-event-desc').innerText = ev.desc;
@@ -2112,10 +2114,12 @@ Pick & Unleash is an exciting challenge where participants pick a random task or
             quickSelectEvent(selectedModalEventTitle);
         }
 
-        function quickSelectEvent(title) {
+        function quickSelectEvent(eventKey) {
+            const key = EVENT_RULES[eventKey] ? eventKey : Object.keys(EVENT_RULES).find(k => EVENT_RULES[k].title === eventKey || EVENT_RULES[k].id === eventKey);
+            if (!key) return;
             navTo('register');
-            if (!state.selectedEvents.includes(title)) {
-                toggleEventSelection(title);
+            if (!state.selectedEvents.includes(key)) {
+                toggleEventSelection(key);
             }
         }
 
